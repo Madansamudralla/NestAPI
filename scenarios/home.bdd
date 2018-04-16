@@ -5,9 +5,8 @@ META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list"
 	
 	When I login as manager
 	Then I should get accessible menu list
-	
-	
-	
+	And I should get all leave types
+		
 END
 
 
