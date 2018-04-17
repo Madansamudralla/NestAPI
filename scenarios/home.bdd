@@ -3,8 +3,8 @@
 SCENARIO: NST_SRV_001
 META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list","groups":["SMOKE"]}
 	
-	When I login as manager
-	Then I should get accessible menu list
+	When User login as manager
+	Then User should get accessible menu list
 	
 END
 
