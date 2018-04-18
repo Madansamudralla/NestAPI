@@ -5,7 +5,7 @@ import com.qmetry.qaf.automation.step.QAFTestStep;
 
 public class NestLandingSteps {
 
-	@QAFTestStep(description = "I login as manager")
+	@QAFTestStep(description = "User login as manager")
 	public static String loginAsManagerUser() {
 
 		return UserType.ManagerUser.doLogin();
@@ -16,5 +16,11 @@ public class NestLandingSteps {
 
 		return UserType.NormalUser.doLogin();
 	}
+	
+	@QAFTestStep(description = "User login as hr")
+	public static String loginAsHr() {
 
+		return UserType.HrUser.doLogin();
+	}
+	
 }
