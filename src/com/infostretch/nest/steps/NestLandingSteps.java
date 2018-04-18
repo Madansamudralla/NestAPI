@@ -11,8 +11,8 @@ public class NestLandingSteps {
 		return UserType.ManagerUser.doLogin();
 	}
 
-	@QAFTestStep(description = "I login as normal employee")
-	public static String loginAsNormalUser() {
+	@QAFTestStep(description = "User login as normal employee")
+	public static String userLoginAsNormalEmployee() {
 
 		return UserType.NormalUser.doLogin();
 	}
