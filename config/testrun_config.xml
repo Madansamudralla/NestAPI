@@ -3,7 +3,7 @@
 
 
 	<test name="BDD  Tests" enabled="true">
-		<parameter name="scenario.file.loc" value="scenarios/home.bdd" />
+		<parameter name="scenario.file.loc" value="scenarios/Travel.bdd" />
 		<classes>
 			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
 		</classes>

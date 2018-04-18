@@ -1,0 +1,37 @@
+
+SCENARIO: Travel_MyTravelRequest_041
+META-DATA: {"author":"Suryakant Kale","description":"verify travel admin location","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user get travel admin location for travel
+		
+END
+
+SCENARIO: Travel_MyTravelRequest_040
+META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel location","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user get the mode of travel for travel
+	
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_038
+META-DATA: {"author":"Suryakant Kale","description":"verify view of travel details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can view the details of travel
+	
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_037
+META-DATA: {"author":"Suryakant Kale","description":"verify employee designation list","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the employee designation list for travel
+	
+	
+END
+
+
