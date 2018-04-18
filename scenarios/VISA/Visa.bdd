@@ -1,0 +1,37 @@
+
+
+SCENARIO: get visa country list
+META-DATA: {"description":"Verify visa api","groups":["VISA"]}
+	
+	Given user login as manager
+	Then user should get accecible menu list
+	And user should get visa country list
+END
+
+SCENARIO: get menu URL
+META-DATA: {"description":"Verify visa api","groups":["VISA"] }
+
+	Given user login as manager
+	Then user should get menu url
+	
+END
+
+
+SCENARIO: get supervisor name
+META-DATA: {"description":"Verify visa api","groups":["VISA"] }
+
+	Given user login as manager
+	Then user should get supervisor name
+	 
+END
+
+SCENARIO: get visa request list for employee
+META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"Key":"validDate"}
+
+	Given user login as manager
+	Then user should select '$args[0]' and '$args[0]' to get visa request list for employee
+END
+
+
+
+

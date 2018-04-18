@@ -23,6 +23,11 @@ public class TokenUtils {
 	public static String getTokenAsJsonStr() {
 		return String.format("{\"token\":\"%s\"}", currentUser.getToken());
 	}
+	
+	public static String getTokenAsString() {
+		return currentUser.getToken();
+		
+	}
 
 	public enum UserType {
 		NormalUser("normal.user"), ManagerUser("manager.user");
