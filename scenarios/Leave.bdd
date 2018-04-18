@@ -1,0 +1,46 @@
+
+SCENARIO: Leave_AL_03
+META-DATA: {"author":"apoorva shewale","description":"user should get the leave reasons","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get the leave reasons
+END
+
+
+SCENARIO: Leave_AL_05
+META-DATA: {"author":"apoorva shewale","description":"user should get leave types by country","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get leave types by country
+END
+
+SCENARIO: Leave_AL_04
+META-DATA: {"author":"apoorva shewale","description":"user should get current leave period","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get current leave period
+END
+
+SCENARIO: Leave_AL_13
+META-DATA: {"author":"apoorva shewale","description":"user should get leave balances","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get leave balances
+END
+
+SCENARIO: Leave_AL_14
+META-DATA: {"author":"apoorva shewale","description":"user should get all holiday datelist","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get all holiday datelist
+END
+
+
+
+
+
+
+
+
+
+	
