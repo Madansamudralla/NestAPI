@@ -8,7 +8,6 @@ import org.json.JSONObject;
 import com.infostretch.nest.providers.EssEndPoint;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.TokenUtils;
-import com.qmetry.qaf.automation.core.ConfigurationManager;
 import com.qmetry.qaf.automation.core.MessageTypes;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
@@ -56,6 +55,17 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));	
+	}
+	
+	@QAFTestStep(description = "User should edit professional experiance")
+	public void userShouldEditProfessionalExperiance() {
+		
+		
+		ClientUtils.getWebResource(EssEndPoint.EDIT_PROFESSIONAL_EXPERIANCE).entity(TokenUtils.getTokenAsJsonStr())
+		.type(MediaType.APPLICATION_JSON).post();
+		Response response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));		
 	}
 	
 	@QAFTestStep(description = "User should get education level")

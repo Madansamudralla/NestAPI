@@ -22,6 +22,12 @@ META-DATA: {"author":"chetashree gangurde","description":"verify professional ex
 	Then User should get professional experiance
 END
 
+SCENARIO: ESS_MyProfile_022
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit professional experiance","groups":["SMOKE"]}
+	Given User login as normal employee
+	Then User should edit professional experiance
+END
+
 SCENARIO: ESS_MyProfile_024
 META-DATA: {"author":"chetashree gangurde","description":"verify education level","groups":["SMOKE"]}
 	Given User login as normal employee
