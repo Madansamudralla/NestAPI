@@ -1,6 +1,6 @@
 package com.infostretch.nest.providers;
 
-public class VisaEndPoints {
+public interface VisaEndPoints {
 
 	
 	public final static String LOGIN = "/login";
@@ -9,4 +9,6 @@ public class VisaEndPoints {
 	public final static String VISA_REQUEST_LIST_FOR_EMPLOYEE ="/get-visa-request-list-for-employee";
 	public final static String VISA_MENU_URL="/get-menu-urls";
 	public final static String VISA_SUPERVISOR_NAME="/get-Supervisors-Name";
+	public final static String VISA_TYPE_FOR_DD="/get-visa-type-for-dd";
+	public final static String VISA_ALL_EMPLOYEE_LIST_EXPENSE="/get-all-employee-list-for-expense";
 }

@@ -32,6 +32,17 @@ META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"Key":"validDate"
 	Then user should select '$args[0]' and '$args[0]' to get visa request list for employee
 END
 
+SCENARIO: get visa type for dd
+META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"Key":"validDate","author":["palash"]}
 
+	Given user login as manager
+	Then user should get visa type for dd
+END
 
+SCENARIO: get all employee list of expense
+META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"author":["palash"]}
+
+	Given user login as manager
+	Then user should get all employee list of expense
+END
 
