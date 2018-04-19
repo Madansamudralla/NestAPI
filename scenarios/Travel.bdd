@@ -1,13 +1,5 @@
 
 SCENARIO: Travel_MyTravelRequest_041
-META-DATA: {"author":"Suryakant Kale","description":"verify travel admin location","groups":["SMOKE"]}
-	
-	Given user can login as manager
-	When user get travel admin location for travel
-		
-END
-
-SCENARIO: Travel_MyTravelRequest_040
 META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel location","groups":["SMOKE"]}
 	
 	Given user can login as manager
@@ -16,11 +8,21 @@ META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel locat
 	
 END
 
+SCENARIO: Travel_MyTravelRequest_040
+META-DATA: {"author":"Suryakant Kale","description":"verify travel admin location","groups":["SMOKE"]}
+	
+	#Given user can login as manager
+	#When user get travel admin location for travel
+		
+END
+
+
+
 SCENARIO: Travel_MyTravelRequest_038
 META-DATA: {"author":"Suryakant Kale","description":"verify view of travel details","groups":["SMOKE"]}
 	
-	Given user can login as manager
-	When user can view the details of travel
+	#Given user can login as manager
+	#When user can view the details of travel
 	
 	
 END
@@ -28,10 +30,41 @@ END
 SCENARIO: Travel_MyTravelRequest_037
 META-DATA: {"author":"Suryakant Kale","description":"verify employee designation list","groups":["SMOKE"]}
 	
-	Given user can login as manager
-	When user can get the employee designation list for travel
+	#Given user can login as manager
+	#When user can get the employee designation list for travel
 	
 	
 END
+
+SCENARIO: Travel_MyTravelRequest_036
+META-DATA: {"author":"Suryakant Kale","description":"verify all employee list for expense","groups":["SMOKE"]}
+	
+	#Given user can login as manager
+	#When user can get the all employee list for expense for travel
+	
+	
+END
+
+
+SCENARIO: Travel_MyTravelRequest_035
+META-DATA: {"author":"Suryakant Kale","description":"verify the approval and reject of travel request","groups":["SMOKE"]}
+	
+	#Given user can login as manager
+	#When user can check the approval and reject of travel request for travel
+	
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_034
+META-DATA: {"author":"Suryakant Kale","description":"verify the managers dd for travel","groups":["SMOKE"]}
+	
+	#Given user can login as manager
+	#When user can verify the managers dd for travel
+	
+	
+END
+
+
+
 
 
