@@ -34,10 +34,6 @@ public class NestESSSteps {
 		obj.put("emp_number", "113");//ConfigurationManager.getBundle().getPropertyValue("emp_id");
 		ClientUtils.getWebResource(ESSEndPoints.GET_PERSONAL_DETAILS).type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
-		if(CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
+		Reporter.log("Emp Number "+CommonUtils.validateResultParameter(response, "emp_number"));
 	}
-	
-
 }
