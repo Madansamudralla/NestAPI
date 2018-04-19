@@ -24,8 +24,28 @@ META-DATA: {"author":"bhakti kulkarni","description":"verify get release data","
 SCENARIO: HM_Login_05
 META-DATA: {"author":"bhakti kulkarni","description":"verify get my leave list","groups":["SMOKE"]}	
 	Given User login as hr		
-	Then User should get my leave list	
+	Then User should get my leave list
 	
+SCENARIO: HM_Login_06
+META-DATA: {"author":"bhakti kulkarni","description":"verify get leave balances","groups":["SMOKE"]}	
+	Given User login as hr		
+	Then User should get leave balances		
+
+SCENARIO: HM_Login_07
+META-DATA: {"author":"bhakti kulkarni","description":"verify get floating holiday list","groups":["SMOKE"]}	
+	Given User login as hr		
+	Then User should get floating holiday list	
+
+SCENARIO: HM_Login_08
+META-DATA: {"author":"bhakti kulkarni","description":"verify get holiday list","groups":["SMOKE"]}	
+	Given User login as hr		
+	Then User should get holiday list		
+
+SCENARIO: HM_Login_09
+META-DATA: {"author":"bhakti kulkarni","description":"verify get training calendar list","groups":["SMOKE"]}	
+	Given User login as hr		
+	Then User should get training calendar list	
 END
+
 
 
