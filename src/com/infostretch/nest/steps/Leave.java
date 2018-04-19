@@ -5,7 +5,6 @@ import javax.ws.rs.core.MediaType;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 
-
 import com.infostretch.nest.providers.LeaveEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.TokenUtils;
@@ -14,11 +13,11 @@ import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
-
+import com.sun.jersey.api.client.ClientResponse;
 
 public class Leave {
 	JSONObject jsonObject;
-	
+
 	public static String leavePeriod;
 	@QAFTestStep(description = "user should get the leave reasons")
 	public void userShouldGetTheLeaveReasons() {
@@ -62,23 +61,53 @@ public class Leave {
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 	}
 
-	
 	@QAFTestStep(description = "user should get all holiday datelist")
 	public void userShouldGetAllHolidayDatelist() {
-		jsonObject=new JSONObject();
-		jsonObject.put("start_date","18-4-2018");
-		jsonObject.put("end_date","18-4-2018");
-		jsonObject.put("token","05b4b6bad9d544f502c8aab3a47e604c");
+		jsonObject = new JSONObject();
+		jsonObject.put("start_date", "18-4-2018");
+		jsonObject.put("end_date", "18-4-2018");
+		jsonObject.put("token", "05b4b6bad9d544f502c8aab3a47e604c");
 		ClientUtils.getWebResource(LeaveEndPoints.GET_ALL_HOLIDAY_DATELIST)
-		.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-		
+
 	}
-	
+
+	@QAFTestStep(description = "user should get all leave status")
+	public void userShouldGetAllLeaveStatus() {
+		ClientUtils.getWebResource(LeaveEndPoints.GET_ALL_LEAVE_STATUS)
+				// .entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.get(ClientResponse.class);
+		Response response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+	}
+
+	@QAFTestStep(description = "user should get his leave list")
+	public void userShouldGetHisLeaveList() {
+		ClientUtils.getWebResource(LeaveEndPoints.GET_USER_LEAVE_LIST)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+	}
+
+	@QAFTestStep(description = "user should get all his leave list")
+	public void userShouldGetAllHisLeaveList() {
+		jsonObject = new JSONObject();
+		jsonObject.put("date_type", "applieddate");
+		jsonObject.put("from_date", "1-4-2018");
+		jsonObject.put("leavetype", "");
+		jsonObject.put("to_date", "31-3-2019");
+		jsonObject.put("token","179cfa625d9f6736b2345ca8b5570b15");
+		ClientUtils.getWebResource(LeaveEndPoints.GET_USER_ALL_LEAVE_LIST)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+	}
+
 }
-
-
-
-
