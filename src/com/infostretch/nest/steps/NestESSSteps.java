@@ -50,7 +50,7 @@ public class NestESSSteps {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(),Matchers.greaterThan(0));
+		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 
 	}
 }

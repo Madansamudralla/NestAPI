@@ -31,7 +31,9 @@ public class TokenUtils {
 
 	public enum UserType {
 		NormalUser("normal.user"),
-		ManagerUser("manager.user");
+
+		ManagerUser("manager.user"),
+		HrUser("hr.user");
 
 		private final String key;
 		private String token;
@@ -70,6 +72,16 @@ public class TokenUtils {
 				Validator.verifyThat(results, Matchers.notNullValue());
 				this.token = results.get("token").getAsString();
 				Validator.verifyThat(this.token, Matchers.notNullValue());
+				ConfigurationManager.getBundle().setProperty("emp_id",
+						results.get("emp_id").getAsString());
+				ConfigurationManager.getBundle().setProperty("first_name",
+						results.get("first_name").getAsString());
+				ConfigurationManager.getBundle().setProperty("last_name",
+						results.get("last_name").getAsString());
+				ConfigurationManager.getBundle().setProperty("job_title",
+						results.get("job_title").getAsString());
+				ConfigurationManager.getBundle().setProperty("location",
+						results.get("location").getAsString());
 			}
 			setCurrentUser(this);
 			return this.token;
