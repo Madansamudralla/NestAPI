@@ -20,38 +20,39 @@ public class NestVisaSteps {
 
 	/**
 	 * Palash Saxena
+	 * VISA module API's
 	 */
-	@QAFTestStep(description = "User login as manager")
-	public static String userLoginAsManager() {
+	@QAFTestStep(description = "user login as manager")
+	public static String UserLoginAsManager() {
 
 		return UserType.ManagerUser.doLogin();
 	}
 
-	@QAFTestStep(description = "User should get accecible menu list")
-	public void userShouldGetAccecibleMenuList() {
+	@QAFTestStep(description = "user should get accecible menu list")
+	public void UserShouldGetAccecibleMenuList() {
 
 		ClientUtils.getWebResource(VisaEndPoints.ACCESSIBLE_MENU_LIST)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 	}
 
-	@QAFTestStep(description = "User should get visa country list")
-	public void userShouldGetVisaCountryList() {
+	@QAFTestStep(description = "user should get visa country list")
+	public void UserShouldGetVisaCountryList() {
 
 		ClientUtils.getWebResource(VisaEndPoints.VISA_COUNTRY_LIST)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 
 	}
 
-	@QAFTestStep(description = "User should select {0} and {1} to get visa request list for employee")
-	public void userShouldSelectAndToGetVisaRequestListForEmployee(String startdate,
+	@QAFTestStep(description = "user should select {0} and {1} to get visa request list for employee")
+	public void UserShouldSelectAndToGetVisaRequestListForEmployee(String startdate,
 			String enddate) {
 
 		JSONObject json = new JSONObject();
@@ -61,7 +62,7 @@ public class NestVisaSteps {
 		json.put("initiated_to", startdate);
 
 		ClientUtils.getWebResource(VisaEndPoints.VISA_REQUEST_LIST_FOR_EMPLOYEE)
-				.type(MediaType.APPLICATION_JSON).post(json.toString());
+		.type(MediaType.APPLICATION_JSON).post(json.toString());
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
@@ -69,21 +70,21 @@ public class NestVisaSteps {
 	}
 
 	@QAFTestStep(description = "user should get menu url")
-	public void userShouldGetMenuUrl() {
+	public void UserShouldGetMenuUrl() {
 		ClientUtils.getWebResource(VisaEndPoints.VISA_MENU_URL)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 
 	}
 
-	@QAFTestStep(description = "User should get supervisor name")
-	public void userShouldGetSupervisorName() {
+	@QAFTestStep(description = "user should get supervisor name")
+	public void UserShouldGetSupervisorName() {
 		ClientUtils.getWebResource(VisaEndPoints.VISA_SUPERVISOR_NAME)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
@@ -91,20 +92,19 @@ public class NestVisaSteps {
 	}
 
 	@QAFTestStep(description = "user should get visa type for dd")
-	public void userShouldGetVisaTypeForDd() {
+	public void UserShouldGetVisaTypeForDd() {
 		ClientUtils.getWebResource(VisaEndPoints.VISA_TYPE_FOR_DD)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-		System.out.println("RESPONSE IS======" + response.getMessageBody());
 
 	}
 
 	
 	@QAFTestStep(description = "user should get all employee list of expense")
-	public void userShouldGetAllEmployeeListOfExpense() {
+	public void UserShouldGetAllEmployeeListOfExpense() {
 		
 		ClientUtils.getWebResource(VisaEndPoints.VISA_ALL_EMPLOYEE_LIST_EXPENSE)
 		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
