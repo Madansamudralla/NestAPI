@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.infostretch.nest.providers.EssEndPoint;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
@@ -21,32 +20,28 @@ public class Ess {
 
 	@QAFTestStep(description = "user should get employee privileges")
 	public void userShouldGetEmployeePrivileges() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
 		ClientUtils.getWebResource(EssEndPoint.EMPLOYEE_PRIVILEGES)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
-		if (CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 
 	}
 
 	@QAFTestStep(description = "user should get contact details")
 	public void userShouldGetContactDetails() {
 
-		// JSONObject jsonObject =new JSONObject();
-		// jsonObject.put("token",TokenUtils.getTokenAsStr());
-		// jsonObject.put("
-		// emp_number","113");//ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
 		ClientUtils.getWebResource(EssEndPoint.CONTACT_DETAILS)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
-		if (CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 
 	}
 
@@ -57,10 +52,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		if (CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 	}
 
 	@QAFTestStep(description = "user should get professional experiance")
@@ -69,10 +62,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		if (CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 
 	}
 
@@ -82,7 +73,6 @@ public class Ess {
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("eexp_jobtit", "dcdfkkkk");
 		jsonObject.put("eexp_employer", "kddfdj");
-		jsonObject.put("eexp_seqno", "1");
 		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
 
 		ClientUtils.getWebResource(EssEndPoint.EDIT_PROFESSIONAL_EXPERIANCE)
@@ -98,8 +88,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	}
 
 	@QAFTestStep(description = "user should get language name")
@@ -108,8 +98,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	}
 
 	@QAFTestStep(description = "user should get qualification details")
@@ -118,10 +108,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		if (CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 	}
 
 	@QAFTestStep(description = "user should get reporting structure")
@@ -130,10 +118,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		if (CommonUtils.validateResult(response)) {
-			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 	}
 
 	@QAFTestStep(description = "user should get competency")
@@ -142,8 +128,8 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	}
 
 	@QAFTestStep(description = "user should get fluency")
@@ -152,19 +138,7 @@ public class Ess {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-		JsonObject responseBody =
-				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		JsonArray results =
-				responseBody.get("response").getAsJsonObject().getAsJsonArray("results");
-		Validator.verifyThat(results.size(), Matchers.equalTo(3));
-		Validator.verifyThat((results.get(0).getAsJsonObject()).get("name").toString(),
-				Matchers.containsString("Writing"));
-		Validator.verifyThat((results.get(1).getAsJsonObject()).get("name").toString(),
-				Matchers.containsString("Speaking"));
-		Validator.verifyThat((results.get(2).getAsJsonObject()).get("name").toString(),
-				Matchers.containsString("Reading"));
-
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	}
 }
