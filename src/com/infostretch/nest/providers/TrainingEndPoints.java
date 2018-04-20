@@ -7,4 +7,6 @@ public interface TrainingEndPoints {
 	public static final String I_HAVE_ATTENDED = "/get-i-have-attended";
 	public static final String I_HAVE_TAUGHT = "//get-i-have-taught";
 
+	
+	
 }
