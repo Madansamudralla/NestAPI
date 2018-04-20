@@ -49,22 +49,9 @@ public class StepsBackLog {
 		Reporter.log("--Verified--");
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-		JsonObject responseBody = new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		JsonArray results =	responseBody.get("response").getAsJsonObject().getAsJsonArray("results");
-
-//				Validator.verifyThat((results.get(0).getAsJsonObject()).get("name").toString(),Matchers.containsString("Writing"));
-		int resultSize =responseBody.get("response").getAsJsonObject().getAsJsonArray("results").size();
-		String str= Integer.toString(resultSize);
-		Reporter.log(str);
-//		for(int i=1;i<=resultSize-1;i++) {
-
-//		Validator.verifyThat((results.get(i).getAsJsonObject()).get("emp_number").toString(),Matchers.containsString("IN"));
-
-//		Validator.verifyThat((results.get(i).getAsJsonObject()).get("leave_type_id").toString(),Matchers.containsString("LTY"));
-
-//		Validator.verifyThat((results.get(i).getAsJsonObject()).get("termination_id").toString(),Matchers.containsString(null));
-
-//		}
+		
+		CommonUtils.getValidatedResultArray(response);
+		
 	}
 	
 	
@@ -105,11 +92,10 @@ public class StepsBackLog {
 		.post(jsonObject.toString());
 		 
 		Response response = ClientUtils.getResponse();
-		if(CommonUtils.validateResult(response)) 
-		{
+		
 			Reporter.log("--Verified--");
 			Reporter.log(response.getMessageBody(), MessageTypes.Info);
-		}
+		
 		
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 	}
