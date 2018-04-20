@@ -15,7 +15,7 @@ import com.qmetry.qaf.automation.ws.Response;
 
 public class NestHomeSteps {
 
-	@QAFTestStep(description = "I should get accessible menu list")
+	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
 		ClientUtils.getWebResource(EndPoints.ACCESSIBLE_MENU_LIST).entity(TokenUtils.getTokenAsJsonStr())
 				.type(MediaType.APPLICATION_JSON).post();
@@ -35,6 +35,5 @@ public class NestHomeSteps {
 		// actualQuantity));
 		// }
 	}
-
 	
 }

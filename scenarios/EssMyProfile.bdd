@@ -1,47 +1,65 @@
 SCENARIO: ESS_MyProfile_018
 META-DATA: {"author":"chetashree gangurde","description":"verify employee privileges","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get employee privileges
+	Given user login as manager
+	Then user should get employee privileges
 END
 
 SCENARIO: ESS_MyProfile_019
 META-DATA: {"author":"chetashree gangurde","description":"verify contact-details","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get contact details
+	Given user login as manager
+	Then user should get contact details
 END
 
 SCENARIO: ESS_MyProfile_020
 META-DATA: {"author":"chetashree gangurde","description":"verify employee languages","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get employee languages
+	Given user login as manager
+	Then user should get employee languages
 END
 
 SCENARIO: ESS_MyProfile_021
 META-DATA: {"author":"chetashree gangurde","description":"verify professional experiance","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get professional experiance
+	Given user login as manager
+	Then user should get professional experiance
 END
 
 SCENARIO: ESS_MyProfile_022
 META-DATA: {"author":"chetashree gangurde","description":"verify for edit professional experiance","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should edit professional experiance
+	Given user login as manager
+	Then user should edit professional experiance
 END
 
 SCENARIO: ESS_MyProfile_024
 META-DATA: {"author":"chetashree gangurde","description":"verify education level","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get education level
+	Given user login as manager
+	Then user should get education level
 END
 
 SCENARIO: ESS_MyProfile_025
 META-DATA: {"author":"chetashree gangurde","description":"verify language name","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get language name
+	Given user login as manager
+	Then user should get language name
 END
 
 SCENARIO: ESS_MyProfile_026
 META-DATA: {"author":"chetashree gangurde","description":"verify qualification details","groups":["SMOKE"]}
-	Given User login as normal employee
-	Then User should get qualification details
+	Given user login as manager
+	Then user should get qualification details
+END
+
+SCENARIO: ESS_MyProfile_027
+META-DATA: {"author":"chetashree gangurde","description":"verify reporting structure","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get reporting structure
+END
+
+SCENARIO: ESS_MyProfile_028
+META-DATA: {"author":"chetashree gangurde","description":"verify competency","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get competency
+END
+
+SCENARIO: ESS_MyProfile_029
+META-DATA: {"author":"chetashree gangurde","description":"verify fluency","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get fluency
 END

@@ -10,5 +10,7 @@ public interface EssEndPoint {
 	public final static String EDUCATION_LEVEL ="/get-education-level";
 	public final static String LANGUAGE_NAME ="/get-language-name";
 	public final static String QUALIFICATION_DETAILS ="/get-qualification-details";
-
+	public final static String REPORTING_STRUCTURE ="/get-reporting-structure";
+	public final static String COMPETENCY ="/get-competency";
+	public final static String FLUENCY ="/get-fluency";
 }
