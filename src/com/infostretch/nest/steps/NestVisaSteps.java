@@ -57,7 +57,7 @@ public class NestVisaSteps {
 
 		JSONObject json = new JSONObject();
 
-		json.put("token", TokenUtils.getTokenAsString());
+		json.put("token", TokenUtils.getTokenAsStr());
 		json.put("initiated_from", startdate);
 		json.put("initiated_to", startdate);
 

@@ -21,7 +21,7 @@ public class NestESSSteps {
 	@QAFTestStep(description = "user should get-basic-details")
 	public void userShouldGetBasicDetails() {
 		JSONObject obj = new JSONObject();
-		obj.put("token", TokenUtils.getTokenAsString());
+		obj.put("token", TokenUtils.getTokenAsStr());
 		obj.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
 		ClientUtils.getWebResource(ESSEndPoints.GET_BASIC_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
@@ -34,13 +34,13 @@ public class NestESSSteps {
 	@QAFTestStep(description = "user should get-personal-details")
 	public void userShouldGetPersonalDetails() {
 		JSONObject obj = new JSONObject();
-		obj.put("token", TokenUtils.getTokenAsString());
+		obj.put("token", TokenUtils.getTokenAsStr());
 		obj.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
 		ClientUtils.getWebResource(ESSEndPoints.GET_PERSONAL_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log("Emp Number : " + CommonUtils.validateParameterInJsonObject(result, "emp_number"));
+		Reporter.log("Emp Number   : " + CommonUtils.validateParameterInJsonObject(result, "emp_number"));
 	}
 
 	@QAFTestStep(description = "user should get-base-location")

@@ -24,7 +24,7 @@ public class TokenUtils {
 		return String.format("{\"token\":\"%s\"}", currentUser.getToken());
 	}
 	
-	public static String getTokenAsString() {
+	public static String getTokenAsStr() {
 		return currentUser.getToken();
 		
 	}
