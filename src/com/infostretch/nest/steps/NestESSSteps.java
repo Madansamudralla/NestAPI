@@ -40,7 +40,7 @@ public class NestESSSteps {
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log("Emp Number : " + CommonUtils.validateParameterInJsonObject(result, "emp_number"));
+		Reporter.log("Emp Number   : " + CommonUtils.validateParameterInJsonObject(result, "emp_number"));
 	}
 
 	@QAFTestStep(description = "user should get-base-location")
