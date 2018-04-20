@@ -1,7 +1,4 @@
 
-
-
-
 SCENARIO: Training_TrainingCalendar_01
 META-DATA: {"author":"megha garg","description":"verify training calender","groups":["Training"]}
 	
