@@ -5,7 +5,7 @@ META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list"
 	
 	When user login as manager
 	Then user should get accessible menu list
-	
+			
 END
 
 

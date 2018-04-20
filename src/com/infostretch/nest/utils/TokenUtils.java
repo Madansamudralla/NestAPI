@@ -23,7 +23,6 @@ public class TokenUtils {
 	public static String getTokenAsJsonStr() {
 		return String.format("{\"token\":\"%s\"}", currentUser.getToken());
 	}
-
 	public static String getTokenAsStr() {
 		return currentUser.getToken();
 	}
