@@ -29,6 +29,7 @@ public class TokenUtils {
 
 	public enum UserType {
 		NormalUser("normal.user"),
+
 		ManagerUser("manager.user"),
 		HrUser("hr.user");
 
