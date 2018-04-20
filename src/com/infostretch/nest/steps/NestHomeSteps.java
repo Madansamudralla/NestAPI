@@ -26,17 +26,7 @@ public class NestHomeSteps {
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 
-		// JsonArray array = new
-		// JsonParser().parse(getResponse.getResponse().getMessageBody()).getAsJsonArray();
-		// Validator.verifyThat(array.size(),
-		// Matchers.equalTo(expecteditems.size()));
-		// for (int i = 0; i < array.size(); ++i) {
-		// JsonObject obj = array.get(i).getAsJsonObject();
-		// String actualId = obj.get("itemId").getAsString();
-		// int actualQuantity = obj.get("quantity").getAsInt();
-		// Validator.assertThat(expecteditems, Matchers.hasEntry(actualId,
-		// actualQuantity));
-		// }
+		
 	}
 	
 	
