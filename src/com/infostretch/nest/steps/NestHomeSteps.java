@@ -15,10 +15,11 @@ import com.qmetry.qaf.automation.ws.Response;
 
 public class NestHomeSteps {
 
-	@QAFTestStep(description = "I should get accessible menu list")
+	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
-		ClientUtils.getWebResource(EndPoints.ACCESSIBLE_MENU_LIST).entity(TokenUtils.getTokenAsJsonStr())
-				.type(MediaType.APPLICATION_JSON).post();
+		ClientUtils.getWebResource(EndPoints.ACCESSIBLE_MENU_LIST)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
@@ -35,5 +36,5 @@ public class NestHomeSteps {
 		// actualQuantity));
 		// }
 	}
-
+	
 }

@@ -1,0 +1,21 @@
+
+SCENARIO: ESS_MyProfile_001
+META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=false}
+	
+	Given user login as manager
+	Then user should get-basic-details
+			
+END
+
+SCENARIO: ESS_MyProfile_002
+META-DATA: {"author":"prashinka sahu","description":"verify get-personal-details","groups":["SMOKE"],enabled=false}
+	Given user login as manager
+	Then user should get-personal-details
+END
+
+
+SCENARIO: ESS_MyProfile_009
+META-DATA: {"author":"prashinka sahu","description":"verify get-base-location","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get-base-location
+END
