@@ -1,7 +1,7 @@
 
 
 SCENARIO: NST_SRV_001
-META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list","groups":["SMOKE"]}
+META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list","groups":["SMOKE"] }
 	
 	Given user login as manager
 	Then user should get accessible menu list
