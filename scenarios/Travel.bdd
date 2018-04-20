@@ -11,8 +11,8 @@ END
 SCENARIO: Travel_MyTravelRequest_040
 META-DATA: {"author":"Suryakant Kale","description":"verify travel admin location","groups":["SMOKE"]}
 	
-	Given user can login as manager
-	When user get travel admin location for travel
+	#Given user can login as manager
+	#When user get travel admin location for travel
 		
 END
 
@@ -67,8 +67,8 @@ END
 SCENARIO: Travel_MyTravelRequest_033
 META-DATA: {"author":"Suryakant Kale","description":"verification of added and edited booking details","groups":["SMOKE"]}
 	
-	#Given user can login as manager
-	#When user can verify the added and edited booking details for travel
+	Given user can login as manager
+	When user can verify the added and edited booking details for travel
 	
 	
 END
