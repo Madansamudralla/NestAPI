@@ -41,6 +41,21 @@ META-DATA: {"author":"Suryakant Kale","description":"verify all employee list fo
 		
 END
 
+SCENARIO: Travel_MyTravelRequest_035
+META-DATA: {"author":"Suryakant Kale","description":"verify approval of reject request","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can approve reject travel request for travel
+		
+END
+
+SCENARIO: Travel_MyTravelRequest_034
+META-DATA: {"author":"Suryakant Kale","description":"verify the managers dd for travel","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the managers dd  for travel
+		
+END
 
 SCENARIO: Travel_MyTravelRequest_033
 META-DATA: {"author":"Suryakant Kale","description":"verification of added and edited booking details","groups":["SMOKE"]}

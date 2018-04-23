@@ -25,12 +25,12 @@ import com.sun.jersey.api.client.ClientResponse;
  * @author Suryakant.Kale
  */
 public class NestTravelSteps {
-	
+
 	public Response response;
 	public JsonArray resultArray;
 	public JsonObject jsonObjectResult;
 	public JSONObject jsonObject;
-	
+
 	@QAFTestStep(description = "user can login as manager")
 	public String userCanLoginAsManager() {
 
@@ -46,9 +46,9 @@ public class NestTravelSteps {
 		response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-	    resultArray = CommonUtils.getValidatedResultArray(response);
+		resultArray = CommonUtils.getValidatedResultArray(response);
 		int jsonArraySize = resultArray.size();
-		
+
 		for (int index = 0; index < jsonArraySize; index++) {
 			JsonObject jsonObject2 = resultArray.get(0).getAsJsonObject();
 			CommonUtils.validateParameterInJsonObject(jsonObject2, "emp_number");
@@ -63,7 +63,7 @@ public class NestTravelSteps {
 		ClientUtils.getWebResource(TravelEndPoints.GET_MODE_OF_TRAVEL_DD)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
-    	response = ClientUtils.getResponse();
+		response = ClientUtils.getResponse();
 		Reporter.log("--Verified--");
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
@@ -75,7 +75,7 @@ public class NestTravelSteps {
 
 	@QAFTestStep(description = "user can view the details of travel")
 	public void userViewtravelDetails() {
-		
+
 		jsonObject = new JSONObject();
 		jsonObject.put("trvl_travel_request_id", "2255");
 		ClientUtils.getWebResource(TravelEndPoints.VIEW_TRAVEL_DETAILS)
@@ -88,9 +88,11 @@ public class NestTravelSteps {
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("details").getAsJsonObject();
-		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get("type_name").toString(),
+		Validator.verifyThat(
+				(jsonObjectResult.getAsJsonObject()).get("type_name").toString(),
 				Matchers.notNullValue());
-		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get("trvl_statusLog").toString(),
+		Validator.verifyThat(
+				(jsonObjectResult.getAsJsonObject()).get("trvl_statusLog").toString(),
 				Matchers.notNullValue());
 
 	}
@@ -123,13 +125,12 @@ public class NestTravelSteps {
 		resultArray = CommonUtils.getValidatedResultArray(response);
 
 		for (int index = 0; index <= resultArray.size() - 1; index++) {
-			Validator.verifyThat(
-					(resultArray.get(index).getAsJsonObject()).get("emp_number").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((resultArray.get(index).getAsJsonObject())
+					.get("emp_number").toString(), Matchers.notNullValue());
 			Validator.verifyThat((resultArray.get(index).getAsJsonObject())
 					.get("display_name").toString(), Matchers.notNullValue());
 		}
-		
+
 	}
 
 	@QAFTestStep(description = "user can verify the added and edited booking details for travel")
@@ -165,7 +166,7 @@ public class NestTravelSteps {
 		response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-		
+
 	}
 
 	@QAFTestStep(description = "user can verify travel reports for travel")
@@ -177,7 +178,7 @@ public class NestTravelSteps {
 		response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-		
+
 	}
 
 	@QAFTestStep(description = "user can verify the booking documents for travel")
@@ -199,9 +200,8 @@ public class NestTravelSteps {
 		JsonObject results1 =
 				responseBody.get("response").getAsJsonObject().get("results")
 						.getAsJsonObject().get("mngr_permission").getAsJsonObject();
-		Validator.verifyThat(
-				(jsonObjectResult.getAsJsonObject()).get("get_booking_documents").toString(),
-				Matchers.notNullValue());
+		Validator.verifyThat((jsonObjectResult.getAsJsonObject())
+				.get("get_booking_documents").toString(), Matchers.notNullValue());
 		Validator.verifyThat(
 				(results1.getAsJsonObject()).get("get_booking_documents").toString(),
 				Matchers.notNullValue());
@@ -224,9 +224,11 @@ public class NestTravelSteps {
 		Validator.verifyThat(
 				(jsonObjectResult.getAsJsonObject()).get("trvl_booking_id").toString(),
 				Matchers.notNullValue());
-		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get("action_message").toString(),
+		Validator.verifyThat(
+				(jsonObjectResult.getAsJsonObject()).get("action_message").toString(),
 				Matchers.notNullValue());
-		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get("response_type").toString(),
+		Validator.verifyThat(
+				(jsonObjectResult.getAsJsonObject()).get("response_type").toString(),
 				Matchers.notNullValue());
 
 	}
@@ -249,7 +251,7 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "booking_cnt");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "booking_submited");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_loc_code");
-		
+
 	}
 
 	@QAFTestStep(description = "user can verify the travel requests for employees for travel")
@@ -265,15 +267,63 @@ public class NestTravelSteps {
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		resultArray = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("details").getAsJsonArray();
-		
+
 		for (int integer = 0; integer <= resultArray.size() - 1; integer++) {
-			
-			Validator.verifyThat((resultArray.get(integer).getAsJsonObject())
-					.get("trvl_travel_request_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((resultArray.get(integer).getAsJsonObject())
-					.get("request_by_emp_number").toString(), Matchers.notNullValue());
+
+			Validator.verifyThat(
+					(resultArray.get(integer).getAsJsonObject())
+							.get("trvl_travel_request_id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(resultArray.get(integer).getAsJsonObject())
+							.get("request_by_emp_number").toString(),
+					Matchers.notNullValue());
 		}
-		
+
 	}
 
+	@QAFTestStep(description = "user can approve reject travel request for travel")
+	public void userCanApproveRejectTravelRequestForTravel() {
+		jsonObject = new JSONObject();
+		JSONObject jsonObject1 = new JSONObject();
+
+		jsonObject1.put("trvl_travel_request_id", "2262");
+		jsonObject1.put("comment", "rejketc");
+		jsonObject1.put("billable", "0");
+		jsonObject1.put("status", "2");
+		jsonObject.put("token", "ba28b469d6cdcecc9d123e32d368581b");
+		jsonObject.put("travelrequest", jsonObject1);
+
+		ClientUtils.getWebResource(TravelEndPoints.APPROVE_REJECT_TRAVEL_REQUEST)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_number");//action_message
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
+
+	
+	@QAFTestStep(description = "user can verify the managers dd  for travel")
+	public void userCanVerifyManagersDDForTravel() {
+		
+		ClientUtils.getWebResource(TravelEndPoints.GET_MANAGERS_DD)
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		resultArray = CommonUtils.getValidatedResultArray(response);
+		
+		for (int index = 0; index <= resultArray.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(resultArray.get(index).getAsJsonObject(), "erep_sup_emp_number");
+			CommonUtils.validateParameterInJsonObject(resultArray.get(index).getAsJsonObject(), "emp_number");
+			CommonUtils.validateParameterInJsonObject(resultArray.get(index).getAsJsonObject(), "employee_id");
+		}
+	}
+		
 }
