@@ -54,9 +54,7 @@ SCENARIO: ESS_MyProfile_009
 META-DATA: {"author":"pranita sinkar","description":"verify get-base-location","groups":["SMOKE"],enabled=true}
 	Given user login as normal employee
 	Then user should get-base-location
-END
-
-SCENARIO: ESS_MyProfile_010
+	
 META-DATA: {"author":"pranita sinkar","description":"verify get-country-name","groups":["SMOKE"],enabled=true}
 	Given user login as normal employee
 	Then user should get country name
@@ -103,4 +101,3 @@ META-DATA: {"author":"pranita sinkar","description":"verify save-privileges","gr
 	Given user login as normal employee
 	Then user should save-privileges
 END
-
