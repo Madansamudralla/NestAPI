@@ -51,7 +51,7 @@ META-DATA: {"author":"bhakti kulkarni","description":"verify get upcoming events
 	Then User should get upcoming events	
 	
 	SCENARIO: HM_Login_11
-META-DATA: {"author":"bhakti kulkarni","description":"verify get event list	","groups":["SMOKE"]}	
+META-DATA: {"author":"bhakti kulkarni","description":"verify get event list","groups":["SMOKE"]}	
 	Given User login as hr	
 	Then User should get event list		
 END
