@@ -19,6 +19,9 @@ public interface EssEndPoint {
 	public final static String RELATIONSHIP_DATA = "/get-relationship-data";
 	public final static String EDIT_RELATIONSHIP_DATA = "/edit-relationship-data";
 	public final static String DELETE_RELATIONSHIP_DATA = "/delete-relationship-data";
+	public final static String EDIT_BASIC_DETAILS = "/edit-basic-details";
+	public final static String EDIT_PERSONAL_DETAILS = "/edit-personal-details";
+	public final static String EDIT_IDENTITY_DETAILS = "/edit-identity-details";
 
 
 }

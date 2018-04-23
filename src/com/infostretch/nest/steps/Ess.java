@@ -1,16 +1,21 @@
 package com.infostretch.nest.steps;
 
+import java.io.StringReader;
+
 import javax.ws.rs.core.MediaType;
 
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
 import com.infostretch.nest.providers.EssEndPoint;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
+import com.qmetry.qaf.automation.core.ConfigurationManager;
 import com.qmetry.qaf.automation.core.MessageTypes;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
@@ -22,7 +27,8 @@ public class Ess {
 	public void userShouldGetEmployeePrivileges() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 		ClientUtils.getWebResource(EssEndPoint.EMPLOYEE_PRIVILEGES)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
@@ -36,7 +42,8 @@ public class Ess {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 		ClientUtils.getWebResource(EssEndPoint.CONTACT_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
@@ -72,7 +79,8 @@ public class Ess {
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("eexp_jobtit", "dcdfkkkk");
 		jsonObject.put("eexp_employer", "kddfdj");
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 
 		ClientUtils.getWebResource(EssEndPoint.EDIT_PROFESSIONAL_EXPERIANCE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
@@ -85,8 +93,9 @@ public class Ess {
 	public void userShouldDeleteProfessionalExperiance() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
-		jsonObject.put("eexp_seqno", "2");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		// jsonObject.put("eexp_seqno", "2");
 		ClientUtils.getWebResource(EssEndPoint.DELETE_PROFESSIONAL_EXPERIANCE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
@@ -209,13 +218,56 @@ public class Ess {
 	public void userShouldDeleteRelationshipData() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
-		jsonObject.put("emp_rel_id","1452");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		// jsonObject.put("emp_rel_id","1452");
 		ClientUtils.getWebResource(EssEndPoint.DELETE_RELATIONSHIP_DATA)
-				.type(MediaType.APPLICATION_JSON)
-				.post(jsonObject.toString());
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should edit basic details")
+	public void userShouldEditBasicDetails() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		ClientUtils.getWebResource(EssEndPoint.EDIT_BASIC_DETAILS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should edit personal details")
+	public void userShouldEditPersonalDetails() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		ClientUtils.getWebResource(EssEndPoint.EDIT_PERSONAL_DETAILS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Gson gson = new Gson();
+		JsonReader reader = new JsonReader(new StringReader(result.toString()));
+		reader.setLenient(true);
+		Reporter.log(result.toString());
+	}
+	
+	@QAFTestStep(description = "user should edit identity details")
+	public void userShouldEditIdentityDetails() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		ClientUtils.getWebResource(EssEndPoint.EDIT_IDENTITY_DETAILS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		System.out.println("$$$$$$$$$$$" +response.getMessageBody());
+	JsonObject result = CommonUtils.getValidateResultObject(response);
 		Reporter.log(result.toString());
 	}
 }
