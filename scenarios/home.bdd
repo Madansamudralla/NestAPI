@@ -44,6 +44,16 @@ SCENARIO: HM_Login_09
 META-DATA: {"author":"bhakti kulkarni","description":"verify get training calendar list","groups":["SMOKE"]}	
 	Given User login as hr		
 	Then User should get training calendar list	
+	
+	SCENARIO: HM_Login_10
+META-DATA: {"author":"bhakti kulkarni","description":"verify get upcoming events","groups":["SMOKE"]}	
+	Given User login as manager		
+	Then User should get upcoming events	
+	
+	SCENARIO: HM_Login_11
+META-DATA: {"author":"bhakti kulkarni","description":"verify get event list	","groups":["SMOKE"]}	
+	Given User login as hr	
+	Then User should get event list		
 END
 
 

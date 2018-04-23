@@ -130,4 +130,35 @@ public class NestHomeSteps {
 
 	}
 	
+	@QAFTestStep(description = "User should get upcoming events")
+	public void userShouldGetUpcomingEvents() {
+		jsonObject = new JSONObject();
+		jsonObject.put("event_id", "");
+		jsonObject.put("eventlist", "1");
+		jsonObject.put("order", "asc");
+		jsonObject.put("sort","start_date");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		ClientUtils.getWebResource(EndPoints.GET_UPCOMING_EVENTS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		//Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		//Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));	
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());	
+	}
+	
+	@QAFTestStep(description = "User should get event list")
+	public void userShouldGetEventList() {
+		ClientUtils.getWebResource(EndPoints.GET_EVENT_LIST)
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
+		Response response = ClientUtils.getResponse();
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(
+				(results.get(0).getAsJsonObject()).get("title").toString(),
+				Matchers.notNullValue());
+		//JsonObject result = CommonUtils.getValidateResultObject(response);
+		//Reporter.log(result.toString());
+
+	}
 }
