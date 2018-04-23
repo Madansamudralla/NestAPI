@@ -1,18 +1,22 @@
 package com.infostretch.nest.steps;
 
+import java.io.StringReader;
+
 import javax.ws.rs.core.MediaType;
 
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
 import com.infostretch.nest.providers.ESSEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.qmetry.qaf.automation.core.ConfigurationManager;
+import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
@@ -171,7 +175,7 @@ public class NestESSSteps {
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		System.out.println(result.toString());
+		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
 	}
 
 	@QAFTestStep(description = "user should get employee relationship details")
@@ -184,7 +188,7 @@ public class NestESSSteps {
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		System.out.println(result.toString());
+		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
 	}
 
 	@QAFTestStep(description = "user should get role title")
@@ -236,4 +240,6 @@ public class NestESSSteps {
 		JsonObject result = CommonUtils.getValidateResultObject(response);
 		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
 	}
+
+
 }
