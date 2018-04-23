@@ -18,6 +18,4 @@ public class NestLandingSteps {
 		return UserType.NormalUser.doLogin();
 	}
 
-	
-
 }
