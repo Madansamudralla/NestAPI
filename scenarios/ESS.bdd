@@ -18,4 +18,5 @@ SCENARIO: ESS_MyProfile_009
 META-DATA: {"author":"prashinka sahu","description":"verify get-base-location","groups":["SMOKE"],enabled=true}
 	Given user login as normal employee
 	Then user should get-base-location
+	
 END

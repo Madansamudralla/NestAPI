@@ -47,7 +47,6 @@ public class Ess {
 
 	@QAFTestStep(description = "user should get employee languages")
 	public void userShouldGetEmployeeLanguages() {
-
 		ClientUtils.getWebResource(EssEndPoint.EMPLOYEE_LANGUAGES)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
@@ -80,6 +79,19 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+	}
+
+	@QAFTestStep(description = "user should delete professional experiance")
+	public void userShouldDeleteProfessionalExperiance() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("eexp_seqno", "2");
+		ClientUtils.getWebResource(EssEndPoint.DELETE_PROFESSIONAL_EXPERIANCE)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 	}
 
 	@QAFTestStep(description = "user should get education level")
@@ -140,5 +152,70 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+	}
+
+	@QAFTestStep(description = "user should bgv status")
+	public void userShouldBgvStatus() {
+		ClientUtils.getWebResource(EssEndPoint.BGV_STATUS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should get marital status")
+	public void userShouldGetMaritalStatus() {
+		ClientUtils.getWebResource(EssEndPoint.MARITAL_STATUS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should get employee status")
+	public void userShouldGetEmployeeStatus() {
+		ClientUtils.getWebResource(EssEndPoint.EMPLOYEE_STATUS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+
+	}
+
+	@QAFTestStep(description = "user should get relationship data")
+	public void userShouldGetRelationshipData() {
+		ClientUtils.getWebResource(EssEndPoint.RELATIONSHIP_DATA)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should edit relationship data")
+	public void userShouldEditRelationshipData() {
+		ClientUtils.getWebResource(EssEndPoint.EDIT_RELATIONSHIP_DATA)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should delete relationship data")
+	public void userShouldDeleteRelationshipData() {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_rel_id","1452");
+		ClientUtils.getWebResource(EssEndPoint.DELETE_RELATIONSHIP_DATA)
+				.type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(result.toString());
 	}
 }

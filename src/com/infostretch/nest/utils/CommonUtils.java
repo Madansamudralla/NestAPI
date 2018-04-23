@@ -1,6 +1,5 @@
 package com.infostretch.nest.utils;
 import org.hamcrest.Matchers;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -33,7 +32,7 @@ public class CommonUtils {
 	 */
 	public static String validateParameterInJsonObject(JsonObject object,
 			String parameterName) {
-		Validator.assertThat(object, Matchers.notNullValue());
+		//Validator.assertThat(object, Matchers.notNullValue());
 		String ParameterValue = object.get(parameterName).getAsString();
 		Validator.assertThat(ParameterValue, Matchers.notNullValue());
 		return ParameterValue;
