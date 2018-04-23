@@ -1,0 +1,36 @@
+
+SCENARIO: Training_TrainingCalendar_01
+META-DATA: {"author":"megha garg","description":"verify training calender","groups":["Training"]}
+	
+	When user login as manager
+	Then user should get training calender
+END
+
+
+SCENARIO: Training_TrainingCalendar_02
+META-DATA: {"author":"megha garg","description":"verify training details","groups":["Training"],"key":"testdata.data"}
+	
+	When user login as manager
+	Then user should verify training details for course ID '${courseID}'
+END
+
+SCENARIO: Training_MyTrainings_03
+META-DATA: {"author":"megha garg","description":"verify I am attending","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that he is attending training
+END
+
+SCENARIO: Training_MyTrainings_04
+META-DATA: {"author":"megha garg","description":"verify I have attended","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that he has attended training
+END
+
+SCENARIO: Training_MyTrainings_05
+META-DATA: {"author":"megha garg","description":"verify I have taught","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that he has taught training
+END
