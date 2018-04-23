@@ -11,24 +11,36 @@ import com.infostretch.nest.providers.EssEndPoint;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
+import com.qmetry.qaf.automation.core.ConfigurationManager;
 import com.qmetry.qaf.automation.core.MessageTypes;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
 public class Ess {
+	JSONObject jsonObject;
+	int index;
 
 	@QAFTestStep(description = "user should get employee privileges")
 	public void userShouldGetEmployeePrivileges() {
-		JSONObject jsonObject = new JSONObject();
+		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 		ClientUtils.getWebResource(EssEndPoint.EMPLOYEE_PRIVILEGES)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log(result.toString());
-
+		JsonArray param1reaults = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1reaults.size() - 1; index++) {
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("emp_number").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("rolelist_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(param1reaults.get(index).getAsJsonObject()).get("title").toString(),
+					Matchers.notNullValue());
+		}
 	}
 
 	@QAFTestStep(description = "user should get contact details")
@@ -36,13 +48,13 @@ public class Ess {
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 		ClientUtils.getWebResource(EssEndPoint.CONTACT_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
 		Reporter.log(result.toString());
-
 	}
 
 	@QAFTestStep(description = "user should get employee languages")
@@ -52,6 +64,26 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		JsonArray param1reaults = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1reaults.size() - 1; index++) {
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("seq_lang_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("emp_number").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("lang_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("fluency").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("competency").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(param1reaults.get(index).getAsJsonObject()).get("lname").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("fluency_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("competency_id").toString(), Matchers.notNullValue());
+		}
 		Reporter.log(result.toString());
 	}
 
@@ -62,6 +94,17 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		JsonArray param1reaults = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1reaults.size() - 1; index++) {
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("emp_number").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("eexp_jobtit").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("eexp_from_date").toString(), Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("eexp_to_date").toString(), Matchers.notNullValue());
+		}
 		Reporter.log(result.toString());
 
 	}
@@ -72,7 +115,8 @@ public class Ess {
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("eexp_jobtit", "dcdfkkkk");
 		jsonObject.put("eexp_employer", "kddfdj");
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 
 		ClientUtils.getWebResource(EssEndPoint.EDIT_PROFESSIONAL_EXPERIANCE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
@@ -85,12 +129,13 @@ public class Ess {
 	public void userShouldDeleteProfessionalExperiance() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
-		jsonObject.put("eexp_seqno", "2");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 		ClientUtils.getWebResource(EssEndPoint.DELETE_PROFESSIONAL_EXPERIANCE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "action_message");
 		Reporter.log(result.toString());
 	}
 
@@ -102,6 +147,14 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("name").toString(),
+					Matchers.notNullValue());
+		}
 	}
 
 	@QAFTestStep(description = "user should get language name")
@@ -112,6 +165,14 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("name").toString(),
+					Matchers.notNullValue());
+		}
 	}
 
 	@QAFTestStep(description = "user should get qualification details")
@@ -142,6 +203,14 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("name").toString(),
+					Matchers.notNullValue());
+		}
 	}
 
 	@QAFTestStep(description = "user should get fluency")
@@ -152,6 +221,14 @@ public class Ess {
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("name").toString(),
+					Matchers.notNullValue());
+		}
 	}
 
 	@QAFTestStep(description = "user should bgv status")
@@ -161,6 +238,8 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "Initiated");
+		CommonUtils.validateParameterInJsonObject(result, "Stop");
 		Reporter.log(result.toString());
 	}
 
@@ -171,6 +250,8 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "Single");
+		CommonUtils.validateParameterInJsonObject(result, "Married");
 		Reporter.log(result.toString());
 	}
 
@@ -181,15 +262,18 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "Appointed");
+		CommonUtils.validateParameterInJsonObject(result, "Terminated");
 		Reporter.log(result.toString());
-
 	}
 
 	@QAFTestStep(description = "user should get relationship data")
 	public void userShouldGetRelationshipData() {
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number", "1150");
 		ClientUtils.getWebResource(EssEndPoint.RELATIONSHIP_DATA)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
 		Reporter.log(result.toString());
@@ -209,13 +293,14 @@ public class Ess {
 	public void userShouldDeleteRelationshipData() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number", "113");// ConfigurationManager.getBundle().getPropertyValue("emp_id");
-		jsonObject.put("emp_rel_id","1452");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
 		ClientUtils.getWebResource(EssEndPoint.DELETE_RELATIONSHIP_DATA)
-				.type(MediaType.APPLICATION_JSON)
-				.post(jsonObject.toString());
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "action_message");
 		Reporter.log(result.toString());
 	}
+
 }

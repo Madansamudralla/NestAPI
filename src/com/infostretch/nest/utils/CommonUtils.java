@@ -1,5 +1,6 @@
 package com.infostretch.nest.utils;
 import org.hamcrest.Matchers;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -16,6 +17,7 @@ public class CommonUtils {
 
 	@QAFDataProvider
 	public static JsonObject getValidateResultObject(Response response) {
+		
 		Validator.verifyThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 		JsonObject responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
@@ -23,7 +25,7 @@ public class CommonUtils {
 				.getAsJsonObject();
 		Validator.assertThat(results, Matchers.notNullValue());
 		return results;
-	}
+	 }
 
 	/*
 	 * Description : Validates the passed parameter is null or not in response
@@ -32,7 +34,6 @@ public class CommonUtils {
 	 */
 	public static String validateParameterInJsonObject(JsonObject object,
 			String parameterName) {
-		//Validator.assertThat(object, Matchers.notNullValue());
 		String ParameterValue = object.get(parameterName).getAsString();
 		Validator.assertThat(ParameterValue, Matchers.notNullValue());
 		return ParameterValue;
