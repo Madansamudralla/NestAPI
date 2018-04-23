@@ -106,21 +106,3 @@ META-DATA: {"author":"chetashree gangurde","description":"verify for delete rela
 	Given user login as manager
 	Then user should delete relationship data
 END
-
-SCENARIO: ESS_MyProfile_036
-META-DATA: {"author":"chetashree gangurde","description":"verify for edit basic details","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should edit basic details
-END
-
-SCENARIO: ESS_MyProfile_037
-META-DATA: {"author":"chetashree gangurde","description":"verify for edit personal details","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should edit personal details
-END
-
-SCENARIO: ESS_MyProfile_038
-META-DATA: {"author":"chetashree gangurde","description":"verify for edit identity details","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should edit identity details
-END
