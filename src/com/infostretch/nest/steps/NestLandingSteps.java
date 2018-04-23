@@ -8,6 +8,7 @@ public class NestLandingSteps {
 	@QAFTestStep(description = "user login as manager")
 	public static String loginAsManagerUser() {
 
+		
 		return UserType.ManagerUser.doLogin();
 	}
 
