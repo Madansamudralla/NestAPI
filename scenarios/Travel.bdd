@@ -1,0 +1,104 @@
+
+SCENARIO: Travel_MyTravelRequest_041
+META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel location","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user get the mode of travel for travel	
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_040
+META-DATA: {"author":"Suryakant Kale","description":"verify travel admin location","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user get travel admin location for travel
+		
+END
+
+
+
+SCENARIO: Travel_MyTravelRequest_038
+META-DATA: {"author":"Suryakant Kale","description":"verify view of travel details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can view the details of travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_037
+META-DATA: {"author":"Suryakant Kale","description":"verify employee designation list","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the employee designation list for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_036
+META-DATA: {"author":"Suryakant Kale","description":"verify all employee list for expense","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the all employee list for expense for travel
+		
+END
+
+
+SCENARIO: Travel_MyTravelRequest_033
+META-DATA: {"author":"Suryakant Kale","description":"verification of added and edited booking details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the added and edited booking details for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_032
+META-DATA: {"author":"Suryakant Kale","description":"verify the export of travel report","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the export of travel report for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_031
+META-DATA: {"author":"Suryakant Kale","description":"verify the travel report","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify travel reports for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_030
+META-DATA: {"author":"Suryakant Kale","description":"verify the booking documents","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the booking documents for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_029
+META-DATA: {"author":"Suryakant Kale","description":"verify the deleted booking details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the deleted booking details for travel
+	
+END
+
+ 
+ 
+SCENARIO: Travel_MyTravelRequest_026
+META-DATA: {"author":"Suryakant Kale","description":"verify the booking details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the booking details for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_025
+META-DATA: {"author":"Suryakant Kale","description":"verify the travel requests for employees","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the travel requests for employees for travel
+	
+END
+
+
+
