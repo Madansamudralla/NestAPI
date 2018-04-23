@@ -38,7 +38,7 @@ public class NestESSSteps {
 	public void userShouldGetPersonalDetails() {
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_PERSONAL_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -60,7 +60,7 @@ public class NestESSSteps {
 	public void userShouldGetIdenityDetails() {
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_IDENTITY_DATAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -74,7 +74,7 @@ public class NestESSSteps {
 	public void userShouldGetRRCount() {
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_RR_COUNT)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -87,7 +87,7 @@ public class NestESSSteps {
 	public void userShouldGetPriviledgeList() {
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_PRIVILEGES_LIST)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -100,7 +100,7 @@ public class NestESSSteps {
 	public void userShouldGetEmployeeGoalHobbies() {
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_EMPLOYEE_GOALS_HOBBIES)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -118,7 +118,7 @@ public class NestESSSteps {
 		obj.put("token", TokenUtils.getTokenAsStr());
 		obj.put("emp_long_term_goals","Learn automation on nest internal poject" );
 		
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.EDIT_EMPLOYEE_GOALS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -133,7 +133,7 @@ public class NestESSSteps {
 	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.EDIT_EMPLOYEE_GOALS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -160,7 +160,7 @@ public class NestESSSteps {
 	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_EMEGENCY_CONTACT_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -175,7 +175,7 @@ public class NestESSSteps {
 	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_FAMILY_MEMEBERS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -189,7 +189,7 @@ public class NestESSSteps {
 	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_EMPLOYEE_RELATIONSSHIP_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -214,7 +214,7 @@ Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_EMPLOYEE_LOCAION_PRIVILEDGES)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
@@ -235,7 +235,7 @@ Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));// ConfigurationManager.getBundle().getPropertyValue("emp_id");
+		obj.put("emp_number", ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		obj.put("privileges", "187");
 		ClientUtils.getWebResource(ESSEndPoints.SAVE_PRIVILEDGES)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
