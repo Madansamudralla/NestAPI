@@ -11,9 +11,7 @@ import com.infostretch.nest.providers.EndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
-import com.infostretch.nest.utils.TokenUtils.UserType;
 import com.qmetry.qaf.automation.core.MessageTypes;
-import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
@@ -171,7 +169,6 @@ public class NestHomeSteps {
 		jsonObject.put("start_date", "18-4-2018");
 		jsonObject.put("end_date", "29-4-2018");
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-
 		ClientUtils.getWebResource(EndPoints.GET_TRAINING_CALENDAR_LIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
