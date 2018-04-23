@@ -30,11 +30,7 @@ public class TokenUtils {
 	}
 
 	public enum UserType {
-		NormalUser("normal.user"),
-
-		ManagerUser("manager.user"),
-		HrUser("hr.user");
-
+		NormalUser("normal.user"),ManagerUser("manager.user"),HrUser("hr.user");
 		private final String key;
 		private String token;
 

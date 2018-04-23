@@ -3,9 +3,7 @@ import org.hamcrest.Matchers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.qmetry.qaf.automation.core.MessageTypes;
 import com.qmetry.qaf.automation.testng.dataprovider.QAFDataProvider;
-import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
 public class CommonUtils {
