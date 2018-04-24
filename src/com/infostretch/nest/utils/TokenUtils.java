@@ -1,10 +1,7 @@
 package com.infostretch.nest.utils;
-
 import javax.ws.rs.core.MediaType;
-
 import org.hamcrest.Matchers;
 import org.testng.Reporter;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.infostretch.nest.providers.EndPoints;
