@@ -13,7 +13,9 @@ public class ClientUtils {
 	}
 
 	public static WebResource getWebResource(String path) {
-		return getClient().resource(ConfigurationManager.getBundle().getString("env.baseurl")).path(path);
+		return getClient()
+				.resource(ConfigurationManager.getBundle().getString("env.baseurl"))
+				.path(path);
 	}
 
 	public static Response getResponse() {
