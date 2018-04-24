@@ -3,10 +3,12 @@ package com.infostretch.nest.steps;
 import javax.ws.rs.core.MediaType;
 
 import org.hamcrest.Matchers;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.infostretch.nest.providers.EssEndPoint;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
@@ -31,14 +33,14 @@ public class Ess {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1reaults = result.get("details").getAsJsonArray();
-		for (index = 0; index <= param1reaults.size() - 1; index++) {
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+		JsonArray param1results = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1results.size() - 1; index++) {
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("emp_number").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("rolelist_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(param1reaults.get(index).getAsJsonObject()).get("title").toString(),
+					(param1results.get(index).getAsJsonObject()).get("title").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -54,6 +56,14 @@ public class Ess {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		JsonObject responseBody =
+				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("details").getAsJsonObject();
+		CommonUtils.validateParameterInJsonObject(result, "bank_name");
+		CommonUtils.validateParameterInJsonObject(result, "account_no");
+		CommonUtils.validateParameterInJsonObject(result, "pfno");
+		CommonUtils.validateParameterInJsonObject(result, "emp_oth_email");
 		Reporter.log(result.toString());
 	}
 
@@ -64,24 +74,24 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1reaults = result.get("details").getAsJsonArray();
-		for (index = 0; index <= param1reaults.size() - 1; index++) {
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+		JsonArray param1results = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1results.size() - 1; index++) {
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("seq_lang_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("emp_number").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("lang_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("fluency").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("competency").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(param1reaults.get(index).getAsJsonObject()).get("lname").toString(),
+					(param1results.get(index).getAsJsonObject()).get("lname").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("fluency_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("competency_id").toString(), Matchers.notNullValue());
 		}
 		Reporter.log(result.toString());
@@ -94,15 +104,15 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1reaults = result.get("details").getAsJsonArray();
-		for (index = 0; index <= param1reaults.size() - 1; index++) {
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+		JsonArray param1results = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1results.size() - 1; index++) {
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("emp_number").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("eexp_jobtit").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("eexp_from_date").toString(), Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("eexp_to_date").toString(), Matchers.notNullValue());
 		}
 		Reporter.log(result.toString());
@@ -192,7 +202,21 @@ public class Ess {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log(result.toString());
+		JsonObject responseBody =
+				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("details").getAsJsonObject().get("manager_reviews")
+				.getAsJsonObject().get("Nest Test").getAsJsonObject();
+		Validator.verifyThat(
+				(result.get("Reporting Manager").getAsJsonArray()).toString(),
+				Matchers.notNullValue());
+		result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("details").getAsJsonObject();
+		Validator.verifyThat((result.get("my_reportee").getAsJsonArray()).toString(),
+				Matchers.notNullValue());
+		Validator.verifyThat(
+				(result.get("emp_project_pm_dm").getAsJsonObject()).toString(),
+				Matchers.notNullValue());
 	}
 
 	@QAFTestStep(description = "user should get competency")
@@ -276,17 +300,56 @@ public class Ess {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		JsonObject responseBody =
+				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("details").getAsJsonObject();
+		CommonUtils.validateParameterInJsonObject(result, "employee_id");
+		CommonUtils.validateParameterInJsonObject(result, "rel_emp_number");
+		CommonUtils.validateParameterInJsonObject(result, "ename");
 		Reporter.log(result.toString());
 	}
 
 	@QAFTestStep(description = "user should edit relationship data")
 	public void userShouldEditRelationshipData() {
+		jsonObject = new JSONObject();
+		JSONObject jsonObject2 = new JSONObject();
+		JSONObject jsonObject3 = new JSONObject();
+	
+		jsonObject3.put("leaveType", "LTY001");
+		jsonObject3.put("leaveFromDate", "3-7-2018");
+		jsonObject3.put("leaveToDate", "3-7-2018");
+		
+		JSONArray jsonArray=new JSONArray();
+		jsonArray.put(jsonObject3);
+		jsonObject2.put("leave",jsonArray);
+		
+		jsonObject.put("rel_data", jsonObject2);
+	
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		
+		// JSONObject jsonObject = new JSONObject();
+		// jsonObject.put("token", "68d63c230197aea41b48bb78e5efad16");
+		JSONArray jsonArray = new JSONArray();
+		jsonArray.put(0, ConfigurationManager.getBundle().getProperty("emp_id"));
+		jsonArray.put(1, "836");
+		jsonArray.put(2, "Father");
+		jsonArray.put(3, "1448");
+		jsonArray.put(4, "23344");
 		ClientUtils.getWebResource(EssEndPoint.EDIT_RELATIONSHIP_DATA)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+				.post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log(result.toString());
+		System.out.println("######" + result);
+		// JsonObject responseBody =
+		// new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		// result = responseBody.get("response").getAsJsonObject().get("results")
+		// .getAsJsonObject();
+		// CommonUtils.validateParameterInJsonObject(result, "emp_number");
+		// CommonUtils.validateParameterInJsonObject(result, "action_message");
+		// CommonUtils.validateParameterInJsonObject(result, "response_type");
+		// Reporter.log(result.toString());
 	}
 
 	@QAFTestStep(description = "user should delete relationship data")
