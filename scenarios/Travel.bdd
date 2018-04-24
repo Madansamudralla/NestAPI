@@ -3,7 +3,7 @@ SCENARIO: Travel_MyTravelRequest_041
 META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel location","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user get the mode of travel for travel	
+	When user get the mode of travel with id '2' and name 'yrryrty' for travel	
 	
 END
 
@@ -41,6 +41,21 @@ META-DATA: {"author":"Suryakant Kale","description":"verify all employee list fo
 		
 END
 
+SCENARIO: Travel_MyTravelRequest_035
+META-DATA: {"author":"Suryakant Kale","description":"verify approval of reject request","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can approve reject travel request with token 'ba28b469d6cdcecc9d123e32d368581b' for travel
+		
+END
+
+SCENARIO: Travel_MyTravelRequest_034
+META-DATA: {"author":"Suryakant Kale","description":"verify the managers dd for travel","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the managers dd  for travel
+		
+END
 
 SCENARIO: Travel_MyTravelRequest_033
 META-DATA: {"author":"Suryakant Kale","description":"verification of added and edited booking details","groups":["SMOKE"]}
@@ -50,27 +65,11 @@ META-DATA: {"author":"Suryakant Kale","description":"verification of added and e
 	
 END
 
-SCENARIO: Travel_MyTravelRequest_032
-META-DATA: {"author":"Suryakant Kale","description":"verify the export of travel report","groups":["SMOKE"]}
-	
-	Given user can login as manager
-	When user can verify the export of travel report for travel
-	
-END
-
-SCENARIO: Travel_MyTravelRequest_031
-META-DATA: {"author":"Suryakant Kale","description":"verify the travel report","groups":["SMOKE"]}
-	
-	Given user can login as manager
-	When user can verify travel reports for travel
-	
-END
-
 SCENARIO: Travel_MyTravelRequest_030
 META-DATA: {"author":"Suryakant Kale","description":"verify the booking documents","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the booking documents for travel
+	When user can verify the booking documents with token '97caf9317647c2d694b3650d6cf13992' for travel
 	
 END
 
@@ -78,17 +77,15 @@ SCENARIO: Travel_MyTravelRequest_029
 META-DATA: {"author":"Suryakant Kale","description":"verify the deleted booking details","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the deleted booking details for travel
+	When user can verify the deleted booking details with token '97caf9317647c2d694b3650d6cf13992' for travel
 	
 END
 
- 
- 
 SCENARIO: Travel_MyTravelRequest_026
 META-DATA: {"author":"Suryakant Kale","description":"verify the booking details","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the booking details for travel
+	When user can verify the booking details with token 'a4f92811fc02cf3163ebf86abd1d5c90' for travel
 	
 END
 
@@ -97,6 +94,14 @@ META-DATA: {"author":"Suryakant Kale","description":"verify the travel requests 
 	
 	Given user can login as manager
 	When user can verify the travel requests for employees for travel
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_023
+META-DATA: {"author":"Suryakant Kale","description":"verify the deleted travel locations ","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can verify the deleted travel locations with token '3d117d90120022210cef8285d5d4515f' for travel
 	
 END
 

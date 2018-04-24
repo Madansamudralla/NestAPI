@@ -1,6 +1,7 @@
 package com.infostretch.nest.steps;
 import javax.ws.rs.core.MediaType;
 import org.hamcrest.Matchers;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -28,6 +29,7 @@ public class Leave {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
+
 		for (integer = 0; integer <= results.size() - 1; integer++) {
 			Validator.verifyThat(
 					(results.get(integer).getAsJsonObject()).get("leaveid").toString(),
@@ -45,6 +47,7 @@ public class Leave {
 				.post();
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
+
 		for (integer = 1; integer <= results.size() - 1; integer++) {
 			Validator.verifyThat((results.get(integer).getAsJsonObject())
 					.get("countryFlag").toString(), Matchers.containsString("IN"));
@@ -135,13 +138,6 @@ public class Leave {
 		JsonObject responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		results = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2072").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(results, "emp_initial");
-		CommonUtils.validateParameterInJsonObject(results, "date");
-		CommonUtils.validateParameterInJsonObject(results, "leave_request_id");
-		CommonUtils.validateParameterInJsonObject(results, "leave_status");
-
-		results = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("2165").getAsJsonObject();
 		CommonUtils.validateParameterInJsonObject(results, "emp_initial");
 		CommonUtils.validateParameterInJsonObject(results, "date");
@@ -161,6 +157,7 @@ public class Leave {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		
 		for (integer = 1; integer <= results.size() - 1; integer++) {
 			Validator.verifyThat((results.get(integer).getAsJsonObject())
 					.get("leave_request_id").toString(), Matchers.notNullValue());
@@ -171,5 +168,60 @@ public class Leave {
 			Validator.verifyThat((results.get(integer).getAsJsonObject())
 					.get("display_name").toString(), Matchers.notNullValue());
 		}
-	}	
+	}
+
+	
+	@QAFTestStep(description = "user should get location holiday list")
+	public void userShouldGetLocationHolidayList() {
+		jsonObject = new JSONObject();
+		jsonObject.put("start_date", "1-4-2018");
+		jsonObject.put("end_date", "31-3-2019");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		ClientUtils.getWebResource(LeaveEndPoints.GET_ALL_HOLIDAY_DATELIST)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		if (result.toString().contains("WO") && result.toString().contains("PH")
+				&& result.toString().contains("FH")) {
+			Reporter.log("Verified");
+		}
+
+	}
+
+	@QAFTestStep(description = "user should get list of all leave types")
+	public void userShouldGetListOfAllLeaveTypes() {
+		ClientUtils.getWebResource(LeaveEndPoints.GET_LIST_OF_LEAVE_TYPES)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		Response response = ClientUtils.getResponse();
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+
+		for (integer = 1; integer <= results.size() - 1; integer++) {
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("countryFlag").toString(), Matchers.containsString("IN"));
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("leave_type_id").toString(), Matchers.containsString("LTY"));
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("leave_type_name").toString(), Matchers.notNullValue());
+		}
+	}
+
+	@QAFTestStep(description = "user should get teams leave balance lists")
+	public void userShouldGetTeamsLeaveBalanceLists() {
+		ClientUtils.getWebResource(LeaveEndPoints.GET_TEAMS_LEAVE_BALANCE_LISTS )
+		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+		.post();
+		Response response = ClientUtils.getResponse();
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		
+		for (integer = 1; integer <= results.size() - 1; integer++) {
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("user_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("user_name").toString(), Matchers.notNullValue());
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("result").getAsJsonArray().toString(), Matchers.notNullValue());
+		}
+	}
 }
