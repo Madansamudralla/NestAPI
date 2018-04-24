@@ -22,12 +22,13 @@ public class NestVisaSteps {
 	 * Palash Saxena
 	 * VISA module API's
 	 */
+	/*
 	@QAFTestStep(description = "user login as manager")
 	public static String UserLoginAsManager() {
 
 		return UserType.ManagerUser.doLogin();
 	}
-
+	*/
 	@QAFTestStep(description = "user should get accecible menu list")
 	public void UserShouldGetAccecibleMenuList() {
 
