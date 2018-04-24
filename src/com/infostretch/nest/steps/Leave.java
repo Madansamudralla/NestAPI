@@ -224,4 +224,32 @@ public class Leave {
 					.get("result").getAsJsonArray().toString(), Matchers.notNullValue());
 		}
 	}
+
+
+
+
+		@QAFTestStep(description = "user requests for a leave")
+		public void userRequestsForALeave() {
+			jsonObject = new JSONObject();
+			JSONObject jsonObject2 = new JSONObject();
+			JSONObject jsonObject3 = new JSONObject();
+		
+			jsonObject3.put("leaveType", "LTY001");
+			jsonObject3.put("leaveFromDate", "3-7-2018");
+			jsonObject3.put("leaveToDate", "3-7-2018");
+			
+			JSONArray jsonArray=new JSONArray();
+			jsonArray.put(jsonObject3);
+			jsonObject2.put("leave",jsonArray);
+			
+			jsonObject.put("leaveDetails", jsonObject2);
+		
+			jsonObject.put("token", TokenUtils.getTokenAsStr());
+			ClientUtils.getWebResource(LeaveEndPoints.REQUEST_LEAVE)
+					.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+					.post(jsonObject.toString());
+			Response response = ClientUtils.getResponse();
+			JsonObject result = CommonUtils.getValidateResultObject(response);
+			CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
+		}
 }
