@@ -29,8 +29,18 @@ public class NestHomeSteps {
 
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
-
+		JsonArray param1reaults =
+				results.get(0).getAsJsonObject().get("manager").getAsJsonArray();
+		Validator.verifyThat(
+				(param1reaults.get(0).getAsJsonObject()).get("name").toString(),
+				Matchers.notNullValue());
+		Validator.verifyThat(
+				(param1reaults.get(0).getAsJsonObject()).get("Admin").toString(),
+				Matchers.notNullValue());
+		Validator.verifyThat(
+				param1reaults.get(0).getAsJsonObject().get("Admin").getAsJsonObject()
+						.get("0").getAsJsonObject().get("url").toString(),
+				Matchers.notNullValue());
 	}
 
 	@QAFTestStep(description = "user should get all leave types")
@@ -56,8 +66,7 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		JsonArray results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		CommonUtils.getValidatedResultArray(response);
 
 	}
 
@@ -119,7 +128,6 @@ public class NestHomeSteps {
 					(param2results.get(index).getAsJsonObject()).get("number").toString(),
 					Matchers.notNullValue());
 		}
-
 	}
 
 	@QAFTestStep(description = "user should get floating holiday list")
@@ -132,11 +140,10 @@ public class NestHomeSteps {
 
 		for (index = 0; index <= results.size() - 1; index++) {
 			Validator.verifyThat((results.get(0).getAsJsonObject())
-					.get("floating_holiday_id").toString(),
-					Matchers.containsString("233"));
+					.get("floating_holiday_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
 					(results.get(0).getAsJsonObject()).get("description").toString(),
-					Matchers.containsString("fdsf"));
+					Matchers.notNullValue());
 		}
 	}
 
@@ -174,7 +181,17 @@ public class NestHomeSteps {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log(result.toString());
+		JsonArray param1reaults = result.get("Friday").getAsJsonArray();
+
+		for (index = 0; index <= param1reaults.size() - 1; index++) {
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("trn_course_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(param1reaults.get(index).getAsJsonObject()).get("title").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+					.get("department_id").toString(), Matchers.notNullValue());
+		}
 	}
 
 	@QAFTestStep(description = "User should get upcoming events")
