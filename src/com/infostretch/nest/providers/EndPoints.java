@@ -12,4 +12,6 @@ public interface EndPoints {
 	public final static String GET_FLOATING_HOLIDAY_LIST = "/get-floating-holiday-list";
 	public final static String GET_HOLIDAY_LIST = "/get-holiday-list";
 	public final static String GET_TRAINING_CALENDAR_LIST = "/get-training-calendar-list";
+	public final static String GET_UPCOMING_EVENTS= "/get-upcoming-events";
+	public final static String GET_EVENT_LIST= "/get-event-list";
 }
