@@ -1,34 +1,41 @@
 
 
 SCENARIO: HM_Login_01
-META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list","groups":["SMOKE"] }
+META-DATA: {"author":"pratik gajjar","description":"verify accessible menu list","groups":["SMOKE"]}
 	
-	Given user login as manager
+	When user login as manager
 	Then user should get accessible menu list
+END
+	
 SCENARIO: HM_Login_02
 META-DATA: {"author":"bhakti kulkarni","description":"verify get all leave types","groups":["SMOKE"]}	
 	Given user login as hr
 	Then user should get all leave types
+END
 	
 SCENARIO: HM_Login_03
 META-DATA: {"author":"bhakti kulkarni","description":"verify get menu urls","groups":["SMOKE"]}	
 	Given user login as hr	
 	Then user should get menu urls
+END
 
 SCENARIO: HM_Login_04
 META-DATA: {"author":"bhakti kulkarni","description":"verify get release data","groups":["SMOKE"]}	
 	Given user login as manager	
 	Then user should get release data	
+END
 	
 SCENARIO: HM_Login_05
-META-DATA: {"author":"bhakti kulkarni","description":"verify get my leave list","groups":["SMOKE"]}	
+META-DATA: {"author":"bhakti kulkarni","description":"verify get user leave list","groups":["SMOKE"]}	
 	Given user login as manager		
 	Then user should get my leave list
+END
 	
 SCENARIO: HM_Login_06
 META-DATA: {"author":"bhakti kulkarni","description":"verify get leave balances","groups":["SMOKE"]}	
 	Given user login as hr		
 	Then user should get leave balances		
+END
 
 SCENARIO: HM_Login_07
 META-DATA: {"author":"bhakti kulkarni","description":"verify get floating holiday list","groups":["SMOKE"]}	
@@ -39,16 +46,19 @@ SCENARIO: HM_Login_08
 META-DATA: {"author":"bhakti kulkarni","description":"verify get holiday list","groups":["SMOKE"]}	
 	Given user login as hr		
 	Then user should get holiday list		
+END
 
 SCENARIO: HM_Login_09
 META-DATA: {"author":"bhakti kulkarni","description":"verify get training calendar list","groups":["SMOKE"]}	
 	Given User login as hr		
 	Then User should get training calendar list	
+END
 	
 	SCENARIO: HM_Login_10
 META-DATA: {"author":"bhakti kulkarni","description":"verify get upcoming events","groups":["SMOKE"]}	
 	Given User login as manager		
 	Then User should get upcoming events	
+END
 	
 	SCENARIO: HM_Login_11
 META-DATA: {"author":"bhakti kulkarni","description":"verify get event list","groups":["SMOKE"]}	
