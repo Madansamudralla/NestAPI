@@ -77,4 +77,10 @@ META-DATA: {"author":"apoorva shewale","description":"user should get teams leav
 	Then user should get teams leave balance lists
 END
 
+SCENARIO: Leave_AL_07
+META-DATA: {"author":"apoorva shewale","description":" user requests for a leave ","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user requests for a leave 
+END
 	
