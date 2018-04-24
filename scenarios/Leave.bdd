@@ -1,0 +1,86 @@
+
+SCENARIO: Leave_AL_03
+META-DATA: {"author":"apoorva shewale","description":"user should get the leave reasons","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get the leave reasons
+END
+
+
+SCENARIO: Leave_AL_05
+META-DATA: {"author":"apoorva shewale","description":"user should get leave types by country","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get leave types by country
+END
+
+SCENARIO: Leave_AL_04
+META-DATA: {"author":"apoorva shewale","description":"user should get current leave period","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get current leave period
+END
+
+SCENARIO: Leave_AL_13
+META-DATA: {"author":"apoorva shewale","description":"user should get leave balances","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get leave balances
+END
+
+SCENARIO: Leave_AL_14
+META-DATA: {"author":"apoorva shewale","description":"user should get all holiday datelist","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get all holiday datelist
+END
+
+SCENARIO: Leave_AL_06
+META-DATA: {"author":"apoorva shewale","description":"user should get all leave status","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get all leave status
+END
+
+SCENARIO: Leave_AL_01
+META-DATA: {"author":"apoorva shewale","description":"user should get his leave list","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get his leave list
+END
+
+SCENARIO: Leave_AL_15
+META-DATA: {"author":"apoorva shewale","description":"user should get all his leave list","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should get all his leave list 
+END
+
+SCENARIO: Leave_manager_CL_01
+META-DATA: {"author":"apoorva shewale","description":"user should get location holiday list","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get location holiday list
+END
+
+SCENARIO: Leave_manager_TLB_02
+META-DATA: {"author":"apoorva shewale","description":"user should get list of all leave types","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get list of all leave types
+END
+
+SCENARIO: Leave_manager_TLB_03
+META-DATA: {"author":"apoorva shewale","description":"user should get teams leave balance lists.","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get teams leave balance lists
+END
+
+SCENARIO: Leave_AL_07
+META-DATA: {"author":"apoorva shewale","description":" user requests for a leave ","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user requests for a leave 
+END
+	

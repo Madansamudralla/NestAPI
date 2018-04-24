@@ -16,14 +16,14 @@
 	</info>
 
 	<dependencies>
-		<dependency org="org.aspectj" name="aspectjtools" rev="1.8.5">
-			<artifact name="aspectjtools" type="jar"></artifact>
-		</dependency>
-		<dependency org="io.rest-assured" name="rest-assured" rev="3.0.3"/>
-		<dependency org="com.infoedge" name="jrandomizer" rev="0.1-beta1"/>
-		<dependency org="com.qmetry" name="qaf" rev="2.1.11"/>
-		<dependency org="ant-contrib" name="ant-contrib" rev="1.0b3"/>
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency org="com.google.code.gson" name="gson" rev="2.8.1"/>
+	<dependency org="org.aspectj" name="aspectjtools" rev="1.8.5">
+	<artifact name="aspectjtools" type="jar"></artifact>
+	</dependency>
+	<dependency org="io.rest-assured" name="rest-assured" rev="3.0.3"/>
+	<dependency org="com.infoedge" name="jrandomizer" rev="0.1-beta1"/>
+	<dependency org="com.qmetry" name="qaf" rev="2.1.11"/>
+	<dependency org="ant-contrib" name="ant-contrib" rev="1.0b3"/>
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency org="com.google.code.gson" name="gson" rev="2.8.1"/>
 	</dependencies>
 </ivy-module>
