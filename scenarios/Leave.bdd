@@ -56,8 +56,25 @@ META-DATA: {"author":"apoorva shewale","description":"user should get all his le
 	Then user should get all his leave list 
 END
 
+SCENARIO: Leave_manager_CL_01
+META-DATA: {"author":"apoorva shewale","description":"user should get location holiday list","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get location holiday list
+END
 
+SCENARIO: Leave_manager_TLB_02
+META-DATA: {"author":"apoorva shewale","description":"user should get list of all leave types","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get list of all leave types
+END
 
-
+SCENARIO: Leave_manager_TLB_03
+META-DATA: {"author":"apoorva shewale","description":"user should get teams leave balance lists.","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get teams leave balance lists
+END
 
 	

@@ -24,8 +24,9 @@ public class NestHomeSteps {
 	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
 		ClientUtils.getWebResource(EndPoints.ACCESSIBLE_MENU_LIST)
-				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post();
+				.entity(TokenUtils.getTokenAsJsonStr())
+				.type(MediaType.APPLICATION_JSON).post();
+
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 		JsonArray param1reaults =
@@ -226,3 +227,4 @@ public class NestHomeSteps {
 		}
 	}
 }
+
