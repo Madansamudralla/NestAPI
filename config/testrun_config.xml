@@ -45,5 +45,12 @@
 		</classes>
 	</test>
 	
+	<test name="BDD  Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/Visa.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
+		</classes>
+	</test>
+	
 
 </suite>
