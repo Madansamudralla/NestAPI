@@ -11,6 +11,7 @@ public interface LeaveEndPoints {
 	public final static String GET_USER_ALL_LEAVE_LIST = "/get-all-my-leave-list";
 	public final static String GET_LOCATION_HOLIDAY_LIST = "/get-location-holidays-list";
 	public final static String GET_LIST_OF_LEAVE_TYPES = "/get-list-of-leave-types";
+	public final static String REQUEST_LEAVE = "/request-leave";
 	public final static String GET_TEAMS_LEAVE_BALANCE_LISTS = "/get-teams-leave-balance-lists";
 }
 
