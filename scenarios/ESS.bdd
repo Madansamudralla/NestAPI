@@ -1,0 +1,113 @@
+
+SCENARIO: ESS_MyProfile_001
+META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=false}
+	
+	Given user login as manager
+	Then user should get-basic-details
+			
+END
+
+SCENARIO: ESS_MyProfile_002
+META-DATA: {"author":"prashinka sahu","description":"verify get-personal-details","groups":["SMOKE"],enabled=false}
+	Given user login as manager
+	Then user should get-personal-details
+END
+
+SCENARIO: ESS_MyProfile_003
+META-DATA: {"author":"pranita sinkar","description":"verify identity details","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should get idenity details
+END
+
+SCENARIO: ESS_MyProfile_004
+META-DATA: {"author":"pranita sinkar","description":"verify RR count","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should get RR count
+END
+
+SCENARIO: ESS_MyProfile_005
+META-DATA: {"author":"pranita sinkar","description":"verify priviledge list","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should get priviledge list
+END
+
+SCENARIO: ESS_MyProfile_006
+META-DATA: {"author":"pranita sinkar","description":"verify employee goal hobbies","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should get employee goal hobbies
+END
+
+SCENARIO: ESS_MyProfile_007
+META-DATA: {"author":"pranita sinkar","description":"verify edit Employee goals","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should edit employee goals
+END
+
+SCENARIO: ESS_MyProfile_008
+META-DATA: {"author":"pranita sinkar","description":"employee edit hobbies","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should edit employee hobbies
+END
+
+
+SCENARIO: ESS_MyProfile_009
+META-DATA: {"author":"pranita sinkar","description":"verify get-base-location","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get-base-location
+	
+SCENARIO: ESS_MyProfile_010	
+META-DATA: {"author":"pranita sinkar","description":"verify get-country-name","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get country name
+END
+
+SCENARIO: ESS_MyProfile_011
+META-DATA: {"author":"pranita sinkar","description":"verify get emergenct contact details","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get emergenct contact details
+END
+
+SCENARIO: ESS_MyProfile_012
+META-DATA: {"author":"pranita sinkar","description":"verify get family memebers","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get family memebers
+END
+
+SCENARIO: ESS_MyProfile_013
+META-DATA: {"author":"pranita sinkar","description":"verify get employee-relationship-details","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get employee relationship details
+END
+
+SCENARIO: ESS_MyProfile_014
+META-DATA: {"author":"pranita sinkar","description":"verify get role title","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get role title
+END
+
+SCENARIO: ESS_MyProfile_015
+META-DATA: {"author":"pranita sinkar","description":"verify get employee-location-privileges","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should get employee-location-privileges
+END
+
+SCENARIO: ESS_MyProfile_016
+META-DATA: {"author":"pranita sinkar","description":"verify save-location-privileges","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should save-location-privileges
+END
+
+SCENARIO: ESS_MyProfile_017
+META-DATA: {"author":"pranita sinkar","description":"verify save-privileges","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should save-privileges
+END
+
+
+SCENARIO: ESS_MyProfile_052
+META-DATA: {"author":"pranita sinkar","description":"user should edit employee language","groups":["SMOKE"],enabled=true}
+	Given user login as normal employee
+	Then user should edit employee language
+END
+
+
