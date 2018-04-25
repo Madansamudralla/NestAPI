@@ -15,9 +15,8 @@ import com.qmetry.qaf.automation.ws.Response;
 
 public class NestHomeSteps {
 	JSONObject jsonObject;
-	JsonObject result;
+	JsonObject result,responseBody;
 	Response response;
-	JsonObject responseBody;
 	JsonArray results;
 	int index;
 
