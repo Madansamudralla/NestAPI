@@ -100,7 +100,7 @@ public class NestHomeSteps {
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		result = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2177").getAsJsonObject();
+				.getAsJsonObject().get("2232").getAsJsonObject();
 		CommonUtils.validateParameterInJsonObject(result, "emp_initial");
 		CommonUtils.validateParameterInJsonObject(result, "date");
 		CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
@@ -114,16 +114,16 @@ public class NestHomeSteps {
 				.post();
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1reaults = result.get("regular").getAsJsonArray();
+		JsonArray param1results = result.get("regular").getAsJsonArray();
 		JsonArray param2results = result.get("special").getAsJsonArray();
 
-		for (index = 0; index <= param1reaults.size() - 1; index++) {
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+		for (index = 0; index <= param1results.size() - 1; index++) {
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("leaveTypeId").toString(), Matchers.containsString("LTY"));
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("leaveType").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(param1reaults.get(index).getAsJsonObject()).get("number").toString(),
+					(param1results.get(index).getAsJsonObject()).get("number").toString(),
 					Matchers.notNullValue());
 		}
 
