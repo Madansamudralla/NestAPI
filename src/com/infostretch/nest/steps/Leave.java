@@ -134,15 +134,22 @@ public class Leave {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
-		JsonObject results = CommonUtils.getValidateResultObject(response);
+
 		JsonObject responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		results = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2165").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(results, "emp_initial");
-		CommonUtils.validateParameterInJsonObject(results, "date");
-		CommonUtils.validateParameterInJsonObject(results, "leave_request_id");
-		CommonUtils.validateParameterInJsonObject(results, "leave_status");
+		if (responseBody.toString().contains("2210")) {
+			JsonObject results = CommonUtils.getValidateResultObject(response);
+			results = responseBody.get("response").getAsJsonObject().get("results")
+					.getAsJsonObject().get("2210").getAsJsonObject();
+			CommonUtils.validateParameterInJsonObject(results, "emp_initial");
+			CommonUtils.validateParameterInJsonObject(results, "date");
+			CommonUtils.validateParameterInJsonObject(results, "leave_request_id");
+			CommonUtils.validateParameterInJsonObject(results, "leave_status");
+		} else {
+			JsonObject results = CommonUtils.getValidateResultObject(response);
+			Reporter.log(results.toString());
+		}
+
 	}
 
 	@QAFTestStep(description = "user should get all his leave list")
@@ -157,7 +164,7 @@ public class Leave {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
-		
+
 		for (integer = 1; integer <= results.size() - 1; integer++) {
 			Validator.verifyThat((results.get(integer).getAsJsonObject())
 					.get("leave_request_id").toString(), Matchers.notNullValue());
@@ -170,23 +177,27 @@ public class Leave {
 		}
 	}
 
-	
 	@QAFTestStep(description = "user should get location holiday list")
 	public void userShouldGetLocationHolidayList() {
 		jsonObject = new JSONObject();
-		jsonObject.put("start_date", "1-4-2018");
-		jsonObject.put("end_date", "31-3-2019");
+		
+		jsonObject.put("start_date", "19-4-2018");
+		jsonObject.put("end_date", "19-4-2019");
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		ClientUtils.getWebResource(LeaveEndPoints.GET_ALL_HOLIDAY_DATELIST)
+		ClientUtils.getWebResource(LeaveEndPoints.GET_LOCATION_HOLIDAY_LIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
 
-		JsonObject result = CommonUtils.getValidateResultObject(response);
-		if (result.toString().contains("WO") && result.toString().contains("PH")
-				&& result.toString().contains("FH")) {
-			Reporter.log("Verified");
+		for (integer = 1; integer <= results.size() - 1; integer++) {
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("holiday_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("date").toString(), Matchers.notNullValue());
+			Validator.verifyThat((results.get(integer).getAsJsonObject())
+					.get("location").toString(), Matchers.notNullValue());
 		}
-
 	}
 
 	@QAFTestStep(description = "user should get list of all leave types")
@@ -197,7 +208,7 @@ public class Leave {
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
 
-		for (integer = 1; integer <= results.size() - 1; integer++) {
+		for (integer = 0; integer <= results.size() - 1; integer++) {
 			Validator.verifyThat((results.get(integer).getAsJsonObject())
 					.get("countryFlag").toString(), Matchers.containsString("IN"));
 			Validator.verifyThat((results.get(integer).getAsJsonObject())
@@ -209,47 +220,47 @@ public class Leave {
 
 	@QAFTestStep(description = "user should get teams leave balance lists")
 	public void userShouldGetTeamsLeaveBalanceLists() {
-		ClientUtils.getWebResource(LeaveEndPoints.GET_TEAMS_LEAVE_BALANCE_LISTS )
-		.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-		.post();
+		ClientUtils.getWebResource(LeaveEndPoints.GET_TEAMS_LEAVE_BALANCE_LISTS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
 		Response response = ClientUtils.getResponse();
 		JsonArray results = CommonUtils.getValidatedResultArray(response);
-		
+
 		for (integer = 1; integer <= results.size() - 1; integer++) {
-			Validator.verifyThat((results.get(integer).getAsJsonObject())
-					.get("user_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((results.get(integer).getAsJsonObject())
-					.get("user_name").toString(), Matchers.notNullValue());
-			Validator.verifyThat((results.get(integer).getAsJsonObject())
-					.get("result").getAsJsonArray().toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(integer).getAsJsonObject()).get("user_id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(integer).getAsJsonObject()).get("user_name").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat((results.get(integer).getAsJsonObject()).get("result")
+					.getAsJsonArray().toString(), Matchers.notNullValue());
 		}
 	}
 
-
-
-
-		@QAFTestStep(description = "user requests for a leave")
-		public void userRequestsForALeave() {
-			jsonObject = new JSONObject();
-			JSONObject jsonObject2 = new JSONObject();
-			JSONObject jsonObject3 = new JSONObject();
-		
-			jsonObject3.put("leaveType", "LTY001");
-			jsonObject3.put("leaveFromDate", "3-7-2018");
-			jsonObject3.put("leaveToDate", "3-7-2018");
-			
-			JSONArray jsonArray=new JSONArray();
-			jsonArray.put(jsonObject3);
-			jsonObject2.put("leave",jsonArray);
-			
-			jsonObject.put("leaveDetails", jsonObject2);
-		
-			jsonObject.put("token", TokenUtils.getTokenAsStr());
-			ClientUtils.getWebResource(LeaveEndPoints.REQUEST_LEAVE)
-					.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-					.post(jsonObject.toString());
-			Response response = ClientUtils.getResponse();
-			JsonObject result = CommonUtils.getValidateResultObject(response);
+	@QAFTestStep(description = "user requests for a leave")
+	public void userRequestsForALeave() {
+		jsonObject = new JSONObject();
+		JSONObject jsonObject2 = new JSONObject();
+		JSONObject jsonObject3 = new JSONObject();
+		jsonObject3.put("leaveType", "LTY001");
+		jsonObject3.put("leaveFromDate", "11-7-2018");
+		jsonObject3.put("leaveToDate", "11-7-2018");
+		JSONArray jsonArray = new JSONArray();
+		jsonArray.put(jsonObject3);
+		jsonObject2.put("leave", jsonArray);
+		jsonObject.put("leaveDetails", jsonObject2);
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		ClientUtils.getWebResource(LeaveEndPoints.REQUEST_LEAVE)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		Response response = ClientUtils.getResponse();
+		JsonObject result = CommonUtils.getValidateResultObject(response);
+		if (result.toString().contains("leave_request_id")) {
 			CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
+			
+		}else if(result.toString().contains("You have already applied/taken for selected days.")) {
+			Reporter.log("Verified");
 		}
+	}
 }
