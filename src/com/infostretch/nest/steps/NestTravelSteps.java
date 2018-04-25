@@ -2,8 +2,10 @@
 package com.infostretch.nest.steps;
 
 import javax.ws.rs.core.MediaType;
+
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -13,6 +15,7 @@ import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.infostretch.nest.utils.TokenUtils.UserType;
 import com.qmetry.qaf.automation.core.MessageTypes;
+import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
@@ -35,7 +38,8 @@ public class NestTravelSteps {
 	}
 
 	@QAFTestStep(description = "user can verify the added and edited travels locations with token {0} for travel")
-	public void userCanVerifyTheAddedAndEditedTravelsLocationsWithTokenForTravel(String token) {
+	public void userCanVerifyTheAddedAndEditedTravelsLocationsWithTokenForTravel(
+			String token) {
 
 		jsonObject = new JSONObject();
 		JSONObject jsonObject1 = new JSONObject();
@@ -346,6 +350,13 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(results.get(0).getAsJsonObject(), "id");
 		CommonUtils.validateParameterInJsonObject(results.get(0).getAsJsonObject(),
 				"name");
+	}
+
+	
+	@QAFTestStep(description = "user can verify the deleted booking documents for travel")
+	public void userCanVerifyTheDeletedBookingDocumentsForTravel() {
+		
+		
 	}
 
 }
