@@ -106,3 +106,39 @@ META-DATA: {"author":"chetashree gangurde","description":"verify for delete rela
 	Given user login as manager
 	Then user should delete relationship data
 END
+
+SCENARIO: ESS_MyProfile_037
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit personal details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit personal details
+END
+
+SCENARIO: ESS_MyProfile_038
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit identity details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit identity details
+END
+
+SCENARIO: ESS_MyProfile_039
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit emergency contact details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit emergency contact details
+END
+
+SCENARIO: ESS_MyProfile_040
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete emergency contact details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete emergency contact details
+END
+
+SCENARIO: ESS_MyProfile_041
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit family members","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit family members
+END
+
+SCENARIO: ESS_MyProfile_042
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete family members","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete family members
+END
