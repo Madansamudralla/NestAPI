@@ -104,10 +104,5 @@ META-DATA: {"author":"pranita sinkar","description":"verify save-privileges","gr
 END
 
 
-SCENARIO: ESS_MyProfile_052
-META-DATA: {"author":"pranita sinkar","description":"user should edit employee language","groups":["SMOKE"],enabled=true}
-	Given user login as normal employee
-	Then user should edit employee language
-END
 
 

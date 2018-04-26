@@ -13,6 +13,10 @@ public interface LeaveEndPoints {
 	public final static String GET_LIST_OF_LEAVE_TYPES = "/get-list-of-leave-types";
 	public final static String REQUEST_LEAVE = "/request-leave";
 	public final static String GET_TEAMS_LEAVE_BALANCE_LISTS = "/get-teams-leave-balance-lists";
+	public final static String GET_TEAMS_LEAVE_LISTS = "/get-teams-leave-list";
+	public final static String REQUEST_SPECIAL_LEAVE = "/request-special-leave";
+	public final static String GET_LIST_OF_GROUPS = "/get-list-of-groups";
+	public final static String GET_LEAVE_EMPLOYEE_BALANCE_ON_LEAVE_TYPE ="/get-leave-employee-balance-on-leave-type";
 }
 
 
