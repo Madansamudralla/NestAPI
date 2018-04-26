@@ -43,6 +43,13 @@ META-DATA: {"description":"Verify get visa request list for approving auth","gro
 	Then user should get visa request list for approvingauth
 END
 
+SCENARIO:Visa_Requests_011
+META-DATA: {"description":"Verify get visa request list for approving auth","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get export report for visa request
+END
+
 
 
 
