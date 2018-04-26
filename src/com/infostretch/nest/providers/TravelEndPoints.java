@@ -21,5 +21,5 @@ public class TravelEndPoints {
 	public final static String DELETE_TRAVEL_AGENT = "/delete-travel-agent";
 	public final static String ADD_EDIT_TRAVEL_AGENT = "/add-edit-travel-agent";
 	public final static String ADD_EDIT_TRAVEL_CATEGORIES = "/add-edit-travel-categories";
-	
+	public final static String ADD_EDIT_MODE_OF_TRAVEL = "/addEditModeOfTravel";
 }
