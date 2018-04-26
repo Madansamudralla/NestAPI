@@ -1,74 +1,114 @@
 
+SCENARIO: Travel_MyTravelRequest_010
+META-DATA: {"author":"Suryakant Kale","description":"verify deleted travel categories","groups":["SMOKE"],"key":"Travel.TravelData_010"}
+	
+	Given user can login as manager
+	When user verify the deleted categories with token '${token}' for travel
+		
+END
+
+SCENARIO: Travel_MyTravelRequest_011
+META-DATA: {"author":"Suryakant Kale","description":"get mode of travel","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the mode of travel for travel	
+	
+END
+
+SCENARIO: Travel_MyTravelRequest_012
+META-DATA: {"author":"Suryakant Kale","description":"verify added and edited mode of travel ","groups":["SMOKE"],"key":"Travel.TravelData_013"}
+	
+	Given user can login as manager
+	When user can verify added and edited mode of travel with token '${token}' for travel	
+
+END
+
+SCENARIO: Travel_MyTravelRequest_013
+META-DATA: {"author":"Suryakant Kale","description":"verify the deleted mode of travel","groups":["SMOKE"],"key":"Travel.TravelData_013"}
+	
+	Given user can login as manager
+	When user verify the deleted mode of travel with token '${token}' for travel	
+
+END
+
 SCENARIO: Travel_MyTravelRequest_016
 META-DATA: {"author":"Suryakant Kale","description":"Add and edit the travel categories ","groups":["SMOKE"],"key":"Travel.TravelData_016"}
 	
 	Given user can login as manager
-	When user can add and edit the travel categories with token '${token}' for travel
+	When user can add and edit the travel categories with token '${token}' for travel	
+
+END
+
+SCENARIO: Travel_MyTravelRequest_017
+META-DATA: {"author":"Suryakant Kale","description":"get travel agent of travel","groups":["SMOKE"]}
 	
+	Given user can login as manager
+	When user can get travel agent for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_018
 META-DATA: {"author":"Suryakant Kale","description":"verify the added and edited travel agent","groups":["SMOKE"],"key":"Travel.TravelData_018"}
 	
 	Given user can login as manager
-	When user can verify the added and edited travel agent with token '${token}' for travel
-	
+	When user can verify the added and edited travel agent with token '${token}' for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_019
 META-DATA: {"author":"Suryakant Kale","description":"verify the deleted travel agent","groups":["SMOKE"],"key":"Travel.TravelData_019"}
 	
 	Given user can login as manager
-	When user can verify the deleted travel agent with token '${token}' and travel agent id '${trvl_agent_id}'for travel
-	
+	When user can verify the deleted travel agent with token '${token}' and travel agent id '${trvl_agent_id}'for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_021
 META-DATA: {"author":"Suryakant Kale","description":"verify the travel locations","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the travel locations for travel
-	
+	When user can verify the travel locations for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_022
 META-DATA: {"author":"Suryakant Kale","description":"verify the added and edited travel locations ","groups":["SMOKE"],"key":"Travel.TravelData_022"}
 	
 	Given user can login as manager
-	When user can verify the added and edited travels locations with token '${token}' for travel
-	
+	When user can verify the added and edited travels locations with token '${token}' for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_023
 META-DATA: {"author":"Suryakant Kale","description":"verify the deleted travel locations ","groups":["SMOKE"],"key":"Travel.TravelData_023"}
 	
 	Given user can login as manager
-	When user can verify the deleted travel locations with token '${token}' and travel location id '${trvl_travel_location_id}' for travel
-	
+	When user can verify the deleted travel locations with token '${token}' and travel location id '${trvl_travel_location_id}' for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_025
 META-DATA: {"author":"Suryakant Kale","description":"verify the travel requests for employees","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the travel requests for employees for travel
-	
+	When user can verify the travel requests for employees for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_026
 META-DATA: {"author":"Suryakant Kale","description":"verify the booking details","groups":["SMOKE"],"key":"Travel.TravelData_026"}
 	
 	Given user can login as manager
-	When user can verify the booking details with token '${token}' for travel
-	
+	When user can verify the booking details with token '${token}' for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_027
 META-DATA: {"author":"Suryakant Kale","description":"verify booking types","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the booking types for travel
-	
+	When user can verify the booking types for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_029
@@ -76,80 +116,79 @@ META-DATA: {"author":"Suryakant Kale","description":"verify the deleted booking 
 	
 	Given user can login as manager
 	When user can verify the deleted booking details with token '${token}' for travel
-	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_030
 META-DATA: {"author":"Suryakant Kale","description":"verify the booking documents","groups":["SMOKE"],"key":"Travel.TravelData_029"}
 	
 	Given user can login as manager
-	When user can verify the booking documents with token '${token}' for travel
-	
+	When user can verify the booking documents with token '${token}' for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_033
 META-DATA: {"author":"Suryakant Kale","description":"verification of added and edited booking details","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the added and edited booking details for travel
-	
+	When user can verify the added and edited booking details for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_034
 META-DATA: {"author":"Suryakant Kale","description":"verify the managers dd for travel","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can verify the managers dd  for travel
-		
+	When user can verify the managers dd  for travel		
+
 END
 
 SCENARIO: Travel_MyTravelRequest_035
 META-DATA: {"author":"Suryakant Kale","description":"verify approval of reject request","groups":["SMOKE"],"key":"Travel.TravelData_035"}
 	
 	Given user can login as manager
-	When user can approve reject travel request with token '${token}' for travel
-		
+	When user can approve reject travel request with token '${token}' for travel		
+
 END
 
 SCENARIO: Travel_MyTravelRequest_036
 META-DATA: {"author":"Suryakant Kale","description":"verify all employee list for expense","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can get the all employee list for expense for travel
-		
+	When user can get the all employee list for expense for travel		
+
 END
 
 SCENARIO: Travel_MyTravelRequest_037
 META-DATA: {"author":"Suryakant Kale","description":"verify employee designation list","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can get the employee designation list for travel
-	
+	When user can get the employee designation list for travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_038
 META-DATA: {"author":"Suryakant Kale","description":"verify view of travel details","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user can view the details of travel
-	
+	When user can view the details of travel	
+
 END
 
 SCENARIO: Travel_MyTravelRequest_040
 META-DATA: {"author":"Suryakant Kale","description":"verify travel admin location","groups":["SMOKE"]}
 	
 	Given user can login as manager
-	When user get travel admin location for travel
-		
+	When user get travel admin location for travel		
+
 END
 
 SCENARIO: Travel_MyTravelRequest_041
 META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel location","groups":["SMOKE"],"key":"Travel.TravelData_041"}
 	
 	Given user can login as manager
-	When user get the mode of travel with mode_id '${mode_id}' and mode_name '${mode_name}' for travel
-	
-END
+	When user get the mode of travel with mode_id '${mode_id}' and mode_name '${mode_name}' for travel	
 
+END
 
 
