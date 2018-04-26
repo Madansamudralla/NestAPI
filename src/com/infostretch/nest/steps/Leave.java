@@ -8,10 +8,12 @@ import org.json.JSONObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.infostretch.nest.bean.LeaveBean;
 import com.infostretch.nest.providers.LeaveEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
+import com.qmetry.qaf.automation.core.ConfigurationManager;
 import com.qmetry.qaf.automation.core.MessageTypes;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
@@ -27,6 +29,7 @@ public class Leave {
 	int index, index2;
 	JsonObject result, responseBody, NwwResults;
 	public static String leavePeriod;
+	LeaveBean leaveBean;
 
 	@QAFTestStep(description = "user should get the leave reasons")
 	public void userShouldGetTheLeaveReasons() {
@@ -114,9 +117,11 @@ public class Leave {
 
 	@QAFTestStep(description = "user should get all holiday datelist")
 	public void userShouldGetAllHolidayDatelist() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject.put("start_date", "19-4-2018");
-		jsonObject.put("end_date", "19-4-2019");
+		jsonObject.put("start_date", leaveBean.getStartDate());
+		jsonObject.put("end_date", leaveBean.getEndDate());
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(LeaveEndPoints.GET_ALL_HOLIDAY_DATELIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
@@ -146,7 +151,6 @@ public class Leave {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		if (responseBody.toString().contains("2210")) {
@@ -166,11 +170,11 @@ public class Leave {
 
 	@QAFTestStep(description = "user should get all his leave list")
 	public void userShouldGetAllHisLeaveList() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject.put("date_type", "applieddate");
-		jsonObject.put("from_date", "1-4-2018");
-		jsonObject.put("leavetype", "");
-		jsonObject.put("to_date", "31-3-2019");
+		jsonObject.put("from_date", leaveBean.getStartDate());
+		jsonObject.put("to_date", leaveBean.getEndDate());
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(LeaveEndPoints.GET_USER_ALL_LEAVE_LIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
@@ -194,10 +198,11 @@ public class Leave {
 
 	@QAFTestStep(description = "user should get location holiday list")
 	public void userShouldGetLocationHolidayList() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
 		jsonObject = new JSONObject();
-
-		jsonObject.put("start_date", "19-4-2018");
-		jsonObject.put("end_date", "19-4-2019");
+		jsonObject.put("start_date", leaveBean.getStartDate());
+		jsonObject.put("end_date", leaveBean.getEndDate());
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(LeaveEndPoints.GET_LOCATION_HOLIDAY_LIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
@@ -254,17 +259,32 @@ public class Leave {
 					Matchers.notNullValue());
 			Validator.verifyThat((results.get(index).getAsJsonObject()).get("result")
 					.getAsJsonArray().toString(), Matchers.notNullValue());
+			
+			NwwResults = results.get(index).getAsJsonObject();
+			newResult = NwwResults.get("result").getAsJsonArray();
+
+			for (index2 = 0; index2 <= newResult.size() - 1; index2++) {
+				Validator.verifyThat((newResult.get(index2).getAsJsonObject())
+						.get("leave_type_id").toString(), Matchers.notNullValue());
+				Validator.verifyThat((newResult.get(index2).getAsJsonObject())
+						.get("leave_name").toString(), Matchers.notNullValue());
+				Validator.verifyThat((newResult.get(index2).getAsJsonObject())
+						.get("leave_bal").toString(), Matchers.notNullValue());
+			}
+
 		}
 	}
 
 	@QAFTestStep(description = "user requests for a leave")
 	public void userRequestsForALeave() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject2 = new JSONObject();
 		jsonObject3 = new JSONObject();
-		jsonObject3.put("leaveType", "LTY001");
-		jsonObject3.put("leaveFromDate", "11-7-2018");
-		jsonObject3.put("leaveToDate", "11-7-2018");
+		jsonObject3.put("leaveType", leaveBean.getRegularLeaveType());
+		jsonObject3.put("leaveFromDate", leaveBean.getLeave_date());
+		jsonObject3.put("leaveToDate", leaveBean.getLeave_date());
 		jsonArray = new JSONArray();
 		jsonArray.put(jsonObject3);
 		jsonObject2.put("leave", jsonArray);
@@ -317,15 +337,16 @@ public class Leave {
 
 	@QAFTestStep(description = "user should request special leave.")
 	public void userShouldRequestSpecialLeave() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject.put("token", "9b3d1872fd6e59545402ea1040cd3dda");
+		jsonObject.put("token", leaveBean.getExternalToken());
 		jsonObject2 = new JSONObject();
 		jsonObject3 = new JSONObject();
-		jsonObject3.put("leaveType", "LTY005");
-		jsonObject3.put("leaveFromDate", "12-5-2018");
-		jsonObject3.put("leaveToDate", "12-5-2018");
+		jsonObject3.put("leaveType", leaveBean.getSpecialLeaveType());
+		jsonObject3.put("leaveFromDate", leaveBean.getLeave_date());
+		jsonObject3.put("leaveToDate", leaveBean.getLeave_date());
 		jsonObject.put("leaveDetails", jsonObject3);
-
 		ClientUtils.getWebResource(LeaveEndPoints.REQUEST_SPECIAL_LEAVE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
@@ -360,10 +381,13 @@ public class Leave {
 
 	@QAFTestStep(description = "user should get leave employee balance on leave type.")
 	public void userShouldGetLeaveEmployeeBalanceOnLeaveType() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject.put("emp_number", "1151");
-		jsonObject.put("leavetype", "LTY001");
-		jsonObject.put("token", "9b3d1872fd6e59545402ea1040cd3dda");
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		jsonObject.put("leavetype", leaveBean.getRegularLeaveType());
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils
 				.getWebResource(LeaveEndPoints.GET_LEAVE_EMPLOYEE_BALANCE_ON_LEAVE_TYPE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
@@ -382,4 +406,112 @@ public class Leave {
 					Matchers.notNullValue());
 		}
 	}
+
+	@QAFTestStep(description = "user should get location floating holidays list")
+	public void userShouldGetLocationFloatingHolidaysList() {
+		ClientUtils.getWebResource(LeaveEndPoints.GET_LOCATION_FLOATING_HOLIDAY_LIST)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		results = CommonUtils.getValidatedResultArray(response);
+
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat((results.get(index).getAsJsonObject())
+					.get("floating_holiday_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("description").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("location").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("date").toString(),
+					Matchers.notNullValue());
+		}
+	}
+
+	@QAFTestStep(description = "user should add holidays")
+	public void userShouldAddHolidays() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("location_name", leaveBean.getLocationName());
+		jsonArray = new JSONArray();
+		jsonArray.put(jsonObject2);
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("leave_name", leaveBean.getLeaveName());
+		jsonObject.put("holiday_date", leaveBean.getHolidayDate());
+		jsonObject.put("locations", jsonArray);
+		ClientUtils.getWebResource(LeaveEndPoints.ADD_HOLIDAYS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+
+		if ((result.toString().contains("Holiday added successfully"))
+				|| (result.toString().contains(
+						"This date is already exist in Holiday/Floating holiday"))) {
+			Reporter.log("Verified");
+		}
+	}
+
+	@QAFTestStep(description = "user should add floating holidays")
+	public void userShouldAddFloatingHolidays() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("location_name", leaveBean.getLocationName());
+		jsonArray = new JSONArray();
+		jsonArray.put(jsonObject2);
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("leave_name", leaveBean.getLeaveName());
+		jsonObject.put("holiday_date", leaveBean.getHolidayDate());
+		jsonObject.put("locations", jsonArray);
+		ClientUtils.getWebResource(LeaveEndPoints.ADD_FLOATING_HOLIDAYS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+
+		if ((result.toString().contains("Floating holiday added successfully"))
+				|| (result.toString().contains(
+						"This date is already exist in Holiday/Floating holiday"))) {
+			Reporter.log("Verified");
+		}
+	}
+
+	@QAFTestStep(description = "user should delete holidays")
+	public void userShouldDeleteHolidays() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("holiday_id", leaveBean.getHolidayId());
+		ClientUtils.getWebResource(LeaveEndPoints.DELETE_HOLIDAYS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+
+		if (result.toString().contains("Holiday(s) deleted successfully")) {
+			Reporter.log("Verified");
+		}
+	}
+
+	@QAFTestStep(description = "user should delete floating holidays")
+	public void userShouldDeleteFloatingHolidays() {
+		leaveBean = new LeaveBean();
+		leaveBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("holiday_id", leaveBean.getHolidayId());
+		ClientUtils.getWebResource(LeaveEndPoints.DELETE_FLOATING_HOLIDAYS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+
+		if (result.toString().contains("Floating holiday(s) deleted successfully")) {
+			Reporter.log("Verified");
+		}
+	}
+
 }

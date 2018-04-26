@@ -103,6 +103,159 @@ META-DATA: {"author":"pranita sinkar","description":"verify save-privileges","gr
 	Then user should save-privileges
 END
 
+SCENARIO: ESS_MyProfile_018
+META-DATA: {"author":"chetashree gangurde","description":"verify employee privileges","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get employee privileges
+END
+
+SCENARIO: ESS_MyProfile_020
+META-DATA: {"author":"chetashree gangurde","description":"verify employee languages","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get employee languages
+END
+
+SCENARIO: ESS_MyProfile_021
+META-DATA: {"author":"chetashree gangurde","description":"verify professional experiance","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get professional experiance
+END
+
+SCENARIO: ESS_MyProfile_022
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit professional experiance","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit professional experiance
+END
+
+SCENARIO: ESS_MyProfile_023
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete professional experiance","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete professional experiance
+END
+
+SCENARIO: ESS_MyProfile_024
+META-DATA: {"author":"chetashree gangurde","description":"verify education level","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get education level
+END
+
+SCENARIO: ESS_MyProfile_025
+META-DATA: {"author":"chetashree gangurde","description":"verify language name","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get language name
+END
+
+SCENARIO: ESS_MyProfile_027
+META-DATA: {"author":"chetashree gangurde","description":"verify reporting structure","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get reporting structure
+END
+
+SCENARIO: ESS_MyProfile_028
+META-DATA: {"author":"chetashree gangurde","description":"verify competency","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get competency
+END
+
+SCENARIO: ESS_MyProfile_029
+META-DATA: {"author":"chetashree gangurde","description":"verify fluency","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get fluency
+END
+
+SCENARIO: ESS_MyProfile_030
+META-DATA: {"author":"chetashree gangurde","description":"verify bgv status","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should bgv status
+END
+
+SCENARIO: ESS_MyProfile_031
+META-DATA: {"author":"chetashree gangurde","description":"verify marital status","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get marital status
+END
+
+SCENARIO: ESS_MyProfile_032
+META-DATA: {"author":"chetashree gangurde","description":"verify employee status","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get employee status
+END
 
 
+SCENARIO: ESS_MyProfile_033
+META-DATA: {"author":"chetashree gangurde","description":"verify relationship data","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get relationship data
+END
 
+SCENARIO: ESS_MyProfile_034
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit relationship data","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit relationship data
+END
+
+SCENARIO: ESS_MyProfile_035
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete relationship data","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete relationship data
+END
+
+SCENARIO: ESS_MyProfile_036
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit basic details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit basic details
+END
+
+SCENARIO: ESS_MyProfile_037
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit personal details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit personal details
+END
+
+SCENARIO: ESS_MyProfile_038
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit identity details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit identity details
+END
+
+SCENARIO: ESS_MyProfile_039
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit emergency contact details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit emergency contact details
+END
+
+SCENARIO: ESS_MyProfile_040
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete emergency contact details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete emergency contact details
+END
+
+SCENARIO: ESS_MyProfile_041
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit family members","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit family members
+END
+
+SCENARIO: ESS_MyProfile_042
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete family members","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete family members
+END
+
+SCENARIO: ESS_MyProfile_044
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit role description","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit role description
+END
+
+SCENARIO: ESS_MyProfile_046
+META-DATA: {"author":"chetashree gangurde","description":"verify for delete display pic","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should delete display pic
+END
+
+SCENARIO: ESS_MyProfile_047
+META-DATA: {"author":"chetashree gangurde","description":"verify for get nationality","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get nationality
+END

@@ -1,6 +1,7 @@
 package com.infostretch.nest.steps;
 
 import com.infostretch.nest.utils.TokenUtils.UserType;
+import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 
 public class NestLandingSteps {
@@ -23,4 +24,9 @@ public class NestLandingSteps {
 
 		return UserType.HrUser.doLogin();
 	}
+	@QAFTestStep(description = "user login as visa user")
+	public String userLoginAsVisaUser() {
+		
+		return UserType.VisaUser.doLogin();
+	}	
 }
