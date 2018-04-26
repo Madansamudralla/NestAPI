@@ -5,7 +5,6 @@ import javax.ws.rs.core.MediaType;
 
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -15,7 +14,6 @@ import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.infostretch.nest.utils.TokenUtils.UserType;
 import com.qmetry.qaf.automation.core.MessageTypes;
-import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
@@ -30,6 +28,7 @@ public class NestTravelSteps {
 	public JsonArray jsonArrayResult;
 	public JsonObject jsonObjectResult;
 	public JSONObject jsonObject, jsonObject1;
+	public int index;
 
 	@QAFTestStep(description = "user can login as manager")
 	public String userCanLoginAsManager() {
@@ -193,7 +192,7 @@ public class NestTravelSteps {
 		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 		int jsonArraySize = jsonArrayResult.size();
 
-		for (int index = 0; index < jsonArraySize; index++) {
+		for (index = 0; index < jsonArraySize; index++) {
 			JsonObject jsonObject2 = jsonArrayResult.get(0).getAsJsonObject();
 			CommonUtils.validateParameterInJsonObject(jsonObject2, "emp_number");
 			CommonUtils.validateParameterInJsonObject(jsonObject2, "display_name");
@@ -267,7 +266,7 @@ public class NestTravelSteps {
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (int index = 0; index <= jsonArrayResult.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("emp_number").toString(), Matchers.notNullValue());
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
@@ -326,7 +325,7 @@ public class NestTravelSteps {
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
 		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (int index = 0; index <= jsonArrayResult.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			CommonUtils.validateParameterInJsonObject(
 					jsonArrayResult.get(index).getAsJsonObject(), "erep_sup_emp_number");
 			CommonUtils.validateParameterInJsonObject(
@@ -367,7 +366,7 @@ public class NestTravelSteps {
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
 
-		for (int index = 0; index <= jsonArrayResult.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			CommonUtils.validateParameterInJsonObject(
 					jsonArrayResult.get(index).getAsJsonObject(),
 					"trvl_travel_location_id");
@@ -453,21 +452,92 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 
-	
-	@QAFTestStep(description = "user can delete the mode of travel for travel")
+	@QAFTestStep(description = "user can get the mode of travel for travel")
 	public void userCanDeleteTheModeOfTravelForTravel() {
-		
-		jsonObject = new JSONObject();
-		jsonObject1 = new JSONObject();
-		jsonObject1.put("trvl_mode_of_travel_id", "6");
-		jsonObject.put("token", "5b754056c01d475ea96bb2d6c0c34148");
-		jsonObject.put("trvmode_details", jsonObject1);
-		ClientUtils.getWebResource(TravelEndPoints.ADD_EDIT_MODE_OF_TRAVEL)
-			.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-			.post();
+
+		ClientUtils.getWebResource(TravelEndPoints.GET_MODE_OF_TRAVEL)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
 		response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(),
+					"trvl_mode_of_travel_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "title");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "created_date");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "updated_date");
+		}
+	}
+
+	@QAFTestStep(description = "user can get travel agent for travel")
+	public void userCanVerifyTheDeletedCategoriesForTravel() {
+
+		ClientUtils.getWebResource(TravelEndPoints.GET_TRAVEL_AGENT)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "trvl_agent_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "agent_name");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "contact_person");
+		}
+	}
+
+	@QAFTestStep(description = "user verify the deleted mode of travel with token {0} for travel")
+	public void userVerifyTheDeletedModeOfTravelWithTokenForTravel(String token) {
+
+		jsonObject1 = new JSONObject();
+		jsonObject = new JSONObject();
+		jsonObject1.put("trvl_mode_of_travel_id", "6");
+		jsonObject.put("token", token);
+		jsonObject.put("trvmode_details", jsonObject1);
+		ClientUtils.getWebResource(TravelEndPoints.DELETE_MODE_OF_TRAVEL)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
+
+	@QAFTestStep(description = "user can verify added and edited mode of travel with token {0} for travel")
+	public void userCanVerifyAddedAndEditedModeOfTravelWithTokenForTravel(String token) {
+
+		jsonObject1 = new JSONObject();
+		jsonObject = new JSONObject();
+		jsonObject1.put("title", "sdasftergfdgsd");
+		jsonObject1.put("status", "1");
+		jsonObject1.put("description", "eqw");
+		jsonObject.put("token", token);
+		jsonObject.put("trvmode_details", jsonObject1);
+		ClientUtils.getWebResource(TravelEndPoints.ADD_EDIT_MODE_OF_TRAVEL)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+
 	}
 
 }
