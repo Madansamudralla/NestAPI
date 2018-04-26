@@ -85,3 +85,75 @@ META-DATA: {"author":"apoorva shewale","description":" user requests for a leave
 	Then user requests for a leave 
 END
 	
+
+SCENARIO: Leave_AL_11
+META-DATA: {"author":"apoorva shewale","description":"user should get teams leave lists","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get teams leave lists.
+ 
+END
+
+SCENARIO: Leave_AL_09
+META-DATA: {"author":"apoorva shewale","description":"user should request special leave","groups":["SMOKE"]}
+	
+	Given user login as normal employee
+	Then user should request special leave.
+END
+
+SCENARIO: Leave_manager_TLB_03
+META-DATA: {"author":"apoorva shewale","description":"user should get list of groups","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get list of groups
+END
+	
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should get leave employee balance on leave type.","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get leave employee balance on leave type.
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should get location floating holidays list","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get location floating holidays list 
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should add holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should add holidays
+ 
+END
+	
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should add floating holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should add floating holidays
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should delete holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should delete holidays
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should delete holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should delete floating holidays
+ 
+END
+	
+	

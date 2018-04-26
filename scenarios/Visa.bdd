@@ -1,50 +1,92 @@
 
 
-SCENARIO: get visa country list
-META-DATA: {"description":"Verify visa api","groups":["VISA"],"author":["palash"]}
+SCENARIO:Visa_Requests_006
+META-DATA: {"description":"Verify get visa country list","groups":["SMOKE"],"author":["palash"]}
 	
 	Given user login as manager
-	Then user should get accecible menu list
-	And user should get visa country list
-END
-
-SCENARIO: get menu URL
-META-DATA: {"description":"Verify visa api","groups":["VISA"],"author":["palash"] }
-
-	Given user login as manager
-	Then user should get menu url
-	
+	Then user should get visa country list
 END
 
 
-SCENARIO: get supervisor name
-META-DATA: {"description":"Verify visa api","groups":["VISA"],"author":["palash"] }
+SCENARIO:Visa_Requests_007
+META-DATA: {"description":"Verify get supervisor name","groups":["SMOKE"],"author":["palash"] }
 
 	Given user login as manager
 	Then user should get supervisor name
-	 
 END
 
-SCENARIO: get visa request list for employee
-META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"Key":"validDate","author":["palash"]}
+SCENARIO:Visa_Requests_024
+META-DATA: {"description":"Verify get visa request list for employee","groups":["SMOKE"] ,"author":["palash"]}
 
 	Given user login as manager
-	Then user should select '$args[0]' and '$args[0]' to get visa request list for employee
+	Then user should get visa request list for employee
 END
 
-SCENARIO: get visa type for dd
-META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"Key":"validDate","author":["palash"]}
+SCENARIO:Visa_Requests_012
+META-DATA: {"description":"Verify get visa type for dd","groups":["SMOKE"] ,"author":["palash"]}
 
 	Given user login as manager
 	Then user should get visa type for dd
 END
 
-SCENARIO: get all employee list of expense
-META-DATA: {"description":"Verify visa api","groups":["VISA"] ,"author":["palash"]}
+SCENARIO:Visa_Requests_008
+META-DATA: {"description":"Verify get all employee list of expense","groups":["SMOKE"] ,"author":["palash"]}
 
 	Given user login as manager
 	Then user should get all employee list of expense
 END
+
+SCENARIO:Visa_Requests_009
+META-DATA: {"description":"Verify get visa request list for approving auth","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get visa request list for approvingauth
+END
+
+SCENARIO:Visa_Requests_011
+META-DATA: {"description":"Verify get export report for visa request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get export report for visa request
+END
+
+SCENARIO:Visa_Requests_013
+META-DATA: {"description":"Verify get visa request list for hr admin","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as hr
+	Then user should get visa request list for hr admin
+END
+
+SCENARIO:Visa_Requests_014
+META-DATA: {"description":"Verify get visa types","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user
+	Then user should get visa types
+END
+
+SCENARIO:Visa_Requests_015
+META-DATA: {"description":"Verify add-new-country-for-visa","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user
+	Then user should add new country for visa
+END
+
+SCENARIO:Visa_Requests_016
+META-DATA: {"description":"Verify set visa country status","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user
+	Then user should set visa country status
+END
+
+SCENARIO:Visa_Requests_010
+META-DATA: {"description":"Verify get checklist details for travel visa request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get checklist details for travel visa request
+END
+
+
+
 
 
 

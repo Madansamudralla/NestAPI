@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.infostretch.nest.bean.HomeBean;
+import com.infostretch.nest.bean.VisaBean;
 import com.infostretch.nest.providers.EndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
@@ -15,11 +17,11 @@ import com.qmetry.qaf.automation.ws.Response;
 
 public class NestHomeSteps {
 	JSONObject jsonObject;
-	JsonObject result;
+	JsonObject result,responseBody;
 	Response response;
-	JsonObject responseBody;
 	JsonArray results;
 	int index;
+	HomeBean homeBean;
 
 	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
@@ -101,7 +103,7 @@ public class NestHomeSteps {
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		result = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2177").getAsJsonObject();
+				.getAsJsonObject().get("2232").getAsJsonObject();
 		CommonUtils.validateParameterInJsonObject(result, "emp_initial");
 		CommonUtils.validateParameterInJsonObject(result, "date");
 		CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
@@ -115,16 +117,16 @@ public class NestHomeSteps {
 				.post();
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1reaults = result.get("regular").getAsJsonArray();
+		JsonArray param1results = result.get("regular").getAsJsonArray();
 		JsonArray param2results = result.get("special").getAsJsonArray();
 
-		for (index = 0; index <= param1reaults.size() - 1; index++) {
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+		for (index = 0; index <= param1results.size() - 1; index++) {
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("leaveTypeId").toString(), Matchers.containsString("LTY"));
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
 					.get("leaveType").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(param1reaults.get(index).getAsJsonObject()).get("number").toString(),
+					(param1results.get(index).getAsJsonObject()).get("number").toString(),
 					Matchers.notNullValue());
 		}
 
@@ -182,34 +184,37 @@ public class NestHomeSteps {
 
 	@QAFTestStep(description = "user should get training calendar list")
 	public void userShouldGetTrainingCalendarList() {
+		homeBean = new HomeBean();
+		homeBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject.put("start_date", "18-4-2018");
-		jsonObject.put("end_date", "29-4-2018");
+		jsonObject.put("start_date", homeBean.getStart_date());
+		jsonObject.put("end_date", homeBean.getEnd_date());
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(EndPoints.GET_TRAINING_CALENDAR_LIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1reaults = result.get("Friday").getAsJsonArray();
+		results = result.get("Friday").getAsJsonArray();
 
-		for (index = 0; index <= param1reaults.size() - 1; index++) {
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("trn_course_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(param1reaults.get(index).getAsJsonObject()).get("title").toString(),
+					(results.get(index).getAsJsonObject()).get("title").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat((param1reaults.get(index).getAsJsonObject())
+			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("department_id").toString(), Matchers.notNullValue());
 		}
 	}
 
 	@QAFTestStep(description = "User should get upcoming events")
 	public void userShouldGetUpcomingEvents() {
+		homeBean = new HomeBean();
+		homeBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject.put("event_id", "");
-		jsonObject.put("eventlist", "1");
-		jsonObject.put("order", "asc");
-		jsonObject.put("sort", "start_date");
+		jsonObject.put("eventlist", homeBean.getEventlist());
+		jsonObject.put("order", homeBean.getOrder());
+		jsonObject.put("sort", homeBean.getSort());
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(EndPoints.GET_UPCOMING_EVENTS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
