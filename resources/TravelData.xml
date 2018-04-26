@@ -2,6 +2,19 @@
 
 <NEST_API>
 	<Travel>
+	
+		 <TravelData_010>
+            <token>3f5015e6911e518d80767b6be54553bf</token>
+         </TravelData_010>
+         
+		 <TravelData_012>
+            <token>e482794cd9eaf0fb8adfeadf04604c43</token>
+         </TravelData_012>
+         
+		 <TravelData_013>
+            <token>2e7a29a263709fd8dfb91f76ee351361</token>
+         </TravelData_013>
+         
         <TravelData_016>
             <token>98d1a255c9250eb5fe737e43aaed817d</token>
          </TravelData_016>
@@ -41,6 +54,7 @@
             <mode_name>yrryrty</mode_name>
          </TravelData_041>
          
+        
         </Travel>
         </NEST_API>
        
