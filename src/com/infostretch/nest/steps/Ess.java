@@ -388,7 +388,28 @@ public class Ess {
 		CommonUtils.validateParameterInJsonObject(result, "action_message");
 		Reporter.log(result.toString());
 	}
-
+	/*
+	 * Description : This request will create from HR manager view.
+	 */
+	@QAFTestStep(description = "user should edit basic details")
+	public void userShouldEditBasicDetails() {
+		essBean = new ESSBean();
+		essBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("emp_number", essBean.getEmp_number());
+		jsonObject2.put("emp_firstname", essBean.getEmp_firstname());
+		jsonObject2.put("emp_lastname",essBean.getEmp_lastname());
+		jsonObject2.put("employee_id",essBean.getEmployee_id());
+		jsonObject.put("basic_details", jsonObject2);
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		ClientUtils.getWebResource(EssEndPoint.EDIT_BASIC_DETAILS)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "action_message");
+		Reporter.log(result.toString());
+	}
 	@QAFTestStep(description = "user should edit personal details")
 	public void userShouldEditPersonalDetails() {
 		essBean = new ESSBean();
@@ -512,5 +533,44 @@ public class Ess {
 		result = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(result, "action_message");
 		Reporter.log(result.toString());
+	}
+
+	@QAFTestStep(description = "user should get role description")
+	public void userShouldGetRoleDescription() {
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number",
+				ConfigurationManager.getBundle().getProperty("emp_id"));
+		ClientUtils.getWebResource(EssEndPoint.GET_ROLE_DESCRIPTION)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		responseBody =
+				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("details").getAsJsonObject();
+		CommonUtils.validateParameterInJsonObject(result, "emp_number");
+		CommonUtils.validateParameterInJsonObject(result, "job_title");
+		CommonUtils.validateParameterInJsonObject(result, "emp_work_email");
+		Reporter.log(result.toString());
+	}
+	
+	@QAFTestStep(description = "user should edit role description")
+	public void userShouldEditRoleDescription() {
+	essBean = new ESSBean();
+	essBean.fillRandomData();
+	jsonObject = new JSONObject();
+	jsonObject2 = new JSONObject();
+	jsonObject2.put("emp_number", essBean.getEmp_number());
+	jsonObject2.put("job_title", essBean.getJob_title());
+	jsonObject2.put("emp_work_email", essBean.getEmp_work_email());
+	jsonObject.put("role_details", jsonObject2);
+	jsonObject.put("token", TokenUtils.getTokenAsStr());
+	ClientUtils.getWebResource(EssEndPoint.EDIT_ROLE_DESCRIPTION)
+			.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+	response = ClientUtils.getResponse();
+	result = CommonUtils.getValidateResultObject(response);
+	CommonUtils.validateParameterInJsonObject(result, "action_message");
+	Reporter.log(result.toString());
 	}
 }

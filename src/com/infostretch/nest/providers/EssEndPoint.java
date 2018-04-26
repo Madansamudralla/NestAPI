@@ -26,5 +26,7 @@ public interface EssEndPoint {
 	public final static String DELETE_EMERGENCY_CONTACT_DETAILS = "/delete-emergency-contact-details";
 	public final static String EDIT_FAMILY_MEMBERS = "/edit-family-members";
 	public final static String DELETE_FAMILY_MEMBERS = "/delete-family-members";
+	public final static String GET_ROLE_DESCRIPTION = "/get-role-description";
+	public final static String EDIT_ROLE_DESCRIPTION ="/edit-role-description";
 
 }
