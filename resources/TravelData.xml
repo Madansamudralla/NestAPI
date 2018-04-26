@@ -3,7 +3,11 @@
 <NEST_API>
 	<Travel>
 	
-		<TravelData_012>
+		 <TravelData_010>
+            <token>3f5015e6911e518d80767b6be54553bf</token>
+         </TravelData_010>
+         
+		 <TravelData_012>
             <token>e482794cd9eaf0fb8adfeadf04604c43</token>
          </TravelData_012>
          

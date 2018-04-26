@@ -5,6 +5,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -77,7 +78,6 @@ public class NestTravelSteps {
 				"trvl_travel_location_id");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
-
 	}
 
 	@QAFTestStep(description = "user can verify the travel requests for employees for travel")
@@ -104,7 +104,6 @@ public class NestTravelSteps {
 							.get("request_by_emp_number").toString(),
 					Matchers.notNullValue());
 		}
-
 	}
 
 	@QAFTestStep(description = "user can verify the booking details with token {0} for travel")
@@ -125,7 +124,6 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "booking_cnt");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "booking_submited");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_loc_code");
-
 	}
 
 	@QAFTestStep(description = "user can verify the deleted booking details with token {0} for travel")
@@ -150,7 +148,6 @@ public class NestTravelSteps {
 		Validator.verifyThat(
 				(jsonObjectResult.getAsJsonObject()).get("response_type").toString(),
 				Matchers.notNullValue());
-
 	}
 
 	@QAFTestStep(description = "user can verify the booking documents with token {0} for travel")
@@ -177,7 +174,6 @@ public class NestTravelSteps {
 		Validator.verifyThat(
 				(results1.getAsJsonObject()).get("get_booking_documents").toString(),
 				Matchers.notNullValue());
-
 	}
 
 	@QAFTestStep(description = "user get travel admin location for travel")
@@ -197,7 +193,6 @@ public class NestTravelSteps {
 			CommonUtils.validateParameterInJsonObject(jsonObject2, "emp_number");
 			CommonUtils.validateParameterInJsonObject(jsonObject2, "display_name");
 		}
-
 	}
 
 	@QAFTestStep(description = "user get the mode of travel with mode_id {0} and mode_name {1} for travel")
@@ -214,7 +209,6 @@ public class NestTravelSteps {
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get(id).toString(),
 				Matchers.containsString(modeName));
-
 	}
 
 	@QAFTestStep(description = "user can view the details of travel")
@@ -236,7 +230,6 @@ public class NestTravelSteps {
 		Validator.verifyThat(
 				(jsonObjectResult.getAsJsonObject()).get("trvl_statusLog").toString(),
 				Matchers.notNullValue());
-
 	}
 
 	@QAFTestStep(description = "user can get the employee designation list for travel")
@@ -252,7 +245,6 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "108");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "25");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "111");
-
 	}
 
 	@QAFTestStep(description = "user can get the all employee list for expense for travel")
@@ -272,7 +264,6 @@ public class NestTravelSteps {
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("display_name").toString(), Matchers.notNullValue());
 		}
-
 	}
 
 	@QAFTestStep(description = "user can verify the added and edited booking details for travel")
@@ -288,7 +279,6 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trvl_booking_id");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
-
 	}
 
 	@QAFTestStep(description = "user can approve reject travel request with token {0} for travel")
@@ -374,9 +364,7 @@ public class NestTravelSteps {
 					jsonArrayResult.get(index).getAsJsonObject(), "status");
 			CommonUtils.validateParameterInJsonObject(
 					jsonArrayResult.get(index).getAsJsonObject(), "created_date");
-
 		}
-
 	}
 
 	@QAFTestStep(description = "user can verify the deleted travel agent with token {0} and travel agent id {1}for travel")
@@ -398,7 +386,6 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trvl_agent_id");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
-
 	}
 
 	@QAFTestStep(description = "user can verify the added and edited travel agent with token {0} for travel")
@@ -423,7 +410,6 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trvl_agent_id");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
-
 	}
 
 	@QAFTestStep(description = "user can add and edit the travel categories with token {0} for travel")
@@ -537,7 +523,27 @@ public class NestTravelSteps {
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
 
+	@QAFTestStep(description = "user verify the deleted categories with token {0} for travel")
+	public void userVerifyTheDeletedCategoriesWithTokenForTravel(String token) {
+
+		jsonObject1 = new JSONObject();
+		jsonObject = new JSONObject();
+		jsonObject1.put("trvl_travel_category_id", "23");
+		jsonObject.put("token", token);
+		jsonObject.put("trvcat_details", jsonObject1);
+		ClientUtils.getWebResource(TravelEndPoints.DELETE_TRAVEL_CATEGORIES)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult,
+				"trvl_travel_category_id");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 
 }
