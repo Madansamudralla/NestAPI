@@ -21,6 +21,9 @@ import com.qmetry.qaf.automation.ws.Response;
 
 public class NestESSSteps {
 	int index;
+	JSONObject obj;
+	JsonObject result;
+	JsonArray param1results;
 	@QAFTestStep(description = "user should get-basic-details")
 	public void userShouldGetBasicDetails() {
 		JSONObject obj = new JSONObject();
@@ -47,17 +50,12 @@ public class NestESSSteps {
 		ClientUtils.getWebResource(ESSEndPoints.GET_PERSONAL_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
-		JsonArray results = CommonUtils.getValidatedResultArray(response);
-
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
-					Matchers.notNullValue());
-			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("emp_gender").toString(),
-					Matchers.notNullValue());
-		}
 		JsonObject result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "emp_number");
+		CommonUtils.validateParameterInJsonObject(result, "emp_gender");
+
+
+		
 	}
 
 	@QAFTestStep(description = "user should get-base-location")
@@ -310,36 +308,138 @@ public class NestESSSteps {
 		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
 	}
 
-	@QAFTestStep(description = "user should save-location-privileges")
-	public void userShouldSaveLocationPrivileges() {
+	
+	
+	@QAFTestStep(description = "user should get-Include")
+	public void userShouldGetInclude() {
+		obj = new JSONObject();
+		obj.put("token", "db453c12423112f3ffb4a2b473139ed6");
+		System.out.println("#########"+obj.toString());
+
+		ClientUtils.getWebResource(ESSEndPoints.GET_INCLUDE)
+				.type(MediaType.APPLICATION_JSON).post(obj.toString());
+		Response response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "1");
+		CommonUtils.validateParameterInJsonObject(result, "2");
+		CommonUtils.validateParameterInJsonObject(result, "3");
+		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
+}
+
+	@QAFTestStep(description = "user should /get-Supervisors-Name")
+	public void userShouldGetSupervisorsName() {
+		obj = new JSONObject();
+		obj.put("token", TokenUtils.getTokenAsStr());
+		ClientUtils.getWebResource(ESSEndPoints.GET_SUPERVISORS_NAME)
+				.type(MediaType.APPLICATION_JSON).post(obj.toString());
+		Response response = ClientUtils.getResponse();
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("ename").toString(),
+					Matchers.notNullValue());
+		}
+		
+
+		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+	}
+	
+	
+
+	@QAFTestStep(description = "user should /get-employee-status-for-teams-list")
+	public void userShouldGetEmployeeStatusForTeamsList() {
+		obj = new JSONObject();
+		obj.put("token", TokenUtils.getTokenAsStr());
+		ClientUtils.getWebResource(ESSEndPoints.GET_EMPLOYEE_STATUS_FOR_TEAMS_LIST)
+				.type(MediaType.APPLICATION_JSON).post(obj.toString());
+		Response response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "Appointed");
+		CommonUtils.validateParameterInJsonObject(result, "Initiated_Confirmation");
+		CommonUtils.validateParameterInJsonObject(result, "Confirmed");
+		CommonUtils.validateParameterInJsonObject(result, "Left");
+		CommonUtils.validateParameterInJsonObject(result, "Resigned");
+		CommonUtils.validateParameterInJsonObject(result, "Terminated");
+		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
+		
+	
+	}
+
+	@QAFTestStep(description = "user should /get-teams-profile-list")
+	public void userShouldGetTeamsProfileList() 
+	{
 		JSONObject obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
 		obj.put("emp_number",
 				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
-		ClientUtils.getWebResource(ESSEndPoints.SAVE_LOCATION_PRIVILEDGE)
+		ClientUtils.getWebResource(ESSEndPoints.GET_TEAMS_PROFILE_LIST)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
+		JsonArray param1results = result.get("details").getAsJsonArray();
+		for (index = 0; index <= param1results.size() - 1; index++) {
+			Validator.verifyThat((param1results.get(index).getAsJsonObject())
+					.get("empNumber").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(param1results.get(index).getAsJsonObject()).get("employeeId").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(param1results.get(index).getAsJsonObject()).get("firstName").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(param1results.get(index).getAsJsonObject()).get("lastName").toString(),
+					Matchers.notNullValue());
+		}
+	}
+	
+
+	@QAFTestStep(description = "user should /add-new-employee")
+	public void userShouldAddNewEmployee() {
+	
 	}
 
-	@QAFTestStep(description = "user should save-privileges")
-	public void userShouldSavePrivileges() {
-		JSONObject obj = new JSONObject();
+	@QAFTestStep(description = "user should /get-location-for-new-emp")
+	public void userShouldGetLocationForNewEmp() {
+		obj = new JSONObject();
 		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number",
-				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
-		obj.put("privileges", "187");
-		ClientUtils.getWebResource(ESSEndPoints.SAVE_PRIVILEDGES)
+		ClientUtils.getWebResource(ESSEndPoints.GET_LOCATION_FOR_NEW_EMP)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
 		Response response = ClientUtils.getResponse();
-		JsonObject result = CommonUtils.getValidateResultObject(response);
-		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
+		JsonArray results = CommonUtils.getValidatedResultArray(response);
+
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("location_id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("location_name").toString(),
+					Matchers.notNullValue());
+
+		}
+		
+
 	}
 
-	@QAFTestStep(description = "user should edit employee language")
-	public void userShouldEditEmployeeLanguage() {
+	@QAFTestStep(description = "user should /delete-Employee")
+	public void userShouldDeleteEmployee() {
+		obj = new JSONObject();
+		obj.put("token", TokenUtils.getTokenAsStr());
+	JSONObject	obj1 =new JSONObject();
+	
+		obj1.put("emp_number",
+				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
+	obj.put("emp_details", obj1);
+	
+		ClientUtils.getWebResource(ESSEndPoints.DELETE_EMPLOYEE)
+				.type(MediaType.APPLICATION_JSON).post(obj.toString());
+		Response response = ClientUtils.getResponse();
+		 result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "action_message");
+		CommonUtils.validateParameterInJsonObject(result, "response_type");
+
 
 	}
+
 
 }

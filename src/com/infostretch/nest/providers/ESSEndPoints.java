@@ -19,5 +19,13 @@ public interface ESSEndPoints {
 	public final static String GET_EMPLOYEE_LOCAION_PRIVILEDGES="/get-employee-location-privileges";
 	public final static String SAVE_LOCATION_PRIVILEDGE="/save-location-privileges";
 	public final static String SAVE_PRIVILEDGES="/save-privileges";
+	public final static String GET_INCLUDE="/get-Include";
+	public final static String GET_SUPERVISORS_NAME="/get-Supervisors-Name";
+	public final static String GET_EMPLOYEE_STATUS_FOR_TEAMS_LIST="/get-employee-status-for-teams-list";
+	public final static String GET_TEAMS_PROFILE_LIST ="/get-teams-profile-list";
+	public final static String ADD_NEW_EMPLOYEE="/add-new-employee";
+	public final static String GET_LOCATION_FOR_NEW_EMP="/get-location-for-new-emp";
+	public final static String DELETE_EMPLOYEE="/delete-Employee";
+	public final static String EXPORT_TEAMS_LIST_DETAILS="/export-teams-list-details";
 	
 }

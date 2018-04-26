@@ -1,6 +1,6 @@
 
 SCENARIO: ESS_MyProfile_001
-META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=false}
+META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=true}
 	
 	Given user login as manager
 	Then user should get-basic-details
@@ -8,7 +8,7 @@ META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","
 END
 
 SCENARIO: ESS_MyProfile_002
-META-DATA: {"author":"prashinka sahu","description":"verify get-personal-details","groups":["SMOKE"],enabled=false}
+META-DATA: {"author":"prashinka sahu","description":"verify get-personal-details","groups":["SMOKE"],enabled=true}
 	Given user login as manager
 	Then user should get-personal-details
 END
@@ -91,18 +91,47 @@ META-DATA: {"author":"pranita sinkar","description":"verify get employee-locatio
 	Then user should get employee-location-privileges
 END
 
-SCENARIO: ESS_MyProfile_016
-META-DATA: {"author":"pranita sinkar","description":"verify save-location-privileges","groups":["SMOKE"],enabled=true}
-	Given user login as normal employee
-	Then user should save-location-privileges
+
+SCENARIO: ESS_TeamProfile_001
+META-DATA: {"author":"pranita sinkar","description":"verify /get-Include","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should get-Include
 END
 
-SCENARIO: ESS_MyProfile_017
-META-DATA: {"author":"pranita sinkar","description":"verify save-privileges","groups":["SMOKE"],enabled=true}
-	Given user login as normal employee
-	Then user should save-privileges
+SCENARIO: ESS_TeamProfile_002
+META-DATA: {"author":"pranita sinkar","description":"verify /get-Supervisors-Name","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should /get-Supervisors-Name
 END
 
+SCENARIO: ESS_TeamProfile_003
+META-DATA: {"author":"pranita sinkar","description":"verify /get-employee-status-for-teams-list","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should /get-employee-status-for-teams-list
+END
+SCENARIO: ESS_TeamProfile_004
+META-DATA: {"author":"pranita sinkar","description":"verify /get-teams-profile-list","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should /get-teams-profile-list
+END
 
+SCENARIO: ESS_TeamProfile_005
+META-DATA: {"author":"pranita sinkar","description":"verify /add-new-employee","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	When user should /add-new-employee
+
+END
+
+SCENARIO: ESS_TeamProfile_006
+META-DATA: {"author":"pranita sinkar","description":"verify /get-location-for-new-emp","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should /get-location-for-new-emp
+END
+
+SCENARIO: ESS_TeamProfile_007
+META-DATA: {"author":"pranita sinkar","description":"verify /delete-Employee","groups":["SMOKE"],enabled=true}
+	Given user login as manager
+	Then user should /delete-Employee
+END
 
 
