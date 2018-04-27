@@ -26,5 +26,6 @@ public class TravelEndPoints {
 	public final static String DELETE_MODE_OF_TRAVEL = "/delete-mode-of-travel";
 	public final static String ADD_EDIT_MODE_OF_TRAVEL = "/add-edit-mode-of-travel";
 	public final static String DELETE_TRAVEL_CATEGORIES = "/delete-travel-categories";
+	public final static String GET_TRAVEL_CATEGORIES = "/get-travel-categories";
 	
 }

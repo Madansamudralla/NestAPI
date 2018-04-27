@@ -546,4 +546,27 @@ public class NestTravelSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 
+	
+	@QAFTestStep(description = "user can verify the travel categories for travel")
+	public void userCanVerifyTheTravelCategoriesForTravel() {
+		
+		ClientUtils.getWebResource(TravelEndPoints.GET_TRAVEL_CATEGORIES)
+			.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+			.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+		
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "trvl_travel_category_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "level");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "created_date");
+		}
+	}
+
 }
