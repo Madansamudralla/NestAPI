@@ -21,7 +21,7 @@ public class NestHomeSteps {
 	Response response;
 	JsonArray results;
 	int index;
-	HomeBean homeBean;
+	HomeBean homeBean=new HomeBean();
 
 	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
@@ -184,7 +184,6 @@ public class NestHomeSteps {
 
 	@QAFTestStep(description = "user should get training calendar list")
 	public void userShouldGetTrainingCalendarList() {
-		homeBean = new HomeBean();
 		homeBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("start_date", homeBean.getStart_date());
@@ -209,7 +208,6 @@ public class NestHomeSteps {
 
 	@QAFTestStep(description = "User should get upcoming events")
 	public void userShouldGetUpcomingEvents() {
-		homeBean = new HomeBean();
 		homeBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("eventlist", homeBean.getEventlist());
