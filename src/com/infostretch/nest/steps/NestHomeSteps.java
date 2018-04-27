@@ -103,7 +103,7 @@ public class NestHomeSteps {
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		result = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2232").getAsJsonObject();
+				.getAsJsonObject().get("2270").getAsJsonObject();
 		CommonUtils.validateParameterInJsonObject(result, "emp_initial");
 		CommonUtils.validateParameterInJsonObject(result, "date");
 		CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
