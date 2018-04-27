@@ -17,6 +17,13 @@ public interface LeaveEndPoints {
 	public final static String REQUEST_SPECIAL_LEAVE = "/request-special-leave";
 	public final static String GET_LIST_OF_GROUPS = "/get-list-of-groups";
 	public final static String GET_LEAVE_EMPLOYEE_BALANCE_ON_LEAVE_TYPE ="/get-leave-employee-balance-on-leave-type";
+	public final static String GET_LOCATION_FLOATING_HOLIDAY_LIST = "/get-location-floating-holidays-list";
+	public final static String ADD_HOLIDAYS = "/add-holidays";
+	public final static String ADD_FLOATING_HOLIDAYS = "/add-floating-holidays";
+	public final static String DELETE_HOLIDAYS="/delete-holidays";
+	public final static String DELETE_FLOATING_HOLIDAYS = "/delete-floating-holidays";
+
+
 }
 
 

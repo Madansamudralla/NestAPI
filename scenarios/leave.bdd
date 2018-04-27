@@ -115,5 +115,45 @@ META-DATA: {"author":"apoorva shewale","description":"user should get leave empl
 	Then user should get leave employee balance on leave type.
  
 END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should get location floating holidays list","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get location floating holidays list 
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should add holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should add holidays
+ 
+END
+	
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should add floating holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should add floating holidays
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should delete holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should delete holidays
+ 
+END
+
+SCENARIO: Leave_manager_ATL_01
+META-DATA: {"author":"apoorva shewale","description":"user should delete holidays","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should delete floating holidays
+ 
+END
 	
 	

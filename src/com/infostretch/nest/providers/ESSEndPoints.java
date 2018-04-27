@@ -19,6 +19,7 @@ public interface ESSEndPoints {
 	public final static String GET_EMPLOYEE_LOCAION_PRIVILEDGES="/get-employee-location-privileges";
 	public final static String SAVE_LOCATION_PRIVILEDGE="/save-location-privileges";
 	public final static String SAVE_PRIVILEDGES="/save-privileges";
+<<<<<<< HEAD
 	public final static String GET_INCLUDE="/get-Include";
 	public final static String GET_SUPERVISORS_NAME="/get-Supervisors-Name";
 	public final static String GET_EMPLOYEE_STATUS_FOR_TEAMS_LIST="/get-employee-status-for-teams-list";
@@ -28,4 +29,37 @@ public interface ESSEndPoints {
 	public final static String DELETE_EMPLOYEE="/delete-Employee";
 	public final static String EXPORT_TEAMS_LIST_DETAILS="/export-teams-list-details";
 	
+=======
+	public final static String EMPLOYEE_PRIVILEGES = "/get-employee-privileges";
+	public final static String CONTACT_DETAILS = "/get-contact-details";
+	public final static String EMPLOYEE_LANGUAGES = "/get-employee-languages";
+	public final static String PROFESSIONAL_EXPERIANCE = "/get-professional-exp";
+	public final static String EDIT_PROFESSIONAL_EXPERIANCE = "/edit-professional-exp";
+	public final static String DELETE_PROFESSIONAL_EXPERIANCE = "/delete-professional-exp";
+	public final static String EDUCATION_LEVEL = "/get-education-level";
+	public final static String LANGUAGE_NAME = "/get-language-name";
+	public final static String QUALIFICATION_DETAILS = "/get-qualification-details";
+	public final static String REPORTING_STRUCTURE = "/get-reporting-structure";
+	public final static String COMPETENCY = "/get-competency";
+	public final static String FLUENCY = "/get-fluency";
+	public final static String BGV_STATUS = "/bgv-status";
+	public final static String MARITAL_STATUS = "/get-marital-status";
+	public final static String EMPLOYEE_STATUS = "/get-employee-status";
+	public final static String RELATIONSHIP_DATA = "/get-relationship-data";
+	public final static String EDIT_RELATIONSHIP_DATA = "/edit-relationship-data";
+	public final static String DELETE_RELATIONSHIP_DATA = "/delete-relationship-data";
+	public final static String EDIT_BASIC_DETAILS = "/edit-basic-details";
+	public final static String EDIT_PERSONAL_DETAILS = "/edit-personal-details";
+	public final static String EDIT_IDENTITY_DETAILS = "/edit-identity-details";
+	public final static String EDIT_EMERGENCY_CONTACT_DETAILS = "/edit-emergency-contact-details";
+	public final static String DELETE_EMERGENCY_CONTACT_DETAILS = "/delete-emergency-contact-details";
+	public final static String EDIT_FAMILY_MEMBERS = "/edit-family-members";
+	public final static String DELETE_FAMILY_MEMBERS = "/delete-family-members";
+	public final static String GET_ROLE_DESCRIPTION = "/get-role-description";
+	public final static String EDIT_ROLE_DESCRIPTION ="/edit-role-description";
+	public final static String UPLOAD_DISPLAY_PIC ="/upload-display-pic";
+	public final static String DELETE_DISPLAY_PIC ="/delete-display-pic";
+	public final static String GET_NATIONALITY ="/get-nationality";
+	public final static String GET_BUSINESS_UNIT ="/get-business-unit";
+>>>>>>> 5c6ea8c20d3e9d3333aff02b2767ac4efce9ac32
 }
