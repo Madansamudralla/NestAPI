@@ -58,6 +58,10 @@ public interface ESSEndPoints {
 	public final static String UPLOAD_DISPLAY_PIC ="/upload-display-pic";
 	public final static String DELETE_DISPLAY_PIC ="/delete-display-pic";
 	public final static String GET_NATIONALITY ="/get-nationality";
+<<<<<<< HEAD
 	public final static String GET_BUSINESS_UNIT ="/get-business-unit";
 	public final static String GET_RELATIONSHIP_DATA="/get-relationship-data";
+=======
+	public final static String EDIT_EMPLOYEE_LANGUAGES ="/edit-employee-languages";
+>>>>>>> 06fe5d00f29a85ea0abb017c11e720c8ea9228cd
 }
