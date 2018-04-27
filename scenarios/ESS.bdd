@@ -55,7 +55,7 @@ META-DATA: {"author":"pranita sinkar","description":"verify get-base-location","
 	Given user login as normal employee
 	Then user should get-base-location
 	
-SCENARIO: ESS_MyProfile_010	
+SCENARIO: ESS_MyProfile_010
 META-DATA: {"author":"pranita sinkar","description":"verify get-country-name","groups":["SMOKE"],enabled=true}
 	Given user login as normal employee
 	Then user should get country name
@@ -290,3 +290,10 @@ META-DATA: {"author":"chetashree gangurde","description":"verify for get nationa
 	Given user login as manager
 	Then user should get nationality
 END
+
+SCENARIO: ESS_MyProfile_048
+META-DATA: {"author":"Pranita Sinkar","description":"verify for get nationality","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get relational data
+END
+
