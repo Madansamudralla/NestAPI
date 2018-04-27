@@ -23,14 +23,7 @@
 			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
 		</classes>
 	</test>
-	
-	<test name="ESSMYProfile Tests" enabled="true">
-		<parameter name="scenario.file.loc" value="scenarios/EssMyProfile.bdd" />
-		<classes>
-			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
-		</classes>
-	</test>
-	
+		
 	<test name="Home Tests" enabled="true">
 		<parameter name="scenario.file.loc" value="scenarios/home.bdd" />
 		<classes>
