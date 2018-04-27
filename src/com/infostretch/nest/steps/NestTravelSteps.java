@@ -347,6 +347,11 @@ public class NestTravelSteps {
 	@QAFTestStep(description = "user can verify the travel locations for travel")
 	public void userCanVerifyTheTravelLocationsForTravel() {
 
+		jsonObject = new JSONObject();
+		jsonObject.put("token", "165000d6543a4aa85e5fa84f77cbb9de");
+		jsonObject.put("sort", "title");
+		jsonObject.put("order", "asc");
+		jsonObject.put("type", "master");
 		ClientUtils.getWebResource(TravelEndPoints.GET_TRAVEL_LOCATIONS)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
@@ -544,6 +549,127 @@ public class NestTravelSteps {
 				"trvl_travel_category_id");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
+
+	@QAFTestStep(description = "user can verify the travel categories for travel")
+	public void userCanVerifyTheTravelCategoriesForTravel() {
+
+		ClientUtils.getWebResource(TravelEndPoints.GET_TRAVEL_CATEGORIES)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(),
+					"trvl_travel_category_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "level");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "created_date");
+		}
+	}
+
+	@QAFTestStep(description = "user can get the id proof attachments for travel")
+	public void userCanGetTheIdProofAttachmentsForTravel() {
+
+		ClientUtils.getWebResource(TravelEndPoints.GET_ID_PROOF_ATTACHMENTS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_loc");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "qryCount");
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "trvl_emp_proof_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(),
+					"trvl_id_proof_filename");
+		}
+	}
+
+	@QAFTestStep(description = "user can get the employee membership with {0} for travel")
+	public void userCanGetTheEmployeeMembershipWithForTravel(String token) {
+
+		jsonObject = new JSONObject();
+		jsonObject.put("token", token);
+		jsonObject.put("emp_number", "790");
+		jsonObject.put("book_membership", "1");
+		ClientUtils.getWebResource(TravelEndPoints.GET_EMPLOYEE_MEMBERSHIPS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "membership_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "airline_title");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "membership_number");
+		}
+	}
+
+	@QAFTestStep(description = "user can verify the employee travel list for travel")
+	public void userCanVerifyTheEmployeeTravelListForTravel() {
+
+		ClientUtils.getWebResource(TravelEndPoints.GET_EMPLOYEE_TRAVEL_LIST)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(),
+					"trvl_travel_request_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "emp_number");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(),
+					"request_by_emp_number");
+		}
+	}
+
+	@QAFTestStep(description = "user can get the travel locations for employee with token {0} for travel")
+	public void userCanGetTheTravelLocationsForEmployeeWithTokenForTravel(String token) {
+
+		jsonObject = new JSONObject();
+		jsonObject.put("token", token);
+		ClientUtils.getWebResource(TravelEndPoints.GET_TRAVEL_LOCATIONS_MYVIEW)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(),
+					"trvl_travel_location_id");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "status");
+			CommonUtils.validateParameterInJsonObject(
+					jsonArrayResult.get(index).getAsJsonObject(), "created_date");
+		}
 	}
 
 }
