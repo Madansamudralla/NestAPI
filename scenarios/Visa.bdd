@@ -43,6 +43,49 @@ META-DATA: {"description":"Verify get visa request list for approving auth","gro
 	Then user should get visa request list for approvingauth
 END
 
+SCENARIO:Visa_Requests_011
+META-DATA: {"description":"Verify get export report for visa request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get export report for visa request
+END
+
+SCENARIO:Visa_Requests_013
+META-DATA: {"description":"Verify get visa request list for hr admin","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as hr
+	Then user should get visa request list for hr admin
+END
+
+SCENARIO:Visa_Requests_014
+META-DATA: {"description":"Verify get visa types","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user
+	Then user should get visa types
+END
+
+SCENARIO:Visa_Requests_015
+META-DATA: {"description":"Verify add-new-country-for-visa","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user
+	Then user should add new country for visa
+END
+
+SCENARIO:Visa_Requests_016
+META-DATA: {"description":"Verify set visa country status","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user
+	Then user should set visa country status
+END
+
+SCENARIO:Visa_Requests_010
+META-DATA: {"description":"Verify get checklist details for travel visa request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get checklist details for travel visa request
+END
+
+
 
 
 
