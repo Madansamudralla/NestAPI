@@ -115,7 +115,6 @@ META-DATA: {"author":"pranita sinkar","description":"verify /get-teams-profile-l
 	Then user should /get-teams-profile-list
 END
 
-<<<<<<< HEAD
 SCENARIO: ESS_TeamProfile_005
 META-DATA: {"author":"pranita sinkar","description":"verify /add-new-employee","groups":["SMOKE"],enabled=true}
 	Given user login as manager
@@ -133,7 +132,8 @@ SCENARIO: ESS_TeamProfile_007
 META-DATA: {"author":"pranita sinkar","description":"verify /delete-Employee","groups":["SMOKE"],enabled=true}
 	Given user login as manager
 	Then user should /delete-Employee
-=======
+END
+
 SCENARIO: ESS_MyProfile_018
 META-DATA: {"author":"chetashree gangurde","description":"verify employee privileges","groups":["SMOKE"]}
 	Given user login as manager
@@ -186,7 +186,6 @@ SCENARIO: ESS_MyProfile_028
 META-DATA: {"author":"chetashree gangurde","description":"verify competency","groups":["SMOKE"]}
 	Given user login as manager
 	Then user should get competency
->>>>>>> 5c6ea8c20d3e9d3333aff02b2767ac4efce9ac32
 END
 
 SCENARIO: ESS_MyProfile_029

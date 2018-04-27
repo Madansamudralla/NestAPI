@@ -19,7 +19,6 @@ public interface ESSEndPoints {
 	public final static String GET_EMPLOYEE_LOCAION_PRIVILEDGES="/get-employee-location-privileges";
 	public final static String SAVE_LOCATION_PRIVILEDGE="/save-location-privileges";
 	public final static String SAVE_PRIVILEDGES="/save-privileges";
-<<<<<<< HEAD
 	public final static String GET_INCLUDE="/get-Include";
 	public final static String GET_SUPERVISORS_NAME="/get-Supervisors-Name";
 	public final static String GET_EMPLOYEE_STATUS_FOR_TEAMS_LIST="/get-employee-status-for-teams-list";
@@ -29,7 +28,6 @@ public interface ESSEndPoints {
 	public final static String DELETE_EMPLOYEE="/delete-Employee";
 	public final static String EXPORT_TEAMS_LIST_DETAILS="/export-teams-list-details";
 	
-=======
 	public final static String EMPLOYEE_PRIVILEGES = "/get-employee-privileges";
 	public final static String CONTACT_DETAILS = "/get-contact-details";
 	public final static String EMPLOYEE_LANGUAGES = "/get-employee-languages";
@@ -61,5 +59,4 @@ public interface ESSEndPoints {
 	public final static String DELETE_DISPLAY_PIC ="/delete-display-pic";
 	public final static String GET_NATIONALITY ="/get-nationality";
 	public final static String GET_BUSINESS_UNIT ="/get-business-unit";
->>>>>>> 5c6ea8c20d3e9d3333aff02b2767ac4efce9ac32
 }
