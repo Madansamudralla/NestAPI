@@ -12,7 +12,7 @@ public class ESSBean extends BaseDataBean {
 	private String eexp_jobtit;
 	@Randomizer(type = RandomizerTypes.LETTERS_ONLY, length = 8)
 	private String eexp_employer;
-	
+
 	public String getEexp_jobtit() {
 		return eexp_jobtit;
 	}
@@ -72,15 +72,58 @@ public class ESSBean extends BaseDataBean {
 	public void setRel_employee_id(String rel_employee_id) {
 		this.rel_employee_id = rel_employee_id;
 	}
+	/*
+	 * Description : This will create random data for edit basic details
+	 */
+	@Randomizer(length = 4, type = RandomizerTypes.DIGITS_ONLY)
+	private String emp_number;
+	@Randomizer(type = RandomizerTypes.LETTERS_ONLY, length = 6)
+	private String emp_firstname;
+	@Randomizer(type = RandomizerTypes.LETTERS_ONLY, length = 6)
+	private String emp_lastname;
+	@Randomizer(length = 4, type = RandomizerTypes.DIGITS_ONLY)
+	private String employee_id;
+
+	public String getEmp_number() {
+		return emp_number;
+	}
+
+	public void setEmp_number(String emp_number) {
+		this.emp_number = emp_number;
+	}
+
+	public String getEmp_firstname() {
+		return emp_firstname;
+	}
+
+	public void setEmp_firstname(String emp_firstname) {
+		this.emp_firstname = emp_firstname;
+	}
+
+	public String getEmp_lastname() {
+		return emp_lastname;
+	}
+
+	public void setEmp_lastname(String emp_lastname) {
+		this.emp_lastname = emp_lastname;
+	}
+
+	public String getEmployee_id() {
+		return employee_id;
+	}
+
+	public void setEmployee_id(String employee_id) {
+		this.employee_id = employee_id;
+	}
 
 	/*
 	 * Description : This will create random data for edit personal details
 	 */
-	@Randomizer(dataset = {"A+","A-","B+","B-","O+","O-","AB+","AB-"})
+	@Randomizer(dataset = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"})
 	private String blood_group;
-	@Randomizer(dataset = {"Male","Female"})
+	@Randomizer(dataset = {"Male", "Female"})
 	private String gender;
-	
+
 	public String getBlood_group() {
 		return blood_group;
 	}
@@ -179,5 +222,68 @@ public class ESSBean extends BaseDataBean {
 
 	public void setEd_seqno(String ed_seqno) {
 		this.ed_seqno = ed_seqno;
+	}
+
+	/*
+	 * Description : This will create random data for edit role description
+	 */
+	@Randomizer(dataset = {"a", "Account Manager", "Accounts Executive", "QA Architect",
+			"QA Delivery Manager", "QA Engineer", "QA Lead", "QA Manager",
+			"Tele Marketing Executive", "Test Automation Engineer",
+			"Test Automation Lead", "Testing USA Title", "UI Designer", "UI/UX Designer",
+			"UI/UX Manager", "VP of Mobile Solutions", "Web Designer",
+			"Web Research Analyst"})
+	private String job_title;
+	@Randomizer(suffix="@infostretch.com")
+	private String emp_work_email;
+
+	public String getJob_title() {
+		return job_title;
+	}
+
+	public void setJob_title(String job_title) {
+		this.job_title = job_title;
+	}
+
+	public String getEmp_work_email() {
+		return emp_work_email;
+	}
+
+	public void setEmp_work_email(String emp_work_email) {
+		this.emp_work_email = emp_work_email;
+	}
+	
+	/*
+	 * Description : This will create random data for delete family members
+	 */
+	@Randomizer(dataset = {"8"})
+	private String seq_lang_id;
+	@Randomizer(dataset = {"4"})	
+	private String lang_id;
+	@Randomizer(dataset = {"2"})
+	private String fluency_id;
+	
+	public String getFluency_id() {
+		return fluency_id;
+	}
+
+	public void setFluency_id(String fluency_id) {
+		this.fluency_id = fluency_id;
+	}
+	
+	public String getSeq_lang_id() {
+		return seq_lang_id;
+	}
+
+	public void setSeq_lang_id(String seq_lang_id) {
+		this.seq_lang_id = seq_lang_id;
+	}
+
+	public String getLang_id() {
+		return lang_id;
+	}
+
+	public void setLang_id(String lang_id) {
+		this.lang_id = lang_id;
 	}
 }
