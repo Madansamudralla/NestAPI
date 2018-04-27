@@ -1,6 +1,6 @@
 
 SCENARIO: ESS_MyProfile_001
-META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=false}
+META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=true}
 	
 	Given user login as manager
 	Then user should get-basic-details
@@ -8,7 +8,7 @@ META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","
 END
 
 SCENARIO: ESS_MyProfile_002
-META-DATA: {"author":"prashinka sahu","description":"verify get-personal-details","groups":["SMOKE"],enabled=false}
+META-DATA: {"author":"prashinka sahu","description":"verify get-personal-details","groups":["SMOKE"],enabled=true}
 	Given user login as manager
 	Then user should get-personal-details
 END
@@ -241,6 +241,7 @@ META-DATA: {"author":"chetashree gangurde","description":"verify for delete fami
 	Given user login as manager
 	Then user should delete family members
 END
+
 
 SCENARIO: ESS_MyProfile_044
 META-DATA: {"author":"chetashree gangurde","description":"verify for edit role description","groups":["SMOKE"]}

@@ -11,12 +11,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.infostretch.nest.bean.ESSBean;
 import com.infostretch.nest.providers.ESSEndPoints;
-import com.infostretch.nest.providers.ESSEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.qmetry.qaf.automation.core.ConfigurationManager;
-import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
@@ -32,13 +30,13 @@ public class NestESSSteps {
 	ESSBean essBean;
 	@QAFTestStep(description = "user should get-basic-details")
 	public void userShouldGetBasicDetails() {
-		JSONObject obj = new JSONObject();
-		obj.put("token", TokenUtils.getTokenAsStr());
-		obj.put("emp_number",
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("emp_number",
 				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 
 		ClientUtils.getWebResource(ESSEndPoints.GET_BASIC_DETAILS)
-				.type(MediaType.APPLICATION_JSON).post(obj.toString());
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		Response response = ClientUtils.getResponse();
 		JsonObject result = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(result, "emp_firstname");
@@ -55,8 +53,8 @@ public class NestESSSteps {
 				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		ClientUtils.getWebResource(ESSEndPoints.GET_PERSONAL_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(obj.toString());
-		Response response = ClientUtils.getResponse();
-		JsonArray results = CommonUtils.getValidatedResultArray(response);
+		response = ClientUtils.getResponse();
+		result= CommonUtils.getValidateResultObject(response);
 
 		for (index = 0; index <= results.size() - 1; index++) {
 			Validator.verifyThat(
