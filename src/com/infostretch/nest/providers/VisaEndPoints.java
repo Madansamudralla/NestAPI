@@ -14,4 +14,5 @@ public interface VisaEndPoints {
 	public final static String VISA_ADD_NEW_COUNTRY= "/add-new-country-for-visa";
 	public final static String VISA_SET_COUNTRY_STATUS= "/set-visa-country-status";
 	public final static String VISA_CHECKLIST_DETAILS_FOR_TRAVEL_VISA_REQUEST= "/get-checklist-details-for-travel-visa-request";
+	public final static String VISA_ADD_EDIT_VISA_TYPES= "add-edit-visa-types";
 }

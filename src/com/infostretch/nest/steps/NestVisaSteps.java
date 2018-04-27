@@ -14,6 +14,7 @@ import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.qmetry.qaf.automation.core.MessageTypes;
+import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
@@ -263,4 +264,10 @@ public class NestVisaSteps {
 		CommonUtils.validateParameterInJsonObject(result, "travel_data_submitted");
 		CommonUtils.validateParameterInJsonObject(result, "TotalTravelChecklist");
 	}
+	@QAFTestStep(description = "user should add edit visa types")
+	public void userShouldAddEditVisaTypes() {
+		// TODO: remove NotYetImplementedException and call test steps
+		throw new NotYetImplementedException();
+	}
+
 }

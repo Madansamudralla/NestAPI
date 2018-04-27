@@ -85,6 +85,14 @@ META-DATA: {"description":"Verify get checklist details for travel visa request"
 	Then user should get checklist details for travel visa request
 END
 
+SCENARIO:Visa_Requests_010
+META-DATA: {"description":"Verify add edit visa types","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as visa user 
+	Then user should add edit visa types
+END
+
+
 
 
 
