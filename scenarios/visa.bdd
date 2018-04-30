@@ -1,12 +1,9 @@
-
-
 SCENARIO:Visa_Requests_006
 META-DATA: {"description":"Verify get visa country list","groups":["SMOKE"],"author":["palash"]}
 	
 	Given user login as manager
 	Then user should get visa country list
 END
-
 
 SCENARIO:Visa_Requests_007
 META-DATA: {"description":"Verify get supervisor name","groups":["SMOKE"],"author":["palash"] }
@@ -141,10 +138,44 @@ META-DATA: {"description":"Verify get visa trvl list for manager","groups":["SMO
 	Then user should get visa trvl list for manager
 END
 
+SCENARIO:Visa_Requests_021
+META-DATA: {"description":"Verify get visa request details","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
 
+	Given user login as manager 
+	Then user should visa request details
+END
 
+SCENARIO:Visa_Travel_Requests_Team_054
+META-DATA: {"description":"Verify get account managers","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
 
+	Given user login as manager
+	Then user should get account managers
+END
 
+SCENARIO:Visa_Requests_022
+META-DATA: {"description":"Verify approve reject visa request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
 
+	Given user login as manager
+	Then user should approve reject visa request
+END
 
+SCENARIO:Visa_Requests_028
+META-DATA: {"description":"Verify get duration for visa","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
 
+	Given user login as manager
+	Then user should get duration for visa
+END
+
+SCENARIO:Visa_Requests_Team_043
+META-DATA: {"description":"Verify get employees under manager dd","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get employees under manager dd
+END
+
+SCENARIO:Visa_Requests_026
+META-DATA: {"description":"Verify get basic employee details on initiate","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get basic employee details on initiate
+END
