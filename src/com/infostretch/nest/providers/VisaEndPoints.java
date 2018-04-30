@@ -22,4 +22,10 @@ public interface VisaEndPoints {
 	public final static String VISA_TRAVEL_REQUEST_DETAILS ="/visa-travel-request-details";
 	public final static String VISA_TRVL_LIST_FOR_EMPLOYEE="/get-visa-trvl-list-for-employee";
 	public final static String VISA_TRVL_LIST_FOR_MANAGER = "/get-visa-trvl-list-for-manager";
+	public final static String VISA_REQUEST_DETAILS= "/visa-request-details";
+	public final static String VISA_GET_ACCOUNT_MANAGERS = "/get-account-managers";
+	public final static String VISA_APPROVE_REJECT_VISA_REQUEST= "/approve-reject-visa-request";
+	public final static String VISA_GET_DURATION = "/get-duration-for-visa";
+	public final static String VISA_GET_EMPLOYEES_UNDER_MANAGER_DD ="/get-employees-under-manager-dd";
+	public final static String VISA_GET_BASIC_EMPLOYEE_DETAILS_ON_INITIATE ="/get-basic-employee-details-on-initiate";
 }
