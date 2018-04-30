@@ -106,35 +106,3 @@ META-DATA: {"author":"Suryakant Kale","description":"get the venue list for trai
 	When user can added and edited venue list for training module
 
 END
-SCENARIO: Training_TrainingCalendar_34
-META-DATA: {"author":"apoorva shewale","description":"user should get training list dd"}
-	
-	Given user login as manager
-	Then user should get training list dd
-		
-END
-
-SCENARIO: Training_Reports_SummuryReports_31
-META-DATA: {"author":"apoorva shewale","description":"user should get summary report"}
-	
-	Given user login as manager
-	Then user should get summary report
-		
-END
-
-SCENARIO: Training_Reports_SummuryReports_30
-META-DATA: {"author":"apoorva shewale","description":"user should export summary report"}
-	
-	Given user login as manager
-	Then user should export summary report
-		
-END
-
-SCENARIO: Training_Reports_SummuryReports_29
-META-DATA: {"author":"apoorva shewale","description":"user should delete venue"}
-	
-	Given user login as manager
-	Then user should delete venue
-		
-END
-
