@@ -22,10 +22,10 @@ import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
 
 public class NestTrainingSteps {
-	JSONObject jsonObject, jsonObject1, jsonObject2;
+	JSONObject jsonObject, jsonObject1, jsonObject2, newResult;
 	JsonObject result, responseBody, jsonObjectResult;
 	JSONArray jsonArray;
-	JsonArray results, object1Result, jsonArrayResult;
+	JsonArray results, object1Result, jsonArrayResult, NewResultArray;
 	int index;
 	Response response;
 	TrainingBean trainingBean = new TrainingBean();
@@ -394,4 +394,5 @@ public class NestTrainingSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
+
 }
