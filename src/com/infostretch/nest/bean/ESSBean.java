@@ -252,4 +252,38 @@ public class ESSBean extends BaseDataBean {
 	public void setEmp_work_email(String emp_work_email) {
 		this.emp_work_email = emp_work_email;
 	}
+	
+	/*
+	 * Description : This will create random data for delete family members
+	 */
+	@Randomizer(dataset = {"8"})
+	private String seq_lang_id;
+	@Randomizer(dataset = {"4"})	
+	private String lang_id;
+	@Randomizer(dataset = {"2"})
+	private String fluency_id;
+	
+	public String getFluency_id() {
+		return fluency_id;
+	}
+
+	public void setFluency_id(String fluency_id) {
+		this.fluency_id = fluency_id;
+	}
+	
+	public String getSeq_lang_id() {
+		return seq_lang_id;
+	}
+
+	public void setSeq_lang_id(String seq_lang_id) {
+		this.seq_lang_id = seq_lang_id;
+	}
+
+	public String getLang_id() {
+		return lang_id;
+	}
+
+	public void setLang_id(String lang_id) {
+		this.lang_id = lang_id;
+	}
 }

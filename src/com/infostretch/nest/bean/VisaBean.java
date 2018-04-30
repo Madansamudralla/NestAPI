@@ -20,10 +20,32 @@ public class VisaBean extends BaseDataBean {
 	private String country_name;
 	@Randomizer(dataset = {"25"})
 	private String visa_country_id;
-	@Randomizer(dataset = {"1701"})
+	@Randomizer(dataset = {"1701,1702"})
 	private String visa_trvl_request_id;
 	@Randomizer(dataset = {"7"})
 	private String visa_trvl_type_id;
+	@Randomizer(dataset = {"11,1"})
+	private String visa_type_id;
+	@Randomizer(dataset = {"business visa 1"})
+	private String visa_type_name;
+	
+
+
+	public String getVisa_type_name() {
+		return visa_type_name;
+	}
+
+	public void setVisa_type_name(String visa_type_name) {
+		this.visa_type_name = visa_type_name;
+	}
+
+	public String getVisa_type_id() {
+		return visa_type_id;
+	}
+
+	public void setVisa_type_id(String visa_type_id) {
+		this.visa_type_id = visa_type_id;
+	}
 
 	public String getStatus() {
 		return status;

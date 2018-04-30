@@ -27,7 +27,6 @@ public interface ESSEndPoints {
 	public final static String GET_LOCATION_FOR_NEW_EMP="/get-location-for-new-emp";
 	public final static String DELETE_EMPLOYEE="/delete-Employee";
 	public final static String EXPORT_TEAMS_LIST_DETAILS="/export-teams-list-details";
-	
 	public final static String EMPLOYEE_PRIVILEGES = "/get-employee-privileges";
 	public final static String CONTACT_DETAILS = "/get-contact-details";
 	public final static String EMPLOYEE_LANGUAGES = "/get-employee-languages";
@@ -59,4 +58,6 @@ public interface ESSEndPoints {
 	public final static String DELETE_DISPLAY_PIC ="/delete-display-pic";
 	public final static String GET_NATIONALITY ="/get-nationality";
 	public final static String GET_BUSINESS_UNIT ="/get-business-unit";
+	public final static String GET_RELATIONSHIP_DATA="/get-relationship-data";
+	public final static String EDIT_EMPLOYEE_LANGUAGES ="/edit-employee-languages";
 }
