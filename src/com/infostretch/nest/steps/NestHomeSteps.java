@@ -1,27 +1,29 @@
 package com.infostretch.nest.steps;
 import javax.ws.rs.core.MediaType;
+
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.infostretch.nest.bean.HomeBean;
-import com.infostretch.nest.bean.VisaBean;
 import com.infostretch.nest.providers.EndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.qmetry.qaf.automation.step.QAFTestStep;
+import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
 
 public class NestHomeSteps {
 	JSONObject jsonObject;
-	JsonObject result,responseBody;
+	JsonObject result, responseBody;
 	Response response;
 	JsonArray results;
 	int index;
-	HomeBean homeBean=new HomeBean();
+	HomeBean homeBean = new HomeBean();
 
 	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
@@ -59,7 +61,6 @@ public class NestHomeSteps {
 		CommonUtils.validateParameterInJsonObject(result, "PTO");
 		CommonUtils.validateParameterInJsonObject(result, "Comp Off");
 		CommonUtils.validateParameterInJsonObject(result, "LWP");
-
 	}
 
 	@QAFTestStep(description = "user should get menu urls")
@@ -69,7 +70,6 @@ public class NestHomeSteps {
 				.post();
 		response = ClientUtils.getResponse();
 		CommonUtils.getValidatedResultArray(response);
-
 	}
 
 	@QAFTestStep(description = "user should get release data")
@@ -90,8 +90,8 @@ public class NestHomeSteps {
 					(results.get(index).getAsJsonObject()).get("release_date").toString(),
 					Matchers.notNullValue());
 		}
-
-	}
+  }
+	
 	@QAFTestStep(description = "user should get my leave list")
 	public void userShouldGetMyLeaveList() {
 
@@ -99,15 +99,20 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		result = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2270").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(result, "emp_initial");
-		CommonUtils.validateParameterInJsonObject(result, "date");
-		CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
-		CommonUtils.validateParameterInJsonObject(result, "leave_status");
+		if (responseBody.toString().contains("2270")) {
+			result = CommonUtils.getValidateResultObject(response);
+			result = responseBody.get("response").getAsJsonObject().get("results")
+					.getAsJsonObject().get("2270").getAsJsonObject();
+			CommonUtils.validateParameterInJsonObject(result, "emp_initial");
+			CommonUtils.validateParameterInJsonObject(result, "date");
+			CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
+			CommonUtils.validateParameterInJsonObject(result, "leave_status");
+		} else {
+			JsonObject result = CommonUtils.getValidateResultObject(response);
+			Reporter.log(result.toString());
+		}
 	}
 
 	@QAFTestStep(description = "user should get leave balances")
