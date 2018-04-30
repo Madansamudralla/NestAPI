@@ -29,8 +29,6 @@ public class VisaBean extends BaseDataBean {
 	@Randomizer(dataset = {"business visa 1"})
 	private String visa_type_name;
 	
-
-
 	public String getVisa_type_name() {
 		return visa_type_name;
 	}

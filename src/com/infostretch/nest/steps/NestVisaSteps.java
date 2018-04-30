@@ -95,8 +95,7 @@ public class NestVisaSteps {
 		response = ClientUtils.getResponse();
 		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
-
-	}
+  }
 
 	@QAFTestStep(description = "user should get all employee list of expense")
 	public void UserShouldGetAllEmployeeListOfExpense() {
@@ -113,9 +112,9 @@ public class NestVisaSteps {
 			Validator.verifyThat(
 					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
 					Matchers.notNullValue());
-
-		}
+			}
 	}
+	
 	@QAFTestStep(description = "user should get visa request list for approvingauth")
 	public void userShouldGetVisaRequestListForApprovingauth() {
 		ClientUtils.getWebResource(VisaEndPoints.VISA_REQUEST_LIST_FOR_APPROVING_AUTH)
@@ -132,13 +131,11 @@ public class NestVisaSteps {
 					Matchers.notNullValue());
 			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("reporting_mngr").toString(), Matchers.notNullValue());
-
 		}
-
 	}
+	
 	@QAFTestStep(description = "user should get export report for visa request")
 	public void userShouldGetExportReportForVisaRequest() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -155,7 +152,6 @@ public class NestVisaSteps {
 	}
 	@QAFTestStep(description = "user should get visa request list for hr admin")
 	public void userShouldGetVisaRequestListForHrAdmin() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -168,6 +164,7 @@ public class NestVisaSteps {
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		results = result.get("details").getAsJsonArray();
+		
 		for (index = 0; index <= results.size() - 1; index++) {
 			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("visa_request_id").toString(), Matchers.notNullValue());
@@ -181,6 +178,7 @@ public class NestVisaSteps {
 					Matchers.notNullValue());
 		}
 	}
+	
 	@QAFTestStep(description = "user should get visa types")
 	public void userShouldGetVisaTypes() {
 		ClientUtils.getWebResource(VisaEndPoints.VISA_TYPES)
@@ -209,7 +207,6 @@ public class NestVisaSteps {
 	}
 	@QAFTestStep(description = "user should add new country for visa")
 	public void userShouldAddNewCountryForVisa() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -227,7 +224,6 @@ public class NestVisaSteps {
 	}
 	@QAFTestStep(description = "user should set visa country status")
 	public void userShouldSetVisaCountryStatus() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("visa_country_id", visaBean.getVisa_country_id());
@@ -241,7 +237,6 @@ public class NestVisaSteps {
 
 	@QAFTestStep(description = "user should get checklist details for travel visa request")
 	public void userShouldGetChecklistDetailsForTravelVisaRequest() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("visa_trvl_request_id", visaBean.getVisa_trvl_request_id());
@@ -256,9 +251,9 @@ public class NestVisaSteps {
 		CommonUtils.validateParameterInJsonObject(result, "travel_data_submitted");
 		CommonUtils.validateParameterInJsonObject(result, "TotalTravelChecklist");
 	}
+	
 	@QAFTestStep(description = "user should add edit visa types")
 	public void userShouldAddEditVisaTypes() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -273,9 +268,9 @@ public class NestVisaSteps {
 		result = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(result, "action_message");
 	}
+	
 	@QAFTestStep(description = "user should delete-visa-type")
 	public void userShouldDeleteVisaType() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("visa_type_id", visaBean.getVisa_type_id());
@@ -285,11 +280,10 @@ public class NestVisaSteps {
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(result, "action_message");
-
 	}
+	
 	@QAFTestStep(description = "user should get visa request list for manager")
 	public void userShouldGetVisaRequestListForManager() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -315,9 +309,9 @@ public class NestVisaSteps {
 					Matchers.notNullValue());
 		}
 	}
+	
 	@QAFTestStep(description = "user should get visa trvl list for admins")
 	public void userShouldGetVisaTrvlListForAdmins() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -330,6 +324,7 @@ public class NestVisaSteps {
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		results = result.get("details").getAsJsonArray();
+		
 		for (index = 0; index <= results.size() - 1; index++) {
 			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("visa_trvl_req_id").toString(), Matchers.notNullValue());
@@ -341,15 +336,16 @@ public class NestVisaSteps {
 					.get("visa_trvl_duration").toString(), Matchers.notNullValue());
 		}
 	}
+	
 	@QAFTestStep(description = "user should get delivery managers")
 	public void userShouldGetDeliveryManagers() {
-
 		ClientUtils.getWebResource(VisaEndPoints.VISA_DILIVERY_MANAGERS)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		Response response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		results = result.get("details").getAsJsonArray();
+		
 		for (index = 0; index <= results.size() - 1; index++) {
 			Validator.verifyThat(
 					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
@@ -357,12 +353,11 @@ public class NestVisaSteps {
 			Validator.verifyThat(
 					(results.get(index).getAsJsonObject()).get("ename").toString(),
 					Matchers.notNullValue());
-
 		}
 	}
+	
 	@QAFTestStep(description = "user should visa travel request details")
 	public void userShouldVisaTravelRequestDetails() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("visa_trvl_request_id", visaBean.getVisa_trvl_request_id());
@@ -371,7 +366,6 @@ public class NestVisaSteps {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
-
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		result = responseBody.get("response").getAsJsonObject().get("results")
@@ -384,9 +378,9 @@ public class NestVisaSteps {
 		CommonUtils.validateParameterInJsonObject(result, "ename");
 		CommonUtils.validateParameterInJsonObject(result, "employee_id");
 	}
+	
 	@QAFTestStep(description = "user should get visa trvl list for employee")
 	public void userShouldGetVisaTrvlListForEmployee() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -398,17 +392,15 @@ public class NestVisaSteps {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
-
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		result = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("user_type").getAsJsonObject();
 		CommonUtils.validateParameterInJsonObject(result, "isApprovalAdmin");
-
-	}
+	}	
+	
 	@QAFTestStep(description = "user should get visa trvl list for manager")
 	public void userShouldGetVisaTrvlListForManager() {
-
 		visaBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
@@ -422,6 +414,7 @@ public class NestVisaSteps {
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		results = result.get("details").getAsJsonArray();
+		
 		for (index = 0; index <= results.size() - 1; index++) {
 			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("visa_trvl_req_id").toString(), Matchers.notNullValue());
