@@ -8,6 +8,11 @@ public interface TrainingEndPoints {
 	public static final String I_HAVE_TAUGHT = "/get-i-have-taught";
 	public static final String GET_I_AM_TEACHING="/get-i-am-teaching";
 	public static final String GET_FEEDBACK_QUESTIONS_LIST="/get-feedback-questions-list";
-	
-
+	public static final String GET_TRAINER_LIST_DD="/get-trainer-list-dd";	
+	public static final String GET_ACTIVE_VENUE_LIST_DD="/get-active-venue-list-dd";
+	public static final String GET_ACTIVE_BUSINESS_UNIT="/get-active-business-unit";
+	public static final String GET_TRAINING_MEMBERS="/get-training-members";
+	public static final String GET_EDIT_TRAINING_MEMBERS="/add-edit-traning-members";
+	public static final String GET_EMPLIST_FOR_TRAINING_NOMINATION_DD="/get-emplist-for-training-nomination-dd";
+	public static final String EXPORT_TRAINING_FEEDBACK_REPORT="/export-training-feedback-report";
 }
