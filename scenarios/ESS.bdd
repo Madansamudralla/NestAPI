@@ -303,4 +303,3 @@ META-DATA: {"author":"pranita sinkar","description":"verify /delete-Employee","g
 	Given user login as manager
 	Then user should /delete-Employee
 END
->>>>>>> 06fe5d00f29a85ea0abb017c11e720c8ea9228cd

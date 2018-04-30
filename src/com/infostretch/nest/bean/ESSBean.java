@@ -5,7 +5,7 @@ import com.qmetry.qaf.automation.util.Randomizer;
 import com.qmetry.qaf.automation.util.RandomStringGenerator.RandomizerTypes;
 
 public class ESSBean extends BaseDataBean {
-	/*
+	/* Author: Chetashree Gangurde
 	 * Description : This will create random data for edit professional experiance
 	 */
 	@Randomizer(type = RandomizerTypes.LETTERS_ONLY, length = 6)
