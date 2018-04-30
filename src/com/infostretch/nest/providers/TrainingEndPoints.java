@@ -30,4 +30,8 @@ public interface TrainingEndPoints {
 			"/get-training-members-for-attendance";
 	public static final String GET_REGISTERED_EMPLOYEE_LIST_DD =
 			"/get-registered-employee-list-dd";
+public final static String GET_TRAINING_LIST_DD = "/get-training-list-dd";
+	public final static String GET_SUMMARY_REPORT ="/get-summary-report";
+	public final static String EXPORT_SUMMARY_REPORT ="/export-summary-report";
+	public final static String DELETE_VENUE="/delete-venue";
 }
