@@ -1,4 +1,111 @@
+SCENARIO: Training_MyTrainings_09
+META-DATA: {"author":"chetashree gangurde","description":"verify for get training dates dd","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get training dates dd
+END
 
+SCENARIO: Training_MyTrainings_10
+META-DATA: {"author":"chetashree gangurde","description":"verify for get training members for attendance","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get training members for attendance
+END
+
+SCENARIO: Training_MyTrainings_12
+META-DATA: {"author":"chetashree gangurde","description":"verify for export training feedback report","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should export training feedback report
+END
+
+SCENARIO: Training_MyTrainings_13
+META-DATA: {"author":"chetashree gangurde","description":"verify for get trainer list dd","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get trainer list dd
+END
+
+SCENARIO: Training_MyTrainings_14
+META-DATA: {"author":"chetashree gangurde","description":"verify for get active venue list dd","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get active venue list dd
+END
+
+SCENARIO: Training_MyTrainings_15
+META-DATA: {"author":"chetashree gangurde","description":"verify for get active business unit","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get active business unit
+END
+
+SCENARIO: Training_MyTrainings_17
+META-DATA: {"author":"chetashree gangurde","description":"verify for get emplist for training nomination dd","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get emplist for training nomination dd
+END
+
+SCENARIO: Training_MyTrainings_18
+META-DATA: {"author":"chetashree gangurde","description":"verify for get training members","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get training members
+END
+
+SCENARIO: Training_MyTrainings_19
+META-DATA: {"author":"chetashree gangurde","description":"verify for add edit traning members","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should add edit traning members
+END
+
+SCENARIO: Training_MyTrainings_21
+META-DATA: {"author":"chetashree gangurde","description":"verify for get registered employee list dd","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get registered employee list dd
+END
+
+SCENARIO: Training_Trainings_22
+META-DATA: {"author":"Suryakant Kale","description":"get the course list for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can get the course list for training module
+
+END
+
+
+SCENARIO: Training_Trainings_23
+META-DATA: {"author":"Suryakant Kale","description":"get the statistics for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can get the statistics for training module
+
+END
+
+SCENARIO: Training_Trainings_24
+META-DATA: {"author":"Suryakant Kale","description":"get the training type dd for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can get the training type dd for training module
+
+END
+
+SCENARIO: Training_Trainings_25
+META-DATA: {"author":"Suryakant Kale","description":"get the individual emp statistics for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can get the individual emp statistics for training module
+
+END
+
+SCENARIO: Training_Trainings_26
+META-DATA: {"author":"Suryakant Kale","description":"get the venue list for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can get the venue list for training module
+
+END
+
+SCENARIO: Training_Trainings_27
+META-DATA: {"author":"Suryakant Kale","description":"get the venue list for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can added and edited venue list for training module
+
+END
 SCENARIO: Training_TrainingCalendar_34
 META-DATA: {"author":"apoorva shewale","description":"user should get training list dd"}
 	
@@ -30,3 +137,4 @@ META-DATA: {"author":"apoorva shewale","description":"user should delete venue"}
 	Then user should delete venue
 		
 END
+
