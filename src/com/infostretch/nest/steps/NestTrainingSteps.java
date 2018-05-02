@@ -359,7 +359,7 @@ public class NestTrainingSteps {
 		CommonUtils.validateParameterInJsonObject(result, "action_message");
 		Reporter.log(result.toString());
 	}
-	
+
 	@QAFTestStep(description = "user should get registered employee list dd")
 	public void userShouldGetRegisteredEmployeeListDd() {
 		trainingBean.fillRandomData();
@@ -421,7 +421,7 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject.put("token", "078a0cceb927ab4f5fc8d7d8cfe91f04");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("search", jsonObject1);
 		jsonObject1.put("title", "");
 		jsonObject1.put("date_from", trainingBean.getDate_from());
@@ -488,7 +488,7 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject.put("token", "8e3956c3b7c32709cdc8c40a0a93c103");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("statistics", jsonObject1);
 		jsonObject1.put("emp_number", trainingBean.getEmp_number());
 		jsonObject1.put("type", trainingBean.getType());
@@ -536,7 +536,7 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject.put("token", "17583f751bbfe53a3496023f718f870e");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject1.put("trn_venue_id", trainingBean.getTrn_venue_id());
 		jsonObject1.put("title", trainingBean.getTitle());
 		jsonObject1.put("description", trainingBean.getDescription());
@@ -554,4 +554,99 @@ public class NestTrainingSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 
+	@QAFTestStep(description = "user should get training list dd")
+	public void userShouldGetTrainingListDd() {
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("date_from", trainingBean.getDate_from());
+		jsonObject2.put("date_to", trainingBean.getDate_to());
+		jsonObject.put("search", jsonObject2);
+		ClientUtils.getWebResource(TrainingEndPoints.GET_TRAINING_LIST_DD)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		results = CommonUtils.getValidatedResultArray(response);
+
+		for (index = 0; index <= results.size() - 1; index++) {
+			Validator.verifyThat((results.get(index).getAsJsonObject())
+					.get("trn_course_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("description").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("trn_venue_id").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat(
+					(results.get(index).getAsJsonObject()).get("start_date").toString(),
+					Matchers.notNullValue());
+		}
+	}
+
+	@QAFTestStep(description = "user should get summary report")
+	public void userShouldGetSummaryReport() {
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("start_time", trainingBean.getDate_from());
+		jsonObject2.put("end_time", trainingBean.getDate_to());
+		jsonObject.put("trainingSearchDetails", jsonObject2);
+		ClientUtils.getWebResource(TrainingEndPoints.GET_SUMMARY_REPORT)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		jsonObjectResult = result.getAsJsonObject();
+		object1Result = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= object1Result.size() - 1; index++) {
+			Validator.verifyThat(
+					(object1Result.get(index).getAsJsonObject()).get("ctitle").toString(),
+					Matchers.notNullValue());
+			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+					.get("trn_course_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+					.get("instructor").toString(), Matchers.notNullValue());
+			Validator.verifyThat(
+					(object1Result.get(index).getAsJsonObject()).get("date").toString(),
+					Matchers.notNullValue());
+		}
+	}
+
+	@QAFTestStep(description = "user should export summary report")
+	public void userShouldExportSummaryReport() {
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("start_time", trainingBean.getDate_from());
+		jsonObject2.put("end_time", trainingBean.getDate_to());
+		jsonObject.put("trainingSearchDetails", jsonObject2);
+		ClientUtils.getWebResource(TrainingEndPoints.EXPORT_SUMMARY_REPORT)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		Validator.verifyThat((result.getAsJsonObject()).get("Download_URL").toString(),
+				Matchers.notNullValue());
+	}
+
+	@QAFTestStep(description = "user should delete venue")
+	public void userShouldDeleteVenue() {
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject2 = new JSONObject();
+		jsonObject2.put("trn_venue_id", trainingBean.getTrn_venue_id());
+		jsonObject.put("venue_details", jsonObject2);
+
+		ClientUtils.getWebResource(TrainingEndPoints.DELETE_VENUE)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(result, "trn_venue_id");
+		Validator.verifyThat((result.getAsJsonObject()).get("action_message").toString(),
+				Matchers.containsString("Venue removed successfully"));
+		CommonUtils.validateParameterInJsonObject(result, "response_type");
+	}
 }
