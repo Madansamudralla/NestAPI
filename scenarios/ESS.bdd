@@ -262,14 +262,6 @@ META-DATA: {"author":"chetashree gangurde","description":"verify for get nationa
 	Then user should get nationality
 END
 
-<<<<<<< HEAD
-SCENARIO: ESS_MyProfile_048
-META-DATA: {"author":"Pranita Sinkar","description":"verify for get nationality","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should get relational data
-END
-
-=======
 SCENARIO: ESS_MyProfile_052
 META-DATA: {"author":"chetashree gangurde","description":"verify for edit employee languages","groups":["SMOKE"]}
 	Given user login as manager
@@ -293,6 +285,7 @@ META-DATA: {"author":"pranita sinkar","description":"verify /get-employee-status
 	Given user login as manager
 	Then user should /get-employee-status-for-teams-list
 END
+
 SCENARIO: ESS_TeamProfile_004
 META-DATA: {"author":"pranita sinkar","description":"verify /get-teams-profile-list","groups":["SMOKE"],enabled=true}
 	Given user login as manager
@@ -310,4 +303,3 @@ META-DATA: {"author":"pranita sinkar","description":"verify /delete-Employee","g
 	Given user login as manager
 	Then user should /delete-Employee
 END
->>>>>>> 06fe5d00f29a85ea0abb017c11e720c8ea9228cd

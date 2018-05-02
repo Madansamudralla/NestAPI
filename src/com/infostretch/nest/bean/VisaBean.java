@@ -20,10 +20,70 @@ public class VisaBean extends BaseDataBean {
 	private String country_name;
 	@Randomizer(dataset = {"25"})
 	private String visa_country_id;
-	@Randomizer(dataset = {"1701"})
+	@Randomizer(dataset = {"1701,1702"})
 	private String visa_trvl_request_id;
 	@Randomizer(dataset = {"7"})
 	private String visa_trvl_type_id;
+	@Randomizer(dataset = {"11,1"})
+	private String visa_type_id;
+	@Randomizer(dataset = {"business visa 1"})
+	private String visa_type_name;
+	@Randomizer(dataset = {"792"})
+	private String det_emp_number;
+	@Randomizer(dataset = {"1"})
+	private String is_req;
+	@Randomizer(dataset = {"294,296"})
+	private String visa_request_id;
+	@Randomizer(dataset = {"etg"})
+	private String comments;
+	
+	public String getDet_emp_number() {
+		return det_emp_number;
+	}
+
+	public void setDet_emp_number(String det_emp_number) {
+		this.det_emp_number = det_emp_number;
+	}
+
+	public String getIs_req() {
+		return is_req;
+	}
+
+	public void setIs_req(String is_req) {
+		this.is_req = is_req;
+	}
+
+	public String getVisa_request_id() {
+		return visa_request_id;
+	}
+
+	public void setVisa_request_id(String visa_request_id) {
+		this.visa_request_id = visa_request_id;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	public String getVisa_type_name() {
+		return visa_type_name;
+	}
+
+	public void setVisa_type_name(String visa_type_name) {
+		this.visa_type_name = visa_type_name;
+	}
+
+	public String getVisa_type_id() {
+		return visa_type_id;
+	}
+
+	public void setVisa_type_id(String visa_type_id) {
+		this.visa_type_id = visa_type_id;
+	}
 
 	public String getStatus() {
 		return status;
@@ -88,5 +148,4 @@ public class VisaBean extends BaseDataBean {
 	public void setCountry_id(String country_id) {
 		this.country_id = country_id;
 	}
-
 }
