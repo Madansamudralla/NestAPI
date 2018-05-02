@@ -1,27 +1,29 @@
 package com.infostretch.nest.steps;
 import javax.ws.rs.core.MediaType;
+
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.infostretch.nest.bean.HomeBean;
-import com.infostretch.nest.bean.VisaBean;
 import com.infostretch.nest.providers.EndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.qmetry.qaf.automation.step.QAFTestStep;
+import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
 
 public class NestHomeSteps {
 	JSONObject jsonObject;
-	JsonObject result,responseBody;
+	JsonObject jsonObjectResult, responseBody;
 	Response response;
-	JsonArray results;
+	JsonArray jsonArrayResult;
 	int index;
-	HomeBean homeBean=new HomeBean();
+	HomeBean homeBean = new HomeBean();
 
 	@QAFTestStep(description = "user should get accessible menu list")
 	public void verifyAccessibleMenuList() {
@@ -30,9 +32,9 @@ public class NestHomeSteps {
 				.post();
 
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 		JsonArray param1reaults =
-				results.get(0).getAsJsonObject().get("manager").getAsJsonArray();
+				jsonArrayResult.get(0).getAsJsonObject().get("manager").getAsJsonArray();
 		Validator.verifyThat(
 				(param1reaults.get(0).getAsJsonObject()).get("name").toString(),
 				Matchers.notNullValue());
@@ -51,15 +53,14 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		result = responseBody.get("response").getAsJsonObject().get("results")
+		jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("IN").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(result, "PTO");
-		CommonUtils.validateParameterInJsonObject(result, "Comp Off");
-		CommonUtils.validateParameterInJsonObject(result, "LWP");
-
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "PTO");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Comp Off");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "LWP");
 	}
 
 	@QAFTestStep(description = "user should get menu urls")
@@ -69,7 +70,6 @@ public class NestHomeSteps {
 				.post();
 		response = ClientUtils.getResponse();
 		CommonUtils.getValidatedResultArray(response);
-
 	}
 
 	@QAFTestStep(description = "user should get release data")
@@ -78,20 +78,20 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("release_note_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("title").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("title").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("release_date").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("release_date").toString(),
 					Matchers.notNullValue());
 		}
-
-	}
+  }
+	
 	@QAFTestStep(description = "user should get my leave list")
 	public void userShouldGetMyLeaveList() {
 
@@ -99,15 +99,20 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		result = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("2232").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(result, "emp_initial");
-		CommonUtils.validateParameterInJsonObject(result, "date");
-		CommonUtils.validateParameterInJsonObject(result, "leave_request_id");
-		CommonUtils.validateParameterInJsonObject(result, "leave_status");
+		if (responseBody.toString().contains("2270")) {
+			jsonObjectResult = CommonUtils.getValidateResultObject(response);
+			jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
+					.getAsJsonObject().get("2270").getAsJsonObject();
+			CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_initial");
+			CommonUtils.validateParameterInJsonObject(jsonObjectResult, "date");
+			CommonUtils.validateParameterInJsonObject(jsonObjectResult, "leave_request_id");
+			CommonUtils.validateParameterInJsonObject(jsonObjectResult, "leave_status");
+		} else {
+			JsonObject result = CommonUtils.getValidateResultObject(response);
+			Reporter.log(result.toString());
+		}
 	}
 
 	@QAFTestStep(description = "user should get leave balances")
@@ -116,9 +121,9 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		JsonArray param1results = result.get("regular").getAsJsonArray();
-		JsonArray param2results = result.get("special").getAsJsonArray();
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		JsonArray param1results = jsonObjectResult.get("regular").getAsJsonArray();
+		JsonArray param2results = jsonObjectResult.get("special").getAsJsonArray();
 
 		for (index = 0; index <= param1results.size() - 1; index++) {
 			Validator.verifyThat((param1results.get(index).getAsJsonObject())
@@ -147,13 +152,13 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat((results.get(0).getAsJsonObject())
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(0).getAsJsonObject())
 					.get("floating_holiday_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(0).getAsJsonObject()).get("description").toString(),
+					(jsonArrayResult.get(0).getAsJsonObject()).get("description").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -164,20 +169,20 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (index = 0; index <= results.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(0).getAsJsonObject()).get("holiday_id").toString(),
+					(jsonArrayResult.get(0).getAsJsonObject()).get("holiday_id").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(0).getAsJsonObject()).get("description").toString(),
+					(jsonArrayResult.get(0).getAsJsonObject()).get("description").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(0).getAsJsonObject()).get("date").toString(),
+					(jsonArrayResult.get(0).getAsJsonObject()).get("date").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(0).getAsJsonObject()).get("location").toString(),
+					(jsonArrayResult.get(0).getAsJsonObject()).get("location").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -192,16 +197,16 @@ public class NestHomeSteps {
 		ClientUtils.getWebResource(EndPoints.GET_TRAINING_CALENDAR_LIST)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		results = result.get("Friday").getAsJsonArray();
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("Friday").getAsJsonArray();
 
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("trn_course_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("title").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("title").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("department_id").toString(), Matchers.notNullValue());
 		}
 	}
@@ -217,8 +222,8 @@ public class NestHomeSteps {
 		ClientUtils.getWebResource(EndPoints.GET_UPCOMING_EVENTS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		CommonUtils.validateParameterInJsonObject(result, "main_location_name");
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "main_location_name");
 	}
 
 	@QAFTestStep(description = "User should get event list")
@@ -227,14 +232,14 @@ public class NestHomeSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (index = 0; index <= results.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("title").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("title").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("link").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("link").toString(),
 					Matchers.notNullValue());
 		}
 	}
