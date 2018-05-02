@@ -39,10 +39,28 @@ public class LeaveBean extends BaseDataBean {
 	@Randomizer(type = RandomizerTypes.DIGITS_ONLY, length = 3)
 	private String holidayId;
 	
+	@Randomizer(type = RandomizerTypes.LETTERS_ONLY, length = 6)
+	private String comment;
 	
+	@Randomizer(type = RandomizerTypes.DIGITS_ONLY, length = 4)
+	private String leaveRequestId;
 	
-	
-	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public String getLeaveRequestId() {
+		return leaveRequestId;
+	}
+
+	public void setLeaveRequestId(String leaveRequestId) {
+		this.leaveRequestId = leaveRequestId;
+	}
+
 	public String getHolidayId() {
 		return holidayId;
 	}
