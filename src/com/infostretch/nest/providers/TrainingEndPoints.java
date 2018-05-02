@@ -3,6 +3,7 @@ package com.infostretch.nest.providers;
 public interface TrainingEndPoints {
 	public static final String GET_FEEDBACK_QUESTIONS_LIST =
 			"/get-feedback-questions-list";
+	public static final String POST_TRAINING_FEEDBACK="/post-training-feedback";
 
 	public final static String Training_Calendar = "/get-training-calendar";
 	public final static String Training_Detail = "/view-training-detail";

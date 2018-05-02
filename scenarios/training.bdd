@@ -44,12 +44,6 @@ META-DATA: {"author":"megha garg","description":"verify I have taught","groups":
 	Then user should verify that I have taught
 END
 
-SCENARIO: Training_MyTrainings_07
-META-DATA: {"author":"megha garg","description":"verify feedback questions list","groups":["Training"]}
-	
-	When user login as manager
-	Then user should get feedback questions list
-END
 
 SCENARIO: Training_MyTrainings_09
 META-DATA: {"author":"chetashree gangurde","description":"verify for get training dates dd","groups":["SMOKE"]}

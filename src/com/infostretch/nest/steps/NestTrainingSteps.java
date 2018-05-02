@@ -8,8 +8,9 @@ import org.hamcrest.Matchers;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+
 import com.google.gson.JsonObject;
 import com.infostretch.nest.bean.TrainingBean;
 import com.infostretch.nest.providers.TrainingEndPoints;
@@ -70,26 +71,23 @@ public class NestTrainingSteps {
 
 	@QAFTestStep(description = "user should verify training details for course ID")
 	public void ShouldVerifyTrainingDetailsForCourseID() {
+		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("trn_course_id", trainingBean.getTrn_course_id());
+		System.out.println("Training Bean "+trainingBean.getTrn_course_id());
 		ClientUtils.getWebResource(TrainingEndPoints.Training_Detail)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-//		responseBody =
-//				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		responseBody =
+				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
 		result = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("trainer_details").getAsJsonObject();
+		System.out.println(responseBody);
 		CommonUtils.validateParameterInJsonObject(result, "department");
 		CommonUtils.validateParameterInJsonObject(result, "emp_number");
 		CommonUtils.validateParameterInJsonObject(result, "ename");
 		
-		result = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("training_detail").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(result, "trn_course_id");
-		CommonUtils.validateParameterInJsonObject(result, "description");
-		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 	}
 
 	@QAFTestStep(description = "user should verify that he is attending training")
@@ -111,7 +109,7 @@ public class NestTrainingSteps {
 //		
 		ClientUtils.getWebResource(TrainingEndPoints.I_HAVE_ATTENDED)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
-				.post(jsonObject.toString());
+				.post();
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		object1Result = result.get("details").getAsJsonArray();
@@ -136,6 +134,7 @@ public class NestTrainingSteps {
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
 		object1Result = result.get("details").getAsJsonArray();
+		
 		for (index = 0; index <= object1Result.size() - 1; index++) {
 			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
 					.get("trn_course_id").toString(), Matchers.notNullValue());
@@ -146,7 +145,6 @@ public class NestTrainingSteps {
 			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
 					.get("trainer").toString(), Matchers.notNullValue());
 
-		Reporter.log(response.getMessageBody(), MessageTypes.Info);
 		}
 	}
 
@@ -157,9 +155,6 @@ public class NestTrainingSteps {
 	public void userShouldVerifyThatIHasTaughtTraining() {
 		trainingBean.fillRandomData();
 
-		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("sort", "");
-		jsonObject.put("order", "");
 
 		ClientUtils.getWebResource(TrainingEndPoints.GET_I_AM_TEACHING)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
@@ -184,10 +179,6 @@ public class NestTrainingSteps {
 	/**
 	 * Feedback questions list
 	 */
-	@QAFTestStep(description = "user should get feedback questions list")
-	public void userShouldGetFeedbackQuestionsList() {
-		// TODO: remove NotYetImplementedException and call test steps
-	}
 
 	@QAFTestStep(description = "user should get training dates dd")
 	public void userShouldGetTrainingDatesDd() {
