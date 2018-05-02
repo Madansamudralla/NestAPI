@@ -105,7 +105,7 @@ META-DATA: {"author":"Suryakant Kale","description":"get the venue list for trai
 	Given user can login as a manager
 	When user can added and edited venue list for training module
 
-
+END
 
 SCENARIO: Training_TrainingCalendar_34
 META-DATA: {"author":"apoorva shewale","description":"user should get training list dd"}
