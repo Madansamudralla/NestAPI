@@ -1,13 +1,3 @@
-
-
-SCENARIO: Training_TrainingCalendar_01
-META-DATA: {"author":"megha garg","description":"verify training calender","groups":["Training"]}
-	
-	When user login as manager
-	Then user should get training calender
-END
-
-
 SCENARIO: Training_TrainingCalendar_02
 META-DATA: {"author":"megha garg","description":"verify training details","groups":["Training"]}
 	
@@ -43,7 +33,6 @@ META-DATA: {"author":"megha garg","description":"verify I have taught","groups":
 	When user login as manager
 	Then user should verify that I have taught
 END
-
 
 SCENARIO: Training_MyTrainings_09
 META-DATA: {"author":"chetashree gangurde","description":"verify for get training dates dd","groups":["SMOKE"]}
@@ -151,6 +140,14 @@ META-DATA: {"author":"Suryakant Kale","description":"get the venue list for trai
 	
 	Given user can login as a manager
 	When user can added and edited venue list for training module
+
+END
+
+SCENARIO: Training_Trainings_28
+META-DATA: {"author":"Suryakant Kale","description":"edit venue status for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can edit venue status for training module
 
 END
 
