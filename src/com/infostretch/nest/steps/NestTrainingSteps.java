@@ -22,10 +22,10 @@ import com.qmetry.qaf.automation.util.Validator;
 import com.qmetry.qaf.automation.ws.Response;
 
 public class NestTrainingSteps {
-	JSONObject jsonObject, jsonObject1, jsonObject2, newResult;
-	JsonObject result, responseBody, jsonObjectResult;
+	JSONObject jsonObject, jsonObject1;
+	JsonObject responseBody, jsonObjectResult;
 	JSONArray jsonArray;
-	JsonArray results, object1Result, jsonArrayResult, NewResultArray;
+	JsonArray jsonArrayResult;
 	int index;
 	Response response;
 	TrainingBean trainingBean = new TrainingBean();
@@ -39,16 +39,16 @@ public class NestTrainingSteps {
 		ClientUtils.getWebResource(TrainingEndPoints.GET_TRAINING_DATES_DD)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("trn_course_time_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("trn_course_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("date").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("date").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -63,20 +63,20 @@ public class NestTrainingSteps {
 		ClientUtils.getWebResource(TrainingEndPoints.GET_TRAINING_MEMBERS_FOR_ATTENDENCE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		object1Result = result.get("details").getAsJsonArray();
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
 
-		for (index = 0; index <= object1Result.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(object1Result.get(index).getAsJsonObject())
+					(jsonArrayResult.get(index).getAsJsonObject())
 							.get("trn_course_registration_id").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("emp_number").toString(), Matchers.notNullValue());
-			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("displayPicture").toString(), Matchers.notNullValue());
 		}
-		Reporter.log(result.toString());
+		Reporter.log(jsonObjectResult.toString());
 	}
 
 	@QAFTestStep(description = "user should export training feedback report")
@@ -88,8 +88,8 @@ public class NestTrainingSteps {
 		ClientUtils.getWebResource(TrainingEndPoints.EXPORT_TRAINING_FEEDBACK_REPORT)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		CommonUtils.validateParameterInJsonObject(result, "Download_URL");
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Download_URL");
 	}
 
 	@QAFTestStep(description = "user should get trainer list dd")
@@ -98,18 +98,18 @@ public class NestTrainingSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 
-		for (index = 0; index <= results.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("emp_number").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("ename").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("ename").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("city").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("city").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -120,17 +120,18 @@ public class NestTrainingSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
-		for (index = 0; index <= results.size() - 1; index++) {
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
+		
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("trn_venue_id").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("trn_venue_id").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("title").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("title").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("description").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("description").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -141,17 +142,18 @@ public class NestTrainingSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
-		for (index = 0; index <= results.size() - 1; index++) {
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
+		
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("id").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("id").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("name").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("name").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("country").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("country").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -165,40 +167,40 @@ public class NestTrainingSteps {
 		ClientUtils.getWebResource(TrainingEndPoints.GET_TRAINING_MEMBERS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		object1Result = result.get("details").getAsJsonArray();
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
 
-		for (index = 0; index <= object1Result.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(object1Result.get(index).getAsJsonObject())
+					(jsonArrayResult.get(index).getAsJsonObject())
 							.get("trn_course_registration_id").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(object1Result.get(index).getAsJsonObject()).get("ename").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("ename").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("job_title").toString(), Matchers.notNullValue());
 		}
-		Reporter.log(result.toString());
+		Reporter.log(jsonObjectResult.toString());
 	}
 
 	@QAFTestStep(description = "user should add edit traning members")
 	public void userShouldAddEditTraningMembers() {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
-		jsonObject2 = new JSONObject();
-		jsonObject2.put("emp_number",
+		jsonObject1 = new JSONObject();
+		jsonObject1.put("emp_number",
 				ConfigurationManager.getBundle().getProperty("emp_id"));
-		jsonObject2.put("trn_course_id", trainingBean.getTrn_course_id());
-		jsonObject.put("training", jsonObject2);
+		jsonObject1.put("trn_course_id", trainingBean.getTrn_course_id());
+		jsonObject.put("training", jsonObject1);
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(TrainingEndPoints.GET_EDIT_TRAINING_MEMBERS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		CommonUtils.validateParameterInJsonObject(result, "trn_course_id");
-		CommonUtils.validateParameterInJsonObject(result, "action_message");
-		Reporter.log(result.toString());
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_course_id");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		Reporter.log(jsonObjectResult.toString());
 	}
 
 	@QAFTestStep(description = "user should get registered employee list dd")
@@ -211,18 +213,18 @@ public class NestTrainingSteps {
 		ClientUtils.getWebResource(TrainingEndPoints.GET_REGISTERED_EMPLOYEE_LIST_DD)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 
-		for (index = 0; index <= results.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("emp_number").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("employee_id").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("employee_id").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("ename").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("ename").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -237,15 +239,15 @@ public class NestTrainingSteps {
 				.getWebResource(TrainingEndPoints.GET_EMPLIST_FOR_TRAINING_NOMINATION_DD)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 
-		for (index = 0; index <= results.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("emp_number").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("ename").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("ename").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -258,17 +260,13 @@ public class NestTrainingSteps {
 
 	@QAFTestStep(description = "user can get the course list for training module")
 	public void userCanGetTheCourseListForTrainingModule() {
-
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("search", jsonObject1);
-		jsonObject1.put("title", "");
 		jsonObject1.put("date_from", trainingBean.getDate_from());
 		jsonObject1.put("date_to", trainingBean.getDate_to());
-		jsonObject.put("sort", "");
-		jsonObject.put("order", "");
 		ClientUtils.getWebResource(TrainingEndPoints.GET_COURSE_LIST)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post(jsonObject.toString());
@@ -394,32 +392,51 @@ public class NestTrainingSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
+	
+	@QAFTestStep(description = "user can edit venue status for training module")
+	public void userCanEditVenueStatusForTrainingModule() {
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("trn_venue_id", trainingBean.getTrn_venue_id());
+		jsonObject.put("status", "0");
+		ClientUtils.getWebResource(TrainingEndPoints.EDIT_VENUE_STATUS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_venue_id");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
 
 	@QAFTestStep(description = "user should get training list dd")
 	public void userShouldGetTrainingListDd() {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject2 = new JSONObject();
-		jsonObject2.put("date_from", trainingBean.getDate_from());
-		jsonObject2.put("date_to", trainingBean.getDate_to());
-		jsonObject.put("search", jsonObject2);
+		jsonObject1 = new JSONObject();
+		jsonObject1.put("date_from", trainingBean.getDate_from());
+		jsonObject1.put("date_to", trainingBean.getDate_to());
+		jsonObject.put("search", jsonObject1);
 		ClientUtils.getWebResource(TrainingEndPoints.GET_TRAINING_LIST_DD)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("trn_course_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("description").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("description").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("trn_venue_id").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("trn_venue_id").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("start_date").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("start_date").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -429,27 +446,26 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject2 = new JSONObject();
-		jsonObject2.put("start_time", trainingBean.getDate_from());
-		jsonObject2.put("end_time", trainingBean.getDate_to());
-		jsonObject.put("trainingSearchDetails", jsonObject2);
+		jsonObject1 = new JSONObject();
+		jsonObject1.put("start_time", trainingBean.getDate_from());
+		jsonObject1.put("end_time", trainingBean.getDate_to());
+		jsonObject.put("trainingSearchDetails", jsonObject1);
 		ClientUtils.getWebResource(TrainingEndPoints.GET_SUMMARY_REPORT)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		jsonObjectResult = result.getAsJsonObject();
-		object1Result = jsonObjectResult.get("details").getAsJsonArray();
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
 
-		for (index = 0; index <= object1Result.size() - 1; index++) {
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat(
-					(object1Result.get(index).getAsJsonObject()).get("ctitle").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("ctitle").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("trn_course_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat((object1Result.get(index).getAsJsonObject())
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("instructor").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(object1Result.get(index).getAsJsonObject()).get("date").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("date").toString(),
 					Matchers.notNullValue());
 		}
 	}
@@ -459,15 +475,15 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject2 = new JSONObject();
-		jsonObject2.put("start_time", trainingBean.getDate_from());
-		jsonObject2.put("end_time", trainingBean.getDate_to());
-		jsonObject.put("trainingSearchDetails", jsonObject2);
+		jsonObject1 = new JSONObject();
+		jsonObject1.put("start_time", trainingBean.getDate_from());
+		jsonObject1.put("end_time", trainingBean.getDate_to());
+		jsonObject.put("trainingSearchDetails", jsonObject1);
 		ClientUtils.getWebResource(TrainingEndPoints.EXPORT_SUMMARY_REPORT)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		Validator.verifyThat((result.getAsJsonObject()).get("Download_URL").toString(),
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get("Download_URL").toString(),
 				Matchers.notNullValue());
 	}
 
@@ -476,18 +492,17 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject2 = new JSONObject();
-		jsonObject2.put("trn_venue_id", trainingBean.getTrn_venue_id());
-		jsonObject.put("venue_details", jsonObject2);
-
+		jsonObject1 = new JSONObject();
+		jsonObject1.put("trn_venue_id", trainingBean.getTrn_venue_id());
+		jsonObject.put("venue_details", jsonObject1);
 		ClientUtils.getWebResource(TrainingEndPoints.DELETE_VENUE)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		result = CommonUtils.getValidateResultObject(response);
-		CommonUtils.validateParameterInJsonObject(result, "trn_venue_id");
-		Validator.verifyThat((result.getAsJsonObject()).get("action_message").toString(),
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_venue_id");
+		Validator.verifyThat((jsonObjectResult.getAsJsonObject()).get("action_message").toString(),
 				Matchers.containsString("Venue removed successfully"));
-		CommonUtils.validateParameterInJsonObject(result, "response_type");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 }

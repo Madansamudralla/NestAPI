@@ -107,6 +107,14 @@ META-DATA: {"author":"Suryakant Kale","description":"get the venue list for trai
 
 END
 
+SCENARIO: Training_Trainings_28
+META-DATA: {"author":"Suryakant Kale","description":"edit venue status for training","groups":["SMOKE"]}
+	
+	Given user can login as a manager
+	When user can edit venue status for training module
+
+END
+
 SCENARIO: Training_TrainingCalendar_34
 META-DATA: {"author":"apoorva shewale","description":"user should get training list dd"}
 	
