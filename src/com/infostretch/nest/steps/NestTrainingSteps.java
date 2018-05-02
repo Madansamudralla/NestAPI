@@ -448,6 +448,10 @@ public class NestTrainingSteps {
 
 	@QAFTestStep(description = "user should export summary report.")
 	public void userShouldExportSummaryReport() {
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("venue_details", jsonObject2);
+
 		ClientUtils.getWebResource(TrainingEndPoints.EXPORT_SUMMARY_REPORT)
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
