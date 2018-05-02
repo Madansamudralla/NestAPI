@@ -74,6 +74,84 @@ public class Training {
 
 		}
 	}
+	@QAFTestStep(description = "user should verify training details for course ID")
+	public void ShouldVerifyTrainingDetailsForCourseID() {
+		jsonObject = new JSONObject();
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
+		jsonObject.put("trn_course_id", trainingBean.getTrn_course_id());
+		ClientUtils.getWebResource(TrainingEndPoints.Training_Detail)
+				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		responseBody =
+				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
+		object1Result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("trainer_details").getAsJsonObject();
+		CommonUtils.validateParameterInJsonObject(object1Result, "department");
+		CommonUtils.validateParameterInJsonObject(object1Result, "emp_number");
+		CommonUtils.validateParameterInJsonObject(object1Result, "ename");
+		
+		object2Result = responseBody.get("response").getAsJsonObject().get("results")
+				.getAsJsonObject().get("training_detail").getAsJsonObject();
+		CommonUtils.validateParameterInJsonObject(result, "trn_course_id");
+		CommonUtils.validateParameterInJsonObject(result, "description");
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+	}
+
+	@QAFTestStep(description = "user should verify that he is attending training")
+	public void userShouldVerifyThatHeIsAttendingTarining() {
+		ClientUtils.getWebResource(TrainingEndPoints.I_AM_Attending)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+
+	}
+
+	@QAFTestStep(description = "user should verify that he has attended training")
+	public void userShouldVerifyThatHeHasAttendedTraining() {
+		ClientUtils.getWebResource(TrainingEndPoints.I_HAVE_ATTENDED)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+	}
+
+	@QAFTestStep(description = "user should verify that I have taught")
+	public void userShouldVerifyThatHeHasTaughtTraining() {
+		ClientUtils.getWebResource(TrainingEndPoints.I_HAVE_TAUGHT)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+	}
+
+	/**
+	 * Auto-generated code snippet by QMetry Automation Framework.
+	 */
+	@QAFTestStep(description = "user should verify that I am teaching")
+	public void userShouldVerifyThatIHasTaughtTraining() {
+		ClientUtils.getWebResource(TrainingEndPoints.GET_I_AM_TEACHING)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		result = CommonUtils.getValidateResultObject(response);
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+
+	}
+
+	/**
+	 * Feedback questions list
+	 */
+	@QAFTestStep(description = "user should get feedback questions list")
+	public void userShouldGetFeedbackQuestionsList() {
+		// TODO: remove NotYetImplementedException and call test steps
+		throw new NotYetImplementedException();
+	}
 
 
 }
