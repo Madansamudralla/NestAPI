@@ -74,6 +74,7 @@ public class VisaBean extends BaseDataBean {
 
 	public String getJourney_from() {
 		return journey_from;
+		
 	}
 
 	public void setJourney_from(String journey_from) {
