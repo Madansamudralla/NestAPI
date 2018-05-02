@@ -411,7 +411,8 @@ public class NestESSSteps {
 		}
 
 		}
-	}
+
+
 
 	@QAFTestStep(description = "user should get employee privileges")
 	public void userShouldGetEmployeePrivileges() {
@@ -736,13 +737,11 @@ public class NestESSSteps {
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject2 = new JSONObject();
-<<<<<<< HEAD
 
 		jsonObject2.put("emp_number",
 				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		jsonObject.put("emp_details", jsonObject2);
 
-=======
 		jsonObject2.put("emp_number",
 				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
 		jsonObject.put("emp_details", jsonObject2);
