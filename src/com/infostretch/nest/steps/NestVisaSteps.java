@@ -392,6 +392,8 @@ public class NestVisaSteps {
 		jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("user_type").getAsJsonObject();
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "isApprovalAdmin");
+		
+	
 	}
 
 	@QAFTestStep(description = "user should get visa trvl list for manager")
