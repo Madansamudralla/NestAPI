@@ -262,7 +262,7 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject.put("token", "078a0cceb927ab4f5fc8d7d8cfe91f04");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("search", jsonObject1);
 		jsonObject1.put("title", "");
 		jsonObject1.put("date_from", trainingBean.getDate_from());
@@ -329,7 +329,7 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject.put("token", "8e3956c3b7c32709cdc8c40a0a93c103");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject.put("statistics", jsonObject1);
 		jsonObject1.put("emp_number", trainingBean.getEmp_number());
 		jsonObject1.put("type", trainingBean.getType());
@@ -377,7 +377,7 @@ public class NestTrainingSteps {
 		trainingBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject.put("token", "17583f751bbfe53a3496023f718f870e");
+		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		jsonObject1.put("trn_venue_id", trainingBean.getTrn_venue_id());
 		jsonObject1.put("title", trainingBean.getTitle());
 		jsonObject1.put("description", trainingBean.getDescription());
