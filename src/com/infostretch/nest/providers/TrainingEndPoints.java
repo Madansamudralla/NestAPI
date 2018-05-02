@@ -17,5 +17,6 @@ public interface TrainingEndPoints {
 			"/get-individual-emp-statistics";
 	public static final String GET_VENUE_LIST = "/get-venue-list";
 	public static final String ADD_EDIT_VENUE = "/add-edit-venue";
-
+	public static final String EDIT_VENUE_STATUS = "/edit-venue-status";
+	
 }

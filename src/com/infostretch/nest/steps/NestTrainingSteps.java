@@ -173,4 +173,24 @@ public class NestTrainingSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 
+	@QAFTestStep(description = "user can edit venue status for training module")
+	public void userCanEditVenueStatusForTrainingModule() {
+
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", "90b4d7050561eaf130b33b7fa597181d");
+		jsonObject.put("trn_venue_id", trainingBean.getTrn_venue_id());
+		jsonObject.put("status", "0");
+		ClientUtils.getWebResource(TrainingEndPoints.EDIT_VENUE_STATUS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_venue_id");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
+
 }
