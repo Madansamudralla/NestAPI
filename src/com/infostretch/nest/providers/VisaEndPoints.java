@@ -28,4 +28,6 @@ public interface VisaEndPoints {
 	public final static String VISA_GET_DURATION = "/get-duration-for-visa";
 	public final static String VISA_GET_EMPLOYEES_UNDER_MANAGER_DD ="/get-employees-under-manager-dd";
 	public final static String VISA_GET_BASIC_EMPLOYEE_DETAILS_ON_INITIATE ="/get-basic-employee-details-on-initiate";
+	public final static String VISA_INITIATE_TRVL_REQUEST ="/initiate-visa-travel-request";
+	
 }
