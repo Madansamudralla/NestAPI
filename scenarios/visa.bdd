@@ -5,7 +5,6 @@ META-DATA: {"description":"Verify get visa country list","groups":["SMOKE"],"aut
 	Then user should get visa country list
 END
 
-
 SCENARIO:Visa_Requests_007
 META-DATA: {"description":"Verify get supervisor name","groups":["SMOKE"],"author":["palash"] }
 

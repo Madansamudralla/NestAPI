@@ -4,6 +4,16 @@ import com.qmetry.qaf.automation.data.BaseDataBean;
 import com.qmetry.qaf.automation.util.Randomizer;
 
 public class TrainingBean extends BaseDataBean {
+	@Randomizer(dataset = {"9"})
+	private String trn_course_id;
+
+	public String getTrn_course_id() {
+		return trn_course_id;
+	}
+
+	public void setTrn_course_id(String trn_course_id) {
+		this.trn_course_id = trn_course_id;
+	}
 
 	@Randomizer(dataset = {"2018-03-31T18:30:00.000Z"})
 	private String date_from;
@@ -87,5 +97,4 @@ public class TrainingBean extends BaseDataBean {
 	public void setDate_to(String date_to) {
 		this.date_to = date_to;
 	}
-
 }
