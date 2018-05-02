@@ -71,10 +71,8 @@ public class NestESSSteps {
 			Validator.verifyThat(
 					(jsonArrayResult.get(index).getAsJsonObject()).get("city").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("country_code").toString(),
-					Matchers.notNullValue());
-
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("country_code").toString(), Matchers.notNullValue());
 		}
 	}
 
@@ -89,8 +87,8 @@ public class NestESSSteps {
 		response = ClientUtils.getResponse();
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_dri_lice_num");
-		Reporter.log("Emp Number : "
-				+ CommonUtils.validateParameterInJsonObject(jsonObjectResult, "emp_number"));
+		Reporter.log("Emp Number : " + CommonUtils
+				.validateParameterInJsonObject(jsonObjectResult, "emp_number"));
 	}
 
 	@QAFTestStep(description = "user should get RR count")
@@ -179,12 +177,10 @@ public class NestESSSteps {
 		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
 		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("cou_code").toString(),
-					Matchers.notNullValue());
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("cou_name").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("cou_code").toString(), Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("cou_name").toString(), Matchers.notNullValue());
 		}
 		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 	}
@@ -244,7 +240,7 @@ public class NestESSSteps {
 		ClientUtils.getWebResource(ESSEndPoints.GET_EMPLOYEE_RELATIONSSHIP_DETAILS)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		jsonObjectResult= CommonUtils.getValidateResultObject(response);
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
 		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
@@ -269,9 +265,8 @@ public class NestESSSteps {
 			Validator.verifyThat(
 					(jsonArrayResult.get(index).getAsJsonObject()).get("id").toString(),
 					Matchers.notNullValue());
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("job_title").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("job_title").toString(), Matchers.notNullValue());
 		}
 		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 	}
@@ -286,14 +281,13 @@ public class NestESSSteps {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
-		jsonArrayResult =jsonObjectResult.get("details").getAsJsonArray();
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
 
 		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("admin_loc").toString(), Matchers.notNullValue());
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("loc_id").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("loc_id").toString(), Matchers.notNullValue());
 		}
 		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
 	}
@@ -322,9 +316,8 @@ public class NestESSSteps {
 		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
 		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("ename").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("ename").toString(), Matchers.notNullValue());
 		}
 		Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 	}
@@ -338,7 +331,8 @@ public class NestESSSteps {
 		response = ClientUtils.getResponse();
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Appointed");
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Initiated_Confirmation");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult,
+				"Initiated_Confirmation");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Confirmed");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Left");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Resigned");
@@ -370,18 +364,6 @@ public class NestESSSteps {
 		}
 	}
 
-	@QAFTestStep(description = "user should /add-new-employee")
-	public void userShouldAddNewEmployee() {
-		jsonObject = new JSONObject();
-		jsonObject.put("token", TokenUtils.getTokenAsStr());
-		jsonObject.put("emp_number",
-				ConfigurationManager.getBundle().getPropertyValue("emp_id"));
-		ClientUtils.getWebResource(ESSEndPoints.GET_TEAMS_PROFILE_LIST)
-				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
-		Response response = ClientUtils.getResponse();
-		jsonObjectResult = CommonUtils.getValidateResultObject(response);
-	}
-
 	@QAFTestStep(description = "user should /get-location-for-new-emp")
 	public void userShouldGetLocationForNewEmp() {
 		jsonObject = new JSONObject();
@@ -392,9 +374,8 @@ public class NestESSSteps {
 		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
 
 		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("location_id").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("location_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("location_name").toString(), Matchers.notNullValue());
 		}
@@ -417,9 +398,8 @@ public class NestESSSteps {
 					.get("emp_number").toString(), Matchers.notNullValue());
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("rolelist_id").toString(), Matchers.notNullValue());
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("title").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("title").toString(), Matchers.notNullValue());
 		}
 	}
 
@@ -464,9 +444,8 @@ public class NestESSSteps {
 					.get("fluency").toString(), Matchers.notNullValue());
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("competency").toString(), Matchers.notNullValue());
-			Validator.verifyThat(
-					(jsonArrayResult.get(index).getAsJsonObject()).get("lname").toString(),
-					Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("lname").toString(), Matchers.notNullValue());
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("fluency_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
@@ -614,7 +593,8 @@ public class NestESSSteps {
 				Matchers.notNullValue());
 		jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("details").getAsJsonObject();
-		Validator.verifyThat((jsonObjectResult.get("my_reportee").getAsJsonArray()).toString(),
+		Validator.verifyThat(
+				(jsonObjectResult.get("my_reportee").getAsJsonArray()).toString(),
 				Matchers.notNullValue());
 		Validator.verifyThat(
 				(jsonObjectResult.get("emp_project_pm_dm").getAsJsonObject()).toString(),
@@ -689,7 +669,7 @@ public class NestESSSteps {
 				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
 				.post();
 		response = ClientUtils.getResponse();
-		jsonObjectResult= CommonUtils.getValidateResultObject(response);
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Appointed");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "Terminated");
 		Reporter.log(jsonObjectResult.toString());
@@ -989,7 +969,7 @@ public class NestESSSteps {
 		}
 	}
 
-	@QAFTestStep(description = "user should edit employee languages")
+	@QAFTestStep(description="user should edit employee languages")
 	public void userShouldEditEmployeeLanguages() {
 		essBean.fillRandomData();
 		jsonObject = new JSONObject();
