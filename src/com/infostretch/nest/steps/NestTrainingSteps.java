@@ -474,10 +474,10 @@ public class NestTrainingSteps {
 				.post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		result = CommonUtils.getValidateResultObject(response);
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_venue_id");
+		CommonUtils.validateParameterInJsonObject(result, "trn_venue_id");
 		Validator.verifyThat(
-				(results.get(index).getAsJsonObject()).get("action_message").toString(),
+				(result.getAsJsonObject()).get("action_message").toString(),
 				Matchers.containsString("Venue removed successfully"));
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+		CommonUtils.validateParameterInJsonObject(result, "response_type");
 	}
 }
