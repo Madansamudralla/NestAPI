@@ -1,7 +1,5 @@
 package com.infostretch.nest.steps;
 
-import java.util.Calendar;
-
 import javax.ws.rs.core.MediaType;
 
 import org.hamcrest.Matchers;
@@ -9,9 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
-
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.infostretch.nest.bean.TrainingBean;
 import com.infostretch.nest.providers.TrainingEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
@@ -20,7 +17,6 @@ import com.infostretch.nest.utils.TokenUtils;
 import com.infostretch.nest.utils.TokenUtils.UserType;
 import com.qmetry.qaf.automation.core.ConfigurationManager;
 import com.qmetry.qaf.automation.core.MessageTypes;
-import com.qmetry.qaf.automation.step.NotYetImplementedException;
 import com.qmetry.qaf.automation.step.QAFTestStep;
 import com.qmetry.qaf.automation.util.Reporter;
 import com.qmetry.qaf.automation.util.Validator;
