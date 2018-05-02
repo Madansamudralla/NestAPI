@@ -60,4 +60,5 @@ public interface ESSEndPoints {
 	public final static String GET_BUSINESS_UNIT ="/get-business-unit";
 	public final static String GET_RELATIONSHIP_DATA="/get-relationship-data";
 	public final static String EDIT_EMPLOYEE_LANGUAGES ="/edit-employee-languages";
+
 }
