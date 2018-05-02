@@ -54,7 +54,7 @@ public class NestESSSteps {
 		result = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(result, "emp_number");
 		CommonUtils.validateParameterInJsonObject(result, "emp_gender");
-	}
+}
 
 	@QAFTestStep(description = "user should get-base-location")
 	public void userShouldGetBaseLocation() {
@@ -327,6 +327,7 @@ public class NestESSSteps {
 					(results.get(index).getAsJsonObject()).get("ename").toString(),
 					Matchers.notNullValue());
 		}
+
 		Validator.verifyThat(results.size(), Matchers.greaterThan(0));
 	}
 
@@ -345,7 +346,7 @@ public class NestESSSteps {
 		CommonUtils.validateParameterInJsonObject(result, "Resigned");
 		CommonUtils.validateParameterInJsonObject(result, "Terminated");
 		Reporter.log("Emp Number : " + CommonUtils.getValidateResultObject(response));
-	}
+}
 
 	@QAFTestStep(description = "user should /get-teams-profile-list")
 	public void userShouldGetTeamsProfileList() {
@@ -398,8 +399,12 @@ public class NestESSSteps {
 					Matchers.notNullValue());
 			Validator.verifyThat((results.get(index).getAsJsonObject())
 					.get("location_name").toString(), Matchers.notNullValue());
+
 		}
-	}
+
+
+
+
 
 	@QAFTestStep(description = "user should get employee privileges")
 	public void userShouldGetEmployeePrivileges() {
@@ -988,8 +993,8 @@ public class NestESSSteps {
 					(results.get(index).getAsJsonObject()).get("name").toString(),
 					Matchers.notNullValue());
 		}
-	}
-	
+
+
 	@QAFTestStep(description = "user should edit employee languages")
 	public void userShouldEditEmployeeLanguages() {
 		essBean.fillRandomData();

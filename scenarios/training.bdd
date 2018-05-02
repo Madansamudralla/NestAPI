@@ -1,3 +1,50 @@
+
+
+SCENARIO: Training_TrainingCalendar_01
+META-DATA: {"author":"megha garg","description":"verify training calender","groups":["Training"]}
+	
+	When user login as manager
+	Then user should get training calender
+END
+
+
+SCENARIO: Training_TrainingCalendar_02
+META-DATA: {"author":"megha garg","description":"verify training details","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify training details for course ID
+	
+END
+
+SCENARIO: Training_MyTrainings_03
+META-DATA: {"author":"megha garg","description":"verify I am attending","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that he is attending training
+END
+
+SCENARIO: Training_MyTrainings_04
+META-DATA: {"author":"megha garg","description":"verify I have attended","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that he has attended training
+END
+
+SCENARIO: Training_MyTrainings_05
+META-DATA: {"author":"Pranita Sinkar","description":"verify I am teaching ","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that I am teaching
+END
+
+SCENARIO: Training_MyTrainings_06
+META-DATA: {"author":"megha garg","description":"verify I have taught","groups":["Training"]}
+	
+	When user login as manager
+	Then user should verify that I have taught
+END
+
+
 SCENARIO: Training_MyTrainings_09
 META-DATA: {"author":"chetashree gangurde","description":"verify for get training dates dd","groups":["SMOKE"]}
 	Given user login as manager
@@ -106,3 +153,36 @@ META-DATA: {"author":"Suryakant Kale","description":"get the venue list for trai
 	When user can added and edited venue list for training module
 
 END
+
+SCENARIO: Training_TrainingCalendar_34
+META-DATA: {"author":"apoorva shewale","description":"user should get training list dd"}
+	
+	Given user login as manager
+	Then user should get training list dd
+		
+END
+
+SCENARIO: Training_Reports_SummuryReports_31
+META-DATA: {"author":"apoorva shewale","description":"user should get summary report"}
+	
+	Given user login as manager
+	Then user should get summary report
+		
+END
+
+SCENARIO: Training_Reports_SummuryReports_30
+META-DATA: {"author":"apoorva shewale","description":"user should export summary report"}
+	
+	Given user login as manager
+	Then user should export summary report
+		
+END
+
+SCENARIO: Training_Reports_SummuryReports_29
+META-DATA: {"author":"apoorva shewale","description":"user should delete venue"}
+	
+	Given user login as manager
+	Then user should delete venue
+		
+END
+
