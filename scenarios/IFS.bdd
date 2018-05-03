@@ -1,0 +1,7 @@
+SCENARIO: IFS__01
+META-DATA: {"author":"Pranita Sinkar","description":"verify my feedback","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get my feedback
+END
+
