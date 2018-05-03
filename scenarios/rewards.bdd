@@ -1,8 +1,0 @@
-
-SCENARIO: My_R&R_Request_001
-META-DATA: {"author":"Suryakant Kale","description":"get the image list","groups":["SMOKE"]}
-	
-	Given user can login as manager
-	When user can get the image list for R&R
-		
-END
