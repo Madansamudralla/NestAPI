@@ -10,6 +10,18 @@ META-DATA: {"author":"chetashree gangurde","description":"verify qualification d
 	Then user should get qualification details
 END
 
+SCENARIO: ESS_MyProfile_043
+META-DATA: {"author":"chetashree gangurde","description":"verify for get role description","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get role description
+END
+
+SCENARIO: ESS_MyProfile_044
+META-DATA: {"author":"chetashree gangurde","description":"verify for edit role description","groups":["SMOKE"]}
+	Given user login as hr
+	Then user should edit role description
+END
+
 SCENARIO: ESS_MyProfile_001
 META-DATA: {"author":"prashinka sahu","description":"verify get-basic-details","groups":["SMOKE"],enabled=true}
 	Given user login as manager
@@ -236,18 +248,6 @@ SCENARIO: ESS_MyProfile_042
 META-DATA: {"author":"chetashree gangurde","description":"verify for delete family members","groups":["SMOKE"]}
 	Given user login as manager
 	Then user should delete family members
-END
-
-SCENARIO: ESS_MyProfile_043
-META-DATA: {"author":"chetashree gangurde","description":"verify for get role description","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should get role description
-END
-
-SCENARIO: ESS_MyProfile_044
-META-DATA: {"author":"chetashree gangurde","description":"verify for edit role description","groups":["SMOKE"]}
-	Given user login as hr
-	Then user should edit role description
 END
 
 SCENARIO: ESS_MyProfile_046
