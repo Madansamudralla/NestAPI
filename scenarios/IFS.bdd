@@ -5,3 +5,16 @@ META-DATA: {"author":"Pranita Sinkar","description":"verify my feedback","groups
 	Then user should get my feedback
 END
 
+SCENARIO: IFS__02
+META-DATA: {"author":"Pranita Sinkar","description":"verify my feedback","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should get IFS Category List
+END
+
+SCENARIO: IFS__03
+META-DATA: {"author":"Pranita Sinkar","description":"verify my feedback","groups":["SMOKE"]}
+	
+	When user login as manager
+	Then user should post IFS feedback
+END

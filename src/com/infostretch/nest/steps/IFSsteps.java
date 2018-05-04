@@ -22,8 +22,8 @@ import com.sun.glass.ui.Application;
 
 public class IFSsteps {
 	JSONObject jsonObject;
-	JsonObject result;
-	JsonArray results;
+	JsonObject jsonObjectResult;
+	JsonArray jsonArrayResult;
 	Response response;
 	int index;
 	@QAFTestStep(description = "user should get my feedback")
@@ -33,19 +33,20 @@ public class IFSsteps {
 		ClientUtils.getWebResource(IFSEndpoints.GET_MY_FEEDBACK)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
-		results = CommonUtils.getValidatedResultArray(response);
-			Validator.verifyThat(results.size(), Matchers.greaterThan(0));
+		jsonArrayResult = CommonUtils.getValidatedResultArray(response);
+			Validator.verifyThat(jsonArrayResult.size(), Matchers.greaterThan(0));
 			
-		for (index = 0; index <= results.size() - 1; index++) {
-			Validator.verifyThat((results.get(index).getAsJsonObject())
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("efs_feedback_id").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("emp_number").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("emp_number").toString(),
 					Matchers.notNullValue());
 			Validator.verifyThat(
-					(results.get(index).getAsJsonObject()).get("employee_id").toString(),
+					(jsonArrayResult.get(index).getAsJsonObject()).get("employee_id").toString(),
 					Matchers.notNullValue());
 		}
 
 	}
+	
 }
