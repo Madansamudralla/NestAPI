@@ -45,6 +45,16 @@ public class TrainingBean extends BaseDataBean {
 	private String description;
 	@Randomizer(dataset = {"1"})
 	private String status;
+	@Randomizer(dataset = {"7e074975ebca9b4ff91d2a074c3d5102"})
+	private String token;
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 
 	public String getTrn_venue_id() {
 		return trn_venue_id;

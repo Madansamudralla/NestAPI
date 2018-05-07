@@ -75,12 +75,17 @@ public class NestVisaSteps {
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
-		responseBody =
-				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
-				.getAsJsonObject().get("user_type").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "isAdminAuthority");
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "isApprovalAdmin");
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+			.get("visa_request_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("emp_number").toString(), Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("ename").toString(), Matchers.notNullValue());
+			}
+		
 	}
 
 	@QAFTestStep(description = "user should get visa type for dd")
