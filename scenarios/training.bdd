@@ -27,7 +27,16 @@ META-DATA: {"author":"Pranita Sinkar","description":"verify I am teaching ","gro
 	Then user should verify that I am teaching
 END
 
-SCENARIO: Training_MyTrainings_06
+
+SCENARIO: Training_MyTrainings_07
+META-DATA: {"author":"Pranita Sinkar","description":"add-edit training course list"}
+	
+	Given user login as manager
+	Then user should add-edit training course list
+		
+END
+
+SCENARIO: Training_MyTrainings_08
 META-DATA: {"author":"megha garg","description":"verify I have taught","groups":["Training"]}
 	
 	When user login as manager
@@ -38,6 +47,13 @@ SCENARIO: Training_MyTrainings_09
 META-DATA: {"author":"chetashree gangurde","description":"verify for get training dates dd","groups":["SMOKE"]}
 	Given user login as manager
 	Then user should get training dates dd
+END
+
+
+SCENARIO: Training_MyTrainings_11
+META-DATA: {"author":"Pranita Sinkar","description":"post training feedback","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should post training feedback
 END
 
 
@@ -128,4 +144,8 @@ META-DATA: {"author":"apoorva shewale","description":"user should delete venue"}
 	Then user should delete venue
 		
 END
+
+
+
+
 
