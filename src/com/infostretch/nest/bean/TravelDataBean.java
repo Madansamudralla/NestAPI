@@ -39,6 +39,14 @@ public class TravelDataBean extends BaseDataBean{
 	private String billable;
 	@Randomizer(dataset = {"2221"})
 	private String travel_id;
+	@Randomizer(dataset = {"16"})
+	private String membership_id;
+	public String getMembership_id() {
+		return membership_id;
+	}
+	public void setMembership_id(String membership_id) {
+		this.membership_id = membership_id;
+	}
 	public String getTravel_id() {
 		return travel_id;
 	}

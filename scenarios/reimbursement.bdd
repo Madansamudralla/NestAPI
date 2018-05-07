@@ -1,0 +1,55 @@
+SCENARIO:Reimbursement_My Expense List_001
+META-DATA: {"description":"Verify get all his expense list","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as normal employee
+	Then user should get all his expense list
+END
+
+SCENARIO:Reimbursement_MyExpenseList_002
+META-DATA: {"description":"Verify get expense details list","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as normal employee
+	Then user should get expense details list 
+END
+
+SCENARIO:Reimbursement_MyExpenseList_003
+META-DATA: {"description":"Verify get expense currencylist","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as normal employee
+	Then user should get expense currency list
+END
+
+SCENARIO:Reimbursement_MyExpenseList_004
+META-DATA: {"description":"Verify get expense travel request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as normal employee
+	Then user should get expense travel request
+END
+
+SCENARIO:Reimbursement_MyExpenseList_005
+META-DATA: {"description":"Verify get expense user project list","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get expense user project list
+END
+
+SCENARIO:Reimbursement_MyExpenseList_006
+META-DATA: {"description":"Verify get list of location category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as normal employee
+	Then user should get list of location category
+END
+
+SCENARIO:Reimbursement_Masters_ERP Categories_001
+META-DATA: {"description":"Verify get netsuite expense category list","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get netsuite expense category list
+END
+
+SCENARIO:Reimbursement_Masters_ERP Categories_002
+META-DATA: {"description":"Verify edit netsuite expense category status","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should edit netsuite expense category status
+END

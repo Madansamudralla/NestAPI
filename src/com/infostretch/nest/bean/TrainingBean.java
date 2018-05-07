@@ -15,6 +15,14 @@ public class TrainingBean extends BaseDataBean {
 		this.trn_course_id = trn_course_id;
 	}
 
+	public String getTrainingType() {
+		return trainingType;
+	}
+
+	public void setTrainingType(String trainingType) {
+		this.trainingType = trainingType;
+	}
+
 	@Randomizer(dataset = {"2018-03-31T18:30:00.000Z"})
 	private String date_from;
 	@Randomizer(dataset = {"2018-04-29T18:30:00.000Z"})
@@ -27,7 +35,8 @@ public class TrainingBean extends BaseDataBean {
 	private String fromDate;
 	@Randomizer(dataset = {"2018-4-30"})
 	private String toDate;
-
+	@Randomizer(dataset= {"0"})
+    private String trainingType;
 	@Randomizer(dataset = {"12"})
 	private String trn_venue_id;
 	@Randomizer(dataset = {"erewrerw"})
@@ -36,6 +45,16 @@ public class TrainingBean extends BaseDataBean {
 	private String description;
 	@Randomizer(dataset = {"1"})
 	private String status;
+	@Randomizer(dataset = {"7e074975ebca9b4ff91d2a074c3d5102"})
+	private String token;
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 
 	public String getTrn_venue_id() {
 		return trn_venue_id;

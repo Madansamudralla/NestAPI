@@ -231,3 +231,11 @@ META-DATA: {"author":"Suryakant Kale","description":"verify mode of travel locat
 
 END
 
+SCENARIO: Travel_MyTravelRequest_042
+META-DATA: {"author":"Suryakant Kale","description":"verify deleted employee membership","groups":["SMOKE"],"key":"Travel.TravelData_token"}
+	
+	Given user can login as manager
+	When user verify the deleted employee memberships with the token '${token}' for travel
+
+END
+

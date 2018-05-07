@@ -15,7 +15,7 @@ END
 SCENARIO:Visa_Requests_024
 META-DATA: {"description":"Verify get visa request list for employee","groups":["SMOKE"] ,"author":["palash"]}
 
-	Given user login as manager
+	Given user login as normal employee
 	Then user should get visa request list for employee
 END
 
