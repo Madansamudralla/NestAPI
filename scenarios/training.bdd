@@ -129,3 +129,18 @@ META-DATA: {"author":"apoorva shewale","description":"user should delete venue"}
 		
 END
 
+SCENARIO: Training_Reports_SummuryReports_32
+META-DATA: {"author":"apoorva shewale","description":"user should get detailed report"}
+	
+	Given user login as manager
+	Then user should get detailed report for training
+		
+END
+
+SCENARIO: Training_Reports_SummuryReports_33
+META-DATA: {"author":"apoorva shewale","description":"user should get detailed report"}
+	
+	Given user login as manager
+	Then user should get cumulative feedback report for training
+		
+END
