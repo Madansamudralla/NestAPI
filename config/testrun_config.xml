@@ -1,17 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Nest API Automation" verbose="0">
 
-
-	<test name="Travel Tests" enabled="true">
-		<parameter name="scenario.file.loc" value="scenarios/Travel.bdd" />
-		<classes>
-			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>	
-		</classes>
-	</test>
-	
-	
-	<test name="Leave Tests" enabled="true">
-		<parameter name="scenario.file.loc" value="scenarios/Leave.bdd" />
+	<test name="Home Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/home.bdd" />
 		<classes>
 			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
 		</classes>
@@ -23,14 +14,21 @@
 			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
 		</classes>
 	</test>
-		
-	<test name="Home Tests" enabled="true">
-		<parameter name="scenario.file.loc" value="scenarios/home.bdd" />
+	
+	<test name="Leave Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/Leave.bdd" />
 		<classes>
 			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
 		</classes>
 	</test>
 	
+	<test name="Travel Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/Travel.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>	
+		</classes>
+	</test>
+				
 	<test name="Training Tests" enabled="true">
 		<parameter name="scenario.file.loc" value="scenarios/training.bdd" />
 		<classes>
