@@ -133,7 +133,6 @@ public class NestReimbursementSteps {
 	}
 	@QAFTestStep(description = "user should get netsuite expense category list")
 	public void userShouldGetNetsuiteExpenseCategoryList() {
-		reimbursementBean.fillRandomData();
 		jsonObject = new JSONObject();
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils
