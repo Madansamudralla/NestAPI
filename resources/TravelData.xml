@@ -2,67 +2,14 @@
 
 <NEST_API>
 	<Travel>
-
-		<TravelData_005>
-			<token>4211538499122818d92307eb698cbd15</token>
-		</TravelData_005>
-
-		<TravelData_007>
-			<token>5c00a705691ffc4553feafc9ee984659</token>
-		</TravelData_007>
-
-		<TravelData_010>
-			<token>3f5015e6911e518d80767b6be54553bf</token>
-		</TravelData_010>
-
-		<TravelData_012>
-			<token>e482794cd9eaf0fb8adfeadf04604c43</token>
-		</TravelData_012>
-
-		<TravelData_013>
-			<token>2e7a29a263709fd8dfb91f76ee351361</token>
-		</TravelData_013>
-
-		<TravelData_016>
-			<token>98d1a255c9250eb5fe737e43aaed817d</token>
-		</TravelData_016>
-
-		<TravelData_018>
-			<token>0b0f86337605501e7458cca785f37a17</token>
-		</TravelData_018>
-
-		<TravelData_019>
-			<token>7e772552c8e2c764becc776619dd6afd</token>
+	
+	<TravelData_token>
+			<token>f838a33ada8538bd3d417d817538f562</token>
 			<trvl_agent_id>14</trvl_agent_id>
-		</TravelData_019>
-
-		<TravelData_022>
-			<token>0c2633f12e8298b1a4bf18b7e03c22e5</token>
-		</TravelData_022>
-
-		<TravelData_023>
-			<token>3d117d90120022210cef8285d5d4515f</token>
 			<trvl_travel_location_id>19</trvl_travel_location_id>
-			>
-		</TravelData_023>
-
-		<TravelData_026>
-			<token>a4f92811fc02cf3163ebf86abd1d5c90</token>
-		</TravelData_026>
-
-		<TravelData_029>
-			<token>97caf9317647c2d694b3650d6cf13992</token>
-		</TravelData_029>
-
-		<TravelData_035>
-			<token>ba28b469d6cdcecc9d123e32d368581b</token>
-		</TravelData_035>
-
-		<TravelData_041>
 			<mode_id>2</mode_id>
 			<mode_name>yrryrty</mode_name>
-		</TravelData_041>
-
+		</TravelData_token>
 
 	</Travel>
 </NEST_API>

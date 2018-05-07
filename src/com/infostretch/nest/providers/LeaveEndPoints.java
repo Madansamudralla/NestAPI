@@ -21,9 +21,12 @@ public interface LeaveEndPoints {
 	public final static String ADD_HOLIDAYS = "/add-holidays";
 	public final static String ADD_FLOATING_HOLIDAYS = "/add-floating-holidays";
 	public final static String DELETE_HOLIDAYS="/delete-holidays";
-	public final static String DELETE_FLOATING_HOLIDAYS = "/delete-floating-holidays";
-
+	public final static String DELETE_FLOATING_HOLIDAYS ="/delete-floating-holidays";
+	public final static String POST_ASSIGN_LEAVE ="/post-assign-leave";
+	public final static String GET_EMPLOYEE_LIST_FOR_LEAVE_BALANCE="/get-employee-list-for-leave-balance";
+	public final static String GET_TOTAL_LEAVE_PERIOD_IDS="/get-total-leave-period-ids";
+	public final static String CANCEL_LEAVE_EMPLOYEE_REQUEST="/cancel-leave-employee-request";
+	public final static String GET_TEAMS_PENDING_LEAVE_REQUEST="/get-teams-pending-leave-requests";
+	public final static String GET_TEAMS_PLANNED_LEAVES_LIST="/get-teams-planned-leaves-list";
 
 }
-
-

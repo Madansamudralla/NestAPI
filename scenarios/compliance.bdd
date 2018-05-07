@@ -1,0 +1,18 @@
+
+SCENARIO: Compliance_Gender Neutrality Committee_02
+META-DATA: {"author":"chetashree gangurde","description":"verify get gender commitee list","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get gender commitee list
+END
+
+SCENARIO: Compliance_Sexual Harassment Policy_03
+META-DATA: {"author":"chetashree gangurde","description":"verify get gender sexual harassment policy","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get gender sexual harassment policy
+END
+
+SCENARIO: Compliance_ISMS Policies and Documents_04
+META-DATA: {"author":"chetashree gangurde","description":"verify get pdf document for quiz","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get pdf document for quiz
+END

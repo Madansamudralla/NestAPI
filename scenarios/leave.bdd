@@ -1,5 +1,4 @@
 
-
 SCENARIO: Leave_AL_03
 META-DATA: {"author":"apoorva shewale","description":"user should get the leave reasons","groups":["SMOKE"]}
 	
@@ -101,7 +100,7 @@ META-DATA: {"author":"apoorva shewale","description":"user should request specia
 	Then user should request special leave.
 END
 
-SCENARIO: Leave_manager_TLB_03
+SCENARIO: Leave_manager_TLB_01
 META-DATA: {"author":"apoorva shewale","description":"user should get list of groups","groups":["SMOKE"]}
 	
 	Given user login as manager
@@ -116,7 +115,7 @@ META-DATA: {"author":"apoorva shewale","description":"user should get leave empl
  
 END
 
-SCENARIO: Leave_manager_ATL_01
+SCENARIO: Leave_manager_CL_05
 META-DATA: {"author":"apoorva shewale","description":"user should get location floating holidays list","groups":["SMOKE"]}
 	
 	Given user login as manager
@@ -124,7 +123,7 @@ META-DATA: {"author":"apoorva shewale","description":"user should get location f
  
 END
 
-SCENARIO: Leave_manager_ATL_01
+SCENARIO: Leave_manager_CL_02
 META-DATA: {"author":"apoorva shewale","description":"user should add holidays","groups":["SMOKE"]}
 	
 	Given user login as manager
@@ -132,7 +131,7 @@ META-DATA: {"author":"apoorva shewale","description":"user should add holidays",
  
 END
 	
-SCENARIO: Leave_manager_ATL_01
+SCENARIO: Leave_manager_CL_04
 META-DATA: {"author":"apoorva shewale","description":"user should add floating holidays","groups":["SMOKE"]}
 	
 	Given user login as manager
@@ -140,7 +139,7 @@ META-DATA: {"author":"apoorva shewale","description":"user should add floating h
  
 END
 
-SCENARIO: Leave_manager_ATL_01
+SCENARIO: Leave_manager_CL_03
 META-DATA: {"author":"apoorva shewale","description":"user should delete holidays","groups":["SMOKE"]}
 	
 	Given user login as manager
@@ -148,12 +147,58 @@ META-DATA: {"author":"apoorva shewale","description":"user should delete holiday
  
 END
 
-SCENARIO: Leave_manager_ATL_01
-META-DATA: {"author":"apoorva shewale","description":"user should delete holidays","groups":["SMOKE"]}
+SCENARIO: Leave_manager_CL_06
+META-DATA: {"author":"apoorva shewale","description":"user should delete floating holidays","groups":["SMOKE"]}
 	
 	Given user login as manager
 	Then user should delete floating holidays
  
 END
+
+SCENARIO: Leave_AL_10
+META-DATA: {"author":"apoorva shewale","description":"user should get post assign leave","groups":["SMOKE"]}
 	
+	Given user login as manager
+	Then user should get post assign leave
+ 
+END
+
+SCENARIO: Leave_manager_01
+META-DATA: {"author":"apoorva shewale","description":"user should get employee list for leave balance","groups":["SMOKE"]}
 	
+	Given user login as manager
+	Then user should get employee list for leave balance
+ 
+END
+	
+SCENARIO: Leave_manager_02
+META-DATA: {"author":"apoorva shewale","description":"user should get total leave period ids","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get total leave period ids
+ 
+END
+
+SCENARIO: Leave_manager_03
+META-DATA: {"author":"apoorva shewale","description":"user should get cancel leave employee request","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get cancel leave employee request
+ 
+END
+
+SCENARIO: Leave_manager_04
+META-DATA: {"author":"apoorva shewale","description":"user should get teams pending leave requests","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get teams pending leave requests
+ 
+END
+
+SCENARIO: Leave_manager_05
+META-DATA: {"author":"apoorva shewale","description":"user should get teams planned leave lists","groups":["SMOKE"]}
+	
+	Given user login as manager
+	Then user should get teams planned leave lists
+ 
+END
