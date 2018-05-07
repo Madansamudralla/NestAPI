@@ -5,8 +5,6 @@ META-DATA: {"author":"Pranita Sinkar","description":"verify my feedback","groups
 	Then user should get my feedback
 END
 
-
-
 SCENARIO: IFS__02
 META-DATA: {"author":"Pranita Sinkar","description":"verify post IFS feedback","groups":["SMOKE"]}
 	

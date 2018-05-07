@@ -1,12 +1,8 @@
 package com.infostretch.nest.steps;
-
 import javax.ws.rs.core.MediaType;
 import com.qmetry.qaf.automation.ws.Response;
-
 import org.hamcrest.Matchers;
-import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.infostretch.nest.providers.IFSEndpoints;
@@ -14,11 +10,7 @@ import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
 import com.infostretch.nest.utils.TokenUtils;
 import com.qmetry.qaf.automation.step.QAFTestStep;
-import com.qmetry.qaf.automation.ui.WebDriverBaseTestPage;
-import com.qmetry.qaf.automation.ui.api.PageLocator;
-import com.qmetry.qaf.automation.ui.api.WebDriverTestPage;
 import com.qmetry.qaf.automation.util.Validator;
-import com.sun.glass.ui.Application;
 
 public class IFSsteps {
 	JSONObject jsonObject, jsonObject1;
@@ -71,7 +63,5 @@ public class IFSsteps {
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult,
 				"message");
-
 	}
-
 }

@@ -37,14 +37,12 @@ public interface TrainingEndPoints {
 	public final static String GET_SUMMARY_REPORT = "/get-summary-report";
 	public final static String EXPORT_SUMMARY_REPORT = "/export-summary-report";
 	public final static String DELETE_VENUE = "/delete-venue";
-<<<<<<< HEAD
+
 	public final static String GET_FEEDBACKS_DETAILS = "/get-feedbacks-details";
 	public final static String ADD_EDIT_COURSE_LIST = "/add-edit-course-list";
 
-=======
 	public final static String GET_DETAILED_REPORT = "/get-detailed-report";
 	public final static String GET_CUMULATIVE_FEEDBACK_REPORT =
 			"/get-cumulative-feedback-report";
->>>>>>> 858ad69c0702501723d54f28ebc27ccedffcc2a1
 
 }
