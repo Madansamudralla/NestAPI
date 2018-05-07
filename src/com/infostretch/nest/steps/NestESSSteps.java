@@ -4,6 +4,7 @@ import javax.ws.rs.core.MediaType;
 import org.hamcrest.Matchers;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -242,8 +243,9 @@ public class NestESSSteps {
 		response = ClientUtils.getResponse();
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
 		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+		
 		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
-			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+						Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("ed_name").toString(), Matchers.notNullValue());
 			Validator.verifyThat(
 					(jsonArrayResult.get(index).getAsJsonObject())
