@@ -85,13 +85,7 @@ public class NestVisaSteps {
 			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
 					.get("ename").toString(), Matchers.notNullValue());
 			}
-		//jsonObjectResult = CommonUtils.getValidateResultObject(response);
-		//responseBody =
-			//	new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		//jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
-			//	.getAsJsonObject().get("user_type").getAsJsonObject();
-		//CommonUtils.validateParameterInJsonObject(jsonObjectResult, "isAdminAuthority");
-		//CommonUtils.validateParameterInJsonObject(jsonObjectResult, "isApprovalAdmin");
+		
 	}
 
 	@QAFTestStep(description = "user should get visa type for dd")

@@ -19,6 +19,13 @@ META-DATA: {"description":"Verify get expense currencylist","groups":["SMOKE"] ,
 	Then user should get expense currency list
 END
 
+SCENARIO:Reimbursement_MyExpenseList_004
+META-DATA: {"description":"Verify get expense travel request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as normal employee
+	Then user should get expense travel request
+END
+
 SCENARIO:Reimbursement_MyExpenseList_005
 META-DATA: {"description":"Verify get expense user project list","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
 
@@ -47,30 +54,3 @@ META-DATA: {"description":"Verify edit netsuite expense category status","groups
 	Then user should edit netsuite expense category status
 END
 
-SCENARIO:Reimbursement_Masters_ERP Categories_003
-META-DATA: {"description":"Verify addedit netsuite expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
-
-	Given user login as manager
-	Then user should addedit netsuite expense category
-END
-
-SCENARIO:Reimbursement_Masters_ERP Categories_004
-META-DATA: {"description":"Verify delete netsuite expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
-
-	Given user login as manager
-	Then user should delete netsuite expense category
-END
-
-SCENARIO:Reimbursement_Masters_Expense Categories_001
-META-DATA: {"description":"Verify edit expense category status","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
-
-	Given user login as manager
-	Then user should edit expense category status
-END
-
-SCENARIO:Reimbursement_Masters_Expense Categories_002
-META-DATA: {"description":"Verify list expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
-
-	Given user login as manager
-	Then user should list expense category
-END
