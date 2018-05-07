@@ -16,22 +16,10 @@ META-DATA: {"author":"chetashree gangurde","description":"verify get all employe
 	Then user should get all employee details
 END
 
-SCENARIO: Survey & Quiz_My Survey & Quiz_05
-META-DATA: {"author":"chetashree gangurde","description":"verify get survey template list","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should get survey template list
-END
-
 SCENARIO: Survey & Quiz_My Survey & Quiz_06
 META-DATA: {"author":"chetashree gangurde","description":"verify get nest country list","groups":["SMOKE"]}
 	Given user login as manager
 	Then user should get nest country list
-END
-
-SCENARIO: Survey & Quiz_My Survey & Quiz_08
-META-DATA: {"author":"chetashree gangurde","description":"verify edit survey template status","groups":["SMOKE"]}
-	Given user login as manager
-	Then user should edit survey template status
 END
 
 SCENARIO: Survey & Quiz_My Survey & Quiz_09
