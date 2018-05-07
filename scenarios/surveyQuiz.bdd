@@ -1,0 +1,41 @@
+SCENARIO: Survey & Quiz_My Survey & Quiz_01
+META-DATA: {"author":"chetashree gangurde","description":"verify get survey template list for employee","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get survey template list for employee
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_02
+META-DATA: {"author":"chetashree gangurde","description":"verify get employee details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get employee details
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_04
+META-DATA: {"author":"chetashree gangurde","description":"verify get all employee details","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get all employee details
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_05
+META-DATA: {"author":"chetashree gangurde","description":"verify get survey template list","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get survey template list
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_06
+META-DATA: {"author":"chetashree gangurde","description":"verify get nest country list","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get nest country list
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_08
+META-DATA: {"author":"chetashree gangurde","description":"verify edit survey template status","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should edit survey template status
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_09
+META-DATA: {"author":"chetashree gangurde","description":"verify get survey question types","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get survey question types
+END
