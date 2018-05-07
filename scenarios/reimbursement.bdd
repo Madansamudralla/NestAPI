@@ -53,4 +53,3 @@ META-DATA: {"description":"Verify edit netsuite expense category status","groups
 	Given user login as manager
 	Then user should edit netsuite expense category status
 END
-

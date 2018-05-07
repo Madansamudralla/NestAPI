@@ -1,15 +1,12 @@
 package com.infostretch.nest.steps;
 
 import javax.ws.rs.core.MediaType;
-
 import org.hamcrest.Matchers;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.infostretch.nest.bean.SurveyQuizBean;
 import com.infostretch.nest.providers.SurveyQuizEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
