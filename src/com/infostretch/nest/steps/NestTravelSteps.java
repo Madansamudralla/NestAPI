@@ -677,4 +677,25 @@ public class NestTravelSteps {
 		}
 	}
 
+	@QAFTestStep(description = "user verify the deleted employee memberships with the token {0} for travel")
+	public void userVerifyTheDeletedEmployeeMembershipsWithTheTokenForTravel(
+			String token) {
+		travelDataBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject1 = new JSONObject();
+		jsonObject1.put("membership_id", travelDataBean.getMembership_id());
+		jsonObject.put("token", token);
+		jsonObject.put("membershipDetails", jsonObject1);
+		ClientUtils.getWebResource(TravelEndPoints.DELETE_EMPLOYEE_MEMBERSHIPS)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Reporter.log(response.getMessageBody(), MessageTypes.Info);
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "status");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
+	}
+
 }

@@ -591,4 +591,43 @@ public class NestTrainingSteps {
 				Matchers.containsString("Venue removed successfully"));
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
+
+	@QAFTestStep(description = "user should get detailed report for training")
+	public void userShouldGetDetailedReportForTraining() {
+
+		ClientUtils.getWebResource(TrainingEndPoints.GET_DETAILED_REPORT)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post();
+		response = ClientUtils.getResponse();
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		jsonArrayResult = jsonObjectResult.get("details").getAsJsonArray();
+
+		for (index = 0; index <= jsonArrayResult.size() - 1; index++) {
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("trn_course_id").toString(), Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("instructor").toString(), Matchers.notNullValue());
+			Validator.verifyThat((jsonArrayResult.get(index).getAsJsonObject())
+					.get("department_id").toString(), Matchers.notNullValue());
+		}
+	}
+
+	@QAFTestStep(description = "user should get cumulative feedback report for training")
+	public void userShouldGetCumulativeFeedbackReportForTraining() {
+
+		trainingBean.fillRandomData();
+		jsonObject = new JSONObject();
+		jsonObject.put("token", trainingBean.getToken());
+		jsonObject.put("trn_course_id", "11");
+		ClientUtils.getWebResource(TrainingEndPoints.GET_CUMULATIVE_FEEDBACK_REPORT)
+				.entity(TokenUtils.getTokenAsJsonStr()).type(MediaType.APPLICATION_JSON)
+				.post(jsonObject.toString());
+		response = ClientUtils.getResponse();
+		Validator.assertThat(response.getStatus().getStatusCode(), Matchers.equalTo(200));
+		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "title");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_course_id");
+	}
+
 }

@@ -37,6 +37,8 @@ public interface TrainingEndPoints {
 	public final static String GET_SUMMARY_REPORT = "/get-summary-report";
 	public final static String EXPORT_SUMMARY_REPORT = "/export-summary-report";
 	public final static String DELETE_VENUE = "/delete-venue";
-	
-	
+	public final static String GET_DETAILED_REPORT = "/get-detailed-report";
+	public final static String GET_CUMULATIVE_FEEDBACK_REPORT =
+			"/get-cumulative-feedback-report";
+
 }

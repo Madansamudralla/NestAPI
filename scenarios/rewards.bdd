@@ -1,0 +1,56 @@
+
+SCENARIO: My_R&R_Request_001
+META-DATA: {"author":"Suryakant Kale","description":"get the image list","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the image list for R&R
+		
+END
+
+SCENARIO: My_R&R_Request_002
+META-DATA: {"author":"Suryakant Kale","description":"get the image list","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the list of bands for R&R
+		
+END
+
+SCENARIO: My_R&R_Request_003
+META-DATA: {"author":"Suryakant Kale","description":"get the image list","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the list of groups for filter for R&R
+		
+END
+
+SCENARIO: My_R&R_Request_004
+META-DATA: {"author":"Suryakant Kale","description":"get the list of employee","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the list of employee for R&R
+		
+END
+
+SCENARIO: My_R&R_Request_006
+META-DATA: {"author":"Suryakant Kale","description":"add rewards details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the list of my nomination for R&R
+		
+END
+
+SCENARIO: My_R&R_Request_007
+META-DATA: {"author":"Suryakant Kale","description":"add rewards details","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get all employee list for expense for R&R
+		
+END
+
+SCENARIO: My_R&R_Request_008
+META-DATA: {"author":"Suryakant Kale","description":"get status list","groups":["SMOKE"]}
+	
+	Given user can login as manager
+	When user can get the status list for R&R
+		
+END

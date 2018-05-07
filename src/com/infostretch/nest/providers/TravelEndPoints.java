@@ -36,5 +36,6 @@ public class TravelEndPoints {
 	public final static String GET_EMPLOYEE_MEMBERSHIPS = "/get-employee-memberships";
 	public final static String GET_EMPLOYEE_TRAVEL_LIST = "/get-employee-travel-list";
 	public final static String GET_TRAVEL_LOCATIONS_MYVIEW = "/get-travel-locations";
-
+	public final static String DELETE_EMPLOYEE_MEMBERSHIPS = "/delete-employee-memberships";
+	
 }
