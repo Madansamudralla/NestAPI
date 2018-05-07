@@ -593,7 +593,6 @@ public class NestTrainingSteps {
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "response_type");
 	}
 
-<<<<<<< HEAD
 
 	@QAFTestStep(description = "user should add-edit training course list")
 	public void addEditTraingCourseList() {
@@ -634,7 +633,6 @@ CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 
 
 		}
-=======
 	@QAFTestStep(description = "user should get detailed report for training")
 	public void userShouldGetDetailedReportForTraining() {
 
@@ -673,7 +671,6 @@ CommonUtils.validateParameterInJsonObject(jsonObjectResult, "action_message");
 		CommonUtils.validateParameterInJsonObject(jsonObjectResult, "trn_course_id");
 	}
 
->>>>>>> 858ad69c0702501723d54f28ebc27ccedffcc2a1
 }
 
 		
