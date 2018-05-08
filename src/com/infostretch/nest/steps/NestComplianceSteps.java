@@ -27,15 +27,6 @@ public class NestComplianceSteps {
 	int index;
 	Response response;
 
-	@QAFTestStep(description = "user should checkIfLogin.php?callback=angular.callbacks.")
-	public void userShouldCheckIfLoginPhpCallbackAngularCallbacks() {
-		ClientUtils.getWebResource(ComplianceEndPoints.GET_NEST_COUNTRY_LIST)
-				.get(ClientResponse.class);
-		response = ClientUtils.getResponse();
-		jsonObjectResult = CommonUtils.getValidateResultObject(response);
-		Reporter.log(jsonObjectResult.toString());
-	}
-
 	@QAFTestStep(description = "user should get gender commitee list")
 	public void userShouldGetGenderCommiteeList() {
 		ClientUtils.getWebResource(ComplianceEndPoints.GET_GENDER_COMMITEE_LIST)
