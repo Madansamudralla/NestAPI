@@ -10,6 +10,12 @@ META-DATA: {"author":"chetashree gangurde","description":"verify get employee de
 	Then user should get employee details
 END
 
+SCENARIO: Survey & Quiz_My Survey & Quiz_03
+META-DATA: {"author":"chetashree gangurde","description":"verify view survey template response","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should view survey template response
+END
+
 SCENARIO: Survey & Quiz_My Survey & Quiz_04
 META-DATA: {"author":"chetashree gangurde","description":"verify get all employee details","groups":["SMOKE"]}
 	Given user login as manager
@@ -28,6 +34,12 @@ META-DATA: {"author":"chetashree gangurde","description":"verify get nest countr
 	Then user should get nest country list
 END
 
+SCENARIO: Survey & Quiz_My Survey & Quiz_07
+META-DATA: {"author":"chetashree gangurde","description":"verify add edit survey template","groups":["SMOKE"]}
+	Given user login as normal employee
+	Then user should add edit survey template
+END
+
 SCENARIO: Survey & Quiz_My Survey & Quiz_08
 META-DATA: {"author":"chetashree gangurde","description":"verify edit survey template status","groups":["SMOKE"]}
 	Given user login as manager
@@ -38,4 +50,28 @@ SCENARIO: Survey & Quiz_My Survey & Quiz_09
 META-DATA: {"author":"chetashree gangurde","description":"verify get survey question types","groups":["SMOKE"]}
 	Given user login as manager
 	Then user should get survey question types
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_10
+META-DATA: {"author":"chetashree gangurde","description":"verify get survey template question detail","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get survey template question detail
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_11
+META-DATA: {"author":"chetashree gangurde","description":"verify add edit survey template question","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should add edit survey template question
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_12
+META-DATA: {"author":"chetashree gangurde","description":"verify get survey template question list","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should get survey template question list
+END
+
+SCENARIO: Survey & Quiz_My Survey & Quiz_13
+META-DATA: {"author":"chetashree gangurde","description":"verify save submit survey template question list","groups":["SMOKE"]}
+	Given user login as manager
+	Then user should save submit survey template question list
 END

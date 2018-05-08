@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.infostretch.nest.bean.SurveyQuizBean;
 import com.infostretch.nest.providers.SurveyQuizEndPoints;
 import com.infostretch.nest.utils.ClientUtils;
 import com.infostretch.nest.utils.CommonUtils;
@@ -64,23 +63,24 @@ public class NestSurveyQuizSteps {
 
 	@QAFTestStep(description = "user should view survey template response")
 	public void userShouldViewSurveyTemplateResponse() {
-		JsonObject jsonObjectResult1 = new JsonObject();
+		//JsonObject jsonObjectResult1 = new JsonObject();
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject1.put("survey_template_master_id", "5");
-		jsonObject.put("details", jsonObject1);
+		jsonObject1.put("survey_template_master_id","4");
+		jsonObject.put("details",jsonObject1);
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(SurveyQuizEndPoints.VIEW_SURVEY_TEMPLATE_RESPONSE)
 				.type(MediaType.APPLICATION_JSON).post(jsonObject.toString());
 		response = ClientUtils.getResponse();
 		jsonObjectResult = CommonUtils.getValidateResultObject(response);
+//		jsonObjectResult1=jsonObjectResult.get("templatedetail").getAsJsonObject();
 		responseBody =
 				new JsonParser().parse(response.getMessageBody()).getAsJsonObject();
-		jsonObjectResult1 = responseBody.get("response").getAsJsonObject().get("results")
+		jsonObjectResult = responseBody.get("response").getAsJsonObject().get("results")
 				.getAsJsonObject().get("templatedetail").getAsJsonObject();
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult1,
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult,
 				"survey_template_master_id");
-		CommonUtils.validateParameterInJsonObject(jsonObjectResult1, "survey_name");
+		CommonUtils.validateParameterInJsonObject(jsonObjectResult,"survey_name");
 		Reporter.log(jsonObjectResult.toString());
 	}
 
@@ -147,10 +147,10 @@ public class NestSurveyQuizSteps {
 	public void userShouldAddEditSurveyTemplate() {
 		jsonObject = new JSONObject();
 		jsonObject1 = new JSONObject();
-		jsonObject1.put("survey_name", "New Test Survey2");
-		jsonObject1.put("type", "1");
-		jsonObject1.put("status", "1");
-		jsonObject1.put("survey_template_master_id", "6");
+		jsonObject1.put("survey_name", "testing");
+		jsonObject1.put("type","1");
+		jsonObject1.put("status","1");
+		jsonObject1.put("survey_template_master_id","4");
 		jsonObject.put("survey_details", jsonObject1);
 		jsonObject.put("token", TokenUtils.getTokenAsStr());
 		ClientUtils.getWebResource(SurveyQuizEndPoints.ADD_EDIT_SURVEY_TEMPLATE)
