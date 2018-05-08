@@ -53,3 +53,73 @@ META-DATA: {"description":"Verify edit netsuite expense category status","groups
 	Given user login as manager
 	Then user should edit netsuite expense category status
 END
+SCENARIO:Reimbursement_Masters_ERP Categories_003
+META-DATA: {"description":"Verify addedit netsuite expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should addedit netsuite expense category
+END
+
+SCENARIO:Reimbursement_Masters_ERP Categories_004
+META-DATA: {"description":"Verify delete netsuite expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should delete netsuite expense category
+END
+
+SCENARIO:Reimbursement_Masters_Expense Categories_001
+META-DATA: {"description":"Verify edit expense category status","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should edit expense category status
+END
+
+SCENARIO:Reimbursement_Masters_Expense Categories_002
+META-DATA: {"description":"Verify list expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should list expense category
+END
+
+SCENARIO:Reimbursement_Masters_Expense Categories_003
+META-DATA: {"description":"Verify list expense category by id","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should list expense category by id
+END
+
+SCENARIO:Reimbursement_Masters_Expense Categories_004
+META-DATA: {"description":"Verify get location list by finance","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get location list by finance
+END
+
+SCENARIO:Reimbursement_Masters_Expense Categories_005
+META-DATA: {"description":"Verify add expense category","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should add expense category
+END
+
+SCENARIO:Reimbursement_Finance Reimbursement List_Cash Advance Requests_001
+META-DATA: {"description":"Verify get view cash advance request","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get view cash advance request
+END
+
+SCENARIO:Reimbursement_Finance Reimbursement List_Cash Advance Requests_002
+META-DATA: {"description":"Verify get all employee list for expense","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get all employee list for expense
+END
+
+SCENARIO:Reimbursement_Finance Reimbursement List_Cash Advance Requests_003
+META-DATA: {"description":"Verify get cash advance request	","groups":["SMOKE"] ,"author":["bhakti kulkarni"]}
+
+	Given user login as manager
+	Then user should get cash advance request	
+END
+
