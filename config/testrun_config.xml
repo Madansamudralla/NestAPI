@@ -42,6 +42,35 @@
 			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
 		</classes>
 	</test>
-	
+	<test name="Rewards Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/rewards.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
+		</classes>
+	</test>
+	<test name="Reimbursement Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/reimbursement.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
+		</classes>
+	</test>
+	<test name="Compliance Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/compliance.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
+		</classes>
+	</test>
+	<test name="SurveyQuiz Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/surveyQuiz.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
+		</classes>
+	</test>
+	<test name="IFS Tests" enabled="true">
+		<parameter name="scenario.file.loc" value="scenarios/IFS.bdd" />
+		<classes>
+			<class name="com.qmetry.qaf.automation.step.client.text.BDDTestFactory"></class>
+		</classes>
+	</test>
 
 </suite>
